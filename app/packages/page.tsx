@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import CTAButton from '@/components/CTAButton';
+import { businessConfig } from '@/config/business';
 
 export const metadata: Metadata = {
   title: 'Packages | Áurea Essence Massage',
@@ -9,20 +10,22 @@ export const metadata: Metadata = {
 };
 
 export default function PackagesPage() {
+  const { packageInclusions } = businessConfig.features;
+
   const packages = [
     {
       name: 'Executive Relief',
       tagline: 'For Busy Professionals',
       duration: '90 minutes',
-      description: 'Designed for busy professionals who need deep relaxation and mental clarity. Intensive therapy that melts away tension from long hours.',
+      description: 'Designed for busy professionals who need deep relaxation and mental clarity. Intensive therapy for relief from desk work and long hours.',
       includes: [
         'Deep tissue massage',
         'Aromatherapy blend',
         'Hot towel treatment',
         'Scalp and neck focus',
-        'Premium product upgrade',
+        ...(packageInclusions.premiumProductUpgrade ? ['Premium product selection'] : []),
       ],
-      idealFor: 'Executives, entrepreneurs, busy professionals',
+      idealFor: 'Executives, entrepreneurs, professionals',
       imageSrc: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80',
       imageAlt: 'Executive massage',
     },
@@ -30,15 +33,15 @@ export default function PackagesPage() {
       name: 'Couples Retreat',
       tagline: 'Shared Relaxation',
       duration: '180 minutes total',
-      description: 'An unforgettable shared spa experience at your location. Consecutive massage sessions for both partners.',
+      description: 'An unforgettable shared spa experience at your location. Consecutive massage sessions for both partners in a relaxing atmosphere.',
       includes: [
         'Swedish or deep tissue (90 min each)',
         'Aromatherapy',
         'Premium products',
         'Relaxing ambiance setup',
-        'Complimentary gift',
+        ...(packageInclusions.complimentaryGift ? ['Complimentary gift'] : []),
       ],
-      idealFor: 'Couples, anniversaries, special celebrations',
+      idealFor: 'Couples, anniversaries, celebrations',
       imageSrc: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80',
       imageAlt: 'Couples massage',
     },
@@ -46,12 +49,12 @@ export default function PackagesPage() {
       name: 'Athlete Recovery',
       tagline: 'Performance & Restoration',
       duration: '75 minutes',
-      description: 'Sport-specific therapy designed to enhance performance and accelerate recovery. Perfect for athletes at all levels.',
+      description: 'Sport-specific therapy designed to enhance performance and support recovery. For athletes and active individuals at all levels.',
       includes: [
         'Sports massage with targeted work',
         'Dynamic stretching session',
         'Muscle recovery treatment',
-        'Percussion therapy',
+        ...(packageInclusions.percussionTherapy ? ['Percussion therapy'] : []),
         'Recovery guidance',
       ],
       idealFor: 'Athletes, fitness enthusiasts, active individuals',
@@ -62,7 +65,7 @@ export default function PackagesPage() {
       name: 'Ultimate Indulgence',
       tagline: 'Pure Luxury',
       duration: '120 minutes',
-      description: 'Our most comprehensive treatment—full two hours of blissful luxury. The pinnacle of at-home spa experiences.',
+      description: 'Our most comprehensive treatment—a full two hours of blissful relaxation. The pinnacle of at-home spa experiences.',
       includes: [
         'Full body Swedish massage',
         'Hot stone therapy',
@@ -70,7 +73,7 @@ export default function PackagesPage() {
         'Hand and foot reflexology',
         'Premium organic products',
       ],
-      idealFor: 'Special occasions, luxury seekers',
+      idealFor: 'Special occasions, self-care, gift experiences',
       imageSrc: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80',
       imageAlt: 'Ultimate spa package',
     },

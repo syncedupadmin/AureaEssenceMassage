@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { businessConfig } from '@/config/business';
 
 export const metadata: Metadata = {
   title: 'Terms of Service | Áurea Essence Massage',
@@ -7,6 +8,8 @@ export const metadata: Metadata = {
 };
 
 export default function TermsPage() {
+  const { bookingPolicy, paymentMethods, serviceArea } = businessConfig;
+
   return (
     <div className="min-h-screen bg-champagne pt-32 pb-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
@@ -25,7 +28,7 @@ export default function TermsPage() {
                 Agreement to Terms
               </h2>
               <p className="text-charcoal/70 leading-relaxed text-sm">
-                By accessing or using Áurea Essence Massage mobile massage services, you agree to be bound by these Terms of Service. If you disagree with any part of these terms, you may not access our services.
+                By accessing or using {businessConfig.name} mobile massage services, you agree to be bound by these Terms of Service. If you disagree with any part of these terms, you may not access our services.
               </p>
             </section>
 
@@ -34,7 +37,7 @@ export default function TermsPage() {
                 Service Description
               </h2>
               <p className="text-charcoal/70 leading-relaxed mb-4 text-sm">
-                Áurea Essence Massage provides professional mobile massage therapy services. Our massage therapists travel to your home, hotel, or office to provide spa-quality massage treatments.
+                {businessConfig.name} provides professional mobile massage therapy services throughout {serviceArea.primary}. Our massage therapists travel to your home, hotel, or office to provide spa-quality massage treatments.
               </p>
             </section>
 
@@ -43,13 +46,13 @@ export default function TermsPage() {
                 Booking and Cancellation Policy
               </h2>
               <p className="text-charcoal/70 leading-relaxed mb-4 text-sm">
-                <strong className="text-charcoal">Booking:</strong> Appointments must be booked at least 24 hours in advance, subject to therapist availability. Same-day appointments may be available upon request.
+                <strong className="text-charcoal">Booking:</strong> Appointments should be booked at least {bookingPolicy.advanceNotice} in advance, subject to therapist availability. {bookingPolicy.sameDayAvailable && 'Same-day appointments may be available upon request.'}
               </p>
               <p className="text-charcoal/70 leading-relaxed mb-4 text-sm">
-                <strong className="text-charcoal">Cancellation:</strong> Cancellations must be made at least 24 hours before your scheduled appointment. Late cancellations or no-shows may be subject to a cancellation fee of up to 50% of the service cost.
+                <strong className="text-charcoal">Cancellation:</strong> Cancellations must be made at least {bookingPolicy.cancellationNotice} before your scheduled appointment. Late cancellations or no-shows may be subject to a cancellation fee of up to {bookingPolicy.cancellationFee} of the service cost.
               </p>
               <p className="text-charcoal/70 leading-relaxed text-sm">
-                <strong className="text-charcoal">Rescheduling:</strong> We understand that plans change. You may reschedule your appointment with at least 24 hours notice at no charge.
+                <strong className="text-charcoal">Rescheduling:</strong> We understand that plans change. You may reschedule your appointment with at least {bookingPolicy.reschedulingNotice} notice {bookingPolicy.reschedulingFee ? `for a fee of ${bookingPolicy.reschedulingFee}` : 'at no charge'}.
               </p>
             </section>
 
@@ -58,7 +61,7 @@ export default function TermsPage() {
                 Payment Terms
               </h2>
               <p className="text-charcoal/70 leading-relaxed mb-4 text-sm">
-                Payment is due at the time of service. We accept cash, credit cards, Venmo, and Zelle. Gratuities are not included in the service price and are at your discretion.
+                Payment is due at the time of service. We accept {paymentMethods.join(', ')}. Gratuities are not included in the service price and are at your discretion.
               </p>
             </section>
 
@@ -100,7 +103,7 @@ export default function TermsPage() {
                 Limitation of Liability
               </h2>
               <p className="text-charcoal/70 leading-relaxed text-sm">
-                Áurea Essence Massage shall not be liable for any indirect, incidental, special, or consequential damages arising out of or in connection with our services.
+                {businessConfig.name} shall not be liable for any indirect, incidental, special, or consequential damages arising out of or in connection with our services.
               </p>
             </section>
 

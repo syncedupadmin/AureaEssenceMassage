@@ -8,8 +8,11 @@ interface ContactFormData {
   email: string;
   phone: string;
   service: string;
+  locationType: string;
+  address: string;
   preferredDate: string;
   preferredTime: string;
+  preferredPressure: string;
   message: string;
 }
 
@@ -44,8 +47,6 @@ export default function ContactForm() {
 
       setIsSubmitted(true);
       reset();
-
-      setTimeout(() => setIsSubmitted(false), 5000);
     } catch (err) {
       setError('Something went wrong. Please try again or call us directly.');
       console.error('Form submission error:', err);
@@ -64,17 +65,27 @@ export default function ContactForm() {
     'Package/Custom Service',
   ];
 
-  return (
-    <div className="bg-white rounded-sm shadow-elegant p-6 sm:p-8 md:p-10">
-      <h2 className="text-2xl sm:text-3xl font-serif font-medium text-charcoal mb-6 text-center tracking-wide">
-        Request a Booking
-      </h2>
+  const locationTypes = [
+    { value: 'home', label: 'Home' },
+    { value: 'hotel', label: 'Hotel / Resort' },
+    { value: 'office', label: 'Office' },
+    { value: 'event', label: 'Event Venue' },
+  ];
 
-      {isSubmitted && (
-        <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-sm">
-          <div className="flex items-start">
+  const pressureOptions = [
+    { value: 'light', label: 'Light - Gentle, relaxing' },
+    { value: 'medium', label: 'Medium - Moderate pressure' },
+    { value: 'firm', label: 'Firm - Deep work' },
+    { value: 'varies', label: 'Varies - Different areas' },
+  ];
+
+  if (isSubmitted) {
+    return (
+      <div className="bg-white rounded-sm shadow-elegant p-6 sm:p-8 md:p-10">
+        <div className="text-center py-8">
+          <div className="w-16 h-16 mx-auto mb-6 text-green-500 bg-green-100 rounded-full flex items-center justify-center">
             <svg
-              className="w-5 h-5 text-green-600 mr-3 flex-shrink-0 mt-0.5"
+              className="w-8 h-8"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -84,15 +95,35 @@ export default function ContactForm() {
             >
               <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <div>
-              <h3 className="text-green-800 font-medium text-sm">Message Sent!</h3>
-              <p className="text-green-700 text-xs">
-                Thank you for contacting us. We&apos;ll get back to you within 24 hours.
-              </p>
-            </div>
           </div>
+          <h2 className="text-2xl sm:text-3xl font-serif font-medium text-charcoal mb-4 tracking-wide">
+            Request Received!
+          </h2>
+          <p className="text-charcoal/70 mb-6 max-w-md mx-auto">
+            Thank you for your booking request. We&apos;ll review your details and confirm your appointment within 24 hours.
+          </p>
+          <div className="bg-champagne-100 border border-champagne-200 rounded-sm p-4 mb-6 max-w-md mx-auto">
+            <p className="text-charcoal/60 text-sm">
+              <strong className="text-charcoal">What happens next:</strong><br />
+              We&apos;ll reach out via email or phone to confirm your date, time, and any special requests.
+            </p>
+          </div>
+          <button
+            onClick={() => setIsSubmitted(false)}
+            className="text-rose-500 hover:text-rose-600 font-medium transition-colors text-sm"
+          >
+            Submit another request
+          </button>
         </div>
-      )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-white rounded-sm shadow-elegant p-6 sm:p-8 md:p-10">
+      <h2 className="text-2xl sm:text-3xl font-serif font-medium text-charcoal mb-6 text-center tracking-wide">
+        Request a Booking
+      </h2>
 
       {error && (
         <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-sm">
@@ -139,55 +170,56 @@ export default function ContactForm() {
           )}
         </div>
 
-        {/* Email Field */}
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-charcoal/80 mb-2">
-            Email <span className="text-rose-500">*</span>
-          </label>
-          <input
-            type="email"
-            id="email"
-            {...register('email', {
-              required: 'Email is required',
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: 'Invalid email address',
-              },
-            })}
-            className={`w-full px-4 py-3 bg-champagne-50 border text-charcoal placeholder-charcoal/40 rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm ${
-              errors.email ? 'border-red-500' : 'border-champagne-200'
-            }`}
-            placeholder="your@email.com"
-          />
-          {errors.email && (
-            <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>
-          )}
-        </div>
+        {/* Email & Phone Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-charcoal/80 mb-2">
+              Email <span className="text-rose-500">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              {...register('email', {
+                required: 'Email is required',
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: 'Invalid email address',
+                },
+              })}
+              className={`w-full px-4 py-3 bg-champagne-50 border text-charcoal placeholder-charcoal/40 rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm ${
+                errors.email ? 'border-red-500' : 'border-champagne-200'
+              }`}
+              placeholder="your@email.com"
+            />
+            {errors.email && (
+              <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>
+            )}
+          </div>
 
-        {/* Phone Field */}
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-charcoal/80 mb-2">
-            Phone <span className="text-rose-500">*</span>
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            {...register('phone', {
-              required: 'Phone number is required',
-              pattern: {
-                value: /^[\d\s\-\(\)]+$/,
-                message: 'Invalid phone number format',
-              },
-              minLength: { value: 10, message: 'Phone number must be at least 10 digits' },
-            })}
-            className={`w-full px-4 py-3 bg-champagne-50 border text-charcoal placeholder-charcoal/40 rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm ${
-              errors.phone ? 'border-red-500' : 'border-champagne-200'
-            }`}
-            placeholder="(555) 123-4567"
-          />
-          {errors.phone && (
-            <p className="mt-1 text-xs text-red-500">{errors.phone.message}</p>
-          )}
+          <div>
+            <label htmlFor="phone" className="block text-sm font-medium text-charcoal/80 mb-2">
+              Phone <span className="text-rose-500">*</span>
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              {...register('phone', {
+                required: 'Phone number is required',
+                pattern: {
+                  value: /^[\d\s\-\(\)]+$/,
+                  message: 'Invalid phone number format',
+                },
+                minLength: { value: 10, message: 'Phone number must be at least 10 digits' },
+              })}
+              className={`w-full px-4 py-3 bg-champagne-50 border text-charcoal placeholder-charcoal/40 rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm ${
+                errors.phone ? 'border-red-500' : 'border-champagne-200'
+              }`}
+              placeholder="(555) 123-4567"
+            />
+            {errors.phone && (
+              <p className="mt-1 text-xs text-red-500">{errors.phone.message}</p>
+            )}
+          </div>
         </div>
 
         {/* Service Interest Dropdown */}
@@ -212,6 +244,45 @@ export default function ContactForm() {
           {errors.service && (
             <p className="mt-1 text-xs text-red-500">{errors.service.message}</p>
           )}
+        </div>
+
+        {/* Location Type & Address Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="locationType" className="block text-sm font-medium text-charcoal/80 mb-2">
+              Location Type <span className="text-rose-500">*</span>
+            </label>
+            <select
+              id="locationType"
+              {...register('locationType', { required: 'Please select a location type' })}
+              className={`w-full px-4 py-3 bg-champagne-50 border text-charcoal rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm ${
+                errors.locationType ? 'border-red-500' : 'border-champagne-200'
+              }`}
+            >
+              <option value="">Select location...</option>
+              {locationTypes.map((type) => (
+                <option key={type.value} value={type.value}>
+                  {type.label}
+                </option>
+              ))}
+            </select>
+            {errors.locationType && (
+              <p className="mt-1 text-xs text-red-500">{errors.locationType.message}</p>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="address" className="block text-sm font-medium text-charcoal/80 mb-2">
+              City / Zip Code
+            </label>
+            <input
+              type="text"
+              id="address"
+              {...register('address')}
+              className="w-full px-4 py-3 bg-champagne-50 border border-champagne-200 text-charcoal placeholder-charcoal/40 rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm"
+              placeholder="Miami, FL 33101"
+            />
+          </div>
         </div>
 
         {/* Preferred Date & Time */}
@@ -244,17 +315,36 @@ export default function ContactForm() {
           </div>
         </div>
 
+        {/* Preferred Pressure */}
+        <div>
+          <label htmlFor="preferredPressure" className="block text-sm font-medium text-charcoal/80 mb-2">
+            Preferred Pressure
+          </label>
+          <select
+            id="preferredPressure"
+            {...register('preferredPressure')}
+            className="w-full px-4 py-3 bg-champagne-50 border border-champagne-200 text-charcoal rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm"
+          >
+            <option value="">Select pressure...</option>
+            {pressureOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
         {/* Message Field */}
         <div>
           <label htmlFor="message" className="block text-sm font-medium text-charcoal/80 mb-2">
-            Message
+            Special Requests or Notes
           </label>
           <textarea
             id="message"
             {...register('message')}
             rows={4}
             className="w-full px-4 py-3 bg-champagne-50 border border-champagne-200 text-charcoal placeholder-charcoal/40 rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors resize-none text-sm"
-            placeholder="Tell us more about what you're looking for..."
+            placeholder="Any areas of focus, injuries to avoid, or special requests..."
           />
         </div>
 
@@ -262,7 +352,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`w-full bg-rose-500 text-white px-8 py-3.5 font-medium tracking-wide rounded-sm transition-all duration-300 text-sm ${
+          className={`w-full bg-rose-500 text-white px-8 py-3.5 font-medium tracking-wide rounded-sm transition-all duration-300 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 ${
             isSubmitting
               ? 'opacity-50 cursor-not-allowed'
               : 'hover:bg-rose-600 shadow-soft hover:shadow-elegant'
@@ -282,7 +372,7 @@ export default function ContactForm() {
               Sending...
             </span>
           ) : (
-            'Send Message'
+            'Request Appointment'
           )}
         </button>
 

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { businessConfig } from '@/config/business';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Áurea Essence Massage',
@@ -25,7 +26,7 @@ export default function PrivacyPage() {
                 Overview
               </h2>
               <p className="text-charcoal/70 leading-relaxed mb-4 text-sm">
-                Áurea Essence Massage (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
+                {businessConfig.name} (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
               </p>
             </section>
 
