@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(test:*)",
+      "Bash(cat:*)",
+      "WebFetch(domain:destinyedenmobilemassage.vercel.app)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
