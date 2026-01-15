@@ -2,24 +2,26 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-charcoal text-cream py-12 sm:py-16 safe-bottom">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-charcoal text-champagne py-12 sm:py-16 safe-bottom">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-2">
             <Image
               src="/images/aurea-essence-logo.png"
-              alt="Aurea Essence Massage"
+              alt="Áurea Essence Massage"
               width={180}
               height={90}
               className="h-12 w-auto mb-4 brightness-0 invert opacity-90"
             />
-            <p className="text-sm text-cream/70 mb-4 leading-relaxed max-w-sm">
-              Premium mobile massage therapy bringing luxury spa experiences to your location.
+            <p className="text-sm text-champagne/70 mb-4 leading-relaxed max-w-sm">
+              Premium mobile massage therapy. We bring the spa experience to your location.
             </p>
-            <p className="text-sm text-cream/50">
-              Serving your area
+            <p className="text-sm text-champagne/50">
+              Serving South Florida
             </p>
           </div>
 
@@ -29,31 +31,22 @@ export default function Footer() {
               Navigate
             </h4>
             <ul className="space-y-3">
-              <li>
-                <Link href="/" className="text-sm text-cream/70 hover:text-rose-400 transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="text-sm text-cream/70 hover:text-rose-400 transition-colors">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/packages" className="text-sm text-cream/70 hover:text-rose-400 transition-colors">
-                  Packages
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-sm text-cream/70 hover:text-rose-400 transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-sm text-cream/70 hover:text-rose-400 transition-colors">
-                  Contact
-                </Link>
-              </li>
+              {[
+                { href: '/', label: 'Home' },
+                { href: '/services', label: 'Services' },
+                { href: '/packages', label: 'Packages' },
+                { href: '/about', label: 'About' },
+                { href: '/contact', label: 'Book Now' },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-champagne/70 hover:text-rose-400 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -64,22 +57,18 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <a href="tel:+15551234567" className="text-cream/70 hover:text-rose-400 transition-colors">
-                  (555) 123-4567
-                </a>
+                <span className="text-champagne/50 text-xs block mb-1">Phone</span>
+                <span className="text-champagne/70">[[Client to confirm]]</span>
               </li>
               <li>
-                <a href="mailto:info@aureaessence.com" className="text-cream/70 hover:text-rose-400 transition-colors">
-                  info@aureaessence.com
-                </a>
+                <span className="text-champagne/50 text-xs block mb-1">Email</span>
+                <span className="text-champagne/70">[[Client to confirm]]</span>
               </li>
               <li className="pt-4">
                 <div className="flex gap-5">
                   <a
-                    href="https://facebook.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-cream/70 hover:text-rose-400 transition-colors"
+                    href="#"
+                    className="text-champagne/70 hover:text-rose-400 transition-colors"
                     aria-label="Facebook"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -87,10 +76,8 @@ export default function Footer() {
                     </svg>
                   </a>
                   <a
-                    href="https://instagram.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-cream/70 hover:text-rose-400 transition-colors"
+                    href="#"
+                    className="text-champagne/70 hover:text-rose-400 transition-colors"
                     aria-label="Instagram"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -103,8 +90,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-charcoal-light mt-10 pt-8 text-center text-sm text-cream/50">
-          <p>&copy; {new Date().getFullYear()} Aurea Essence Massage. All rights reserved.</p>
+        <div className="border-t border-charcoal-300 mt-10 pt-8 text-center text-sm text-champagne/50">
+          <p>&copy; {currentYear} Áurea Essence Massage. All rights reserved.</p>
           <div className="mt-3 space-x-4">
             <Link href="/privacy" className="hover:text-rose-400 transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-rose-400 transition-colors">Terms of Service</Link>

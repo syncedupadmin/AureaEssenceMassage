@@ -9,74 +9,67 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Áurea Essence palette - warm, elegant, sophisticated
-        black: {
-          DEFAULT: '#1A1A1A',
-          light: '#2A2A2A',
-          medium: '#222222',
-        },
-        charcoal: {
-          DEFAULT: '#2A2A2A',
-          light: '#3D3D3D',
-          dark: '#1A1A1A',
-        },
-        // Dusty rose/terracotta - from logo
+        // Primary - Rose Gold
         rose: {
-          50: '#FCF8F6',
-          100: '#F5EBE7',
-          200: '#E8D4CC',
-          300: '#D4B5A8',
-          400: '#C49A8A',
-          500: '#B07D6B',  // Primary - from logo text
-          600: '#9A6B5A',
-          700: '#7D5648',
-          800: '#5E4137',
-          900: '#3F2B25',
+          50: '#FDF5F6',
+          100: '#FAE8EA',
+          200: '#F4D0D5',
+          300: '#E9ACB4',
+          400: '#D4A5AA',
+          500: '#B76E79',  // Primary rose gold
+          600: '#9A5A63',  // Darker rose gold
+          700: '#7D4850',
+          800: '#5E363C',
+          900: '#3F2428',
         },
-        // Warm beige/cream - from logo background
-        beige: {
-          50: '#FDFBF9',
-          100: '#F9F5F1',
-          200: '#F2EBE3',
-          300: '#EDE6DC',  // Logo background color
-          400: '#E4D9CC',
-          500: '#D5C7B8',
-          600: '#B8A897',
-          700: '#9A8B7A',
-          800: '#7A6E60',
-          900: '#5A5246',
+        // Champagne/Ivory backgrounds
+        champagne: {
+          DEFAULT: '#FAF6F0',
+          50: '#FFFEF9',
+          100: '#FAF6F0',
+          200: '#F0E8DC',
+          300: '#E8E0D4',
+          400: '#D8CCBC',
+          500: '#C4B49F',
         },
-        // Warm neutrals
+        // Charcoal/Black
+        charcoal: {
+          DEFAULT: '#1C1C1C',
+          50: '#6B6B6B',
+          100: '#5A5A5A',
+          200: '#4A4A4A',
+          300: '#3A3A3A',
+          400: '#2D2D2D',
+          500: '#1C1C1C',
+        },
+        // Legacy support
         cream: {
-          DEFAULT: '#FAF7F4',
-          light: '#FDFCFA',
-          dark: '#F5F0EB',
+          DEFAULT: '#FAF6F0',
+          light: '#FFFEF9',
+          dark: '#F0E8DC',
         },
-        // Accent bronze/copper tones
-        copper: {
-          300: '#C9957A',
-          400: '#B8846A',
-          500: '#A67259',
-          600: '#8B5E48',
+        beige: {
+          100: '#FAF6F0',
+          200: '#F0E8DC',
+          300: '#E8E0D4',
         },
       },
       fontFamily: {
-        serif: ['Playfair Display', 'Cormorant Garamond', 'serif'],
-        sans: ['Inter', 'sans-serif'],
-        display: ['Playfair Display', 'serif'],
+        serif: ['var(--font-playfair)', 'Playfair Display', 'Georgia', 'serif'],
+        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
         'luxury': '0.08em',
-        'wide': '0.15em',
+        'wide': '0.05em',
         'elegant': '0.03em',
       },
-      backgroundImage: {
-        'rose-subtle': 'linear-gradient(135deg, #B07D6B 0%, #C49A8A 100%)',
-        'beige-gradient': 'linear-gradient(180deg, #FAF7F4 0%, #EDE6DC 100%)',
-      },
       boxShadow: {
-        'soft': '0 4px 20px rgba(176, 125, 107, 0.08)',
-        'elegant': '0 8px 30px rgba(176, 125, 107, 0.12)',
+        'soft': '0 4px 20px rgba(183, 110, 121, 0.08)',
+        'elegant': '0 8px 40px rgba(183, 110, 121, 0.12)',
+        'dark': '0 8px 40px rgba(0, 0, 0, 0.25)',
+      },
+      maxWidth: {
+        '8xl': '88rem',
       },
     },
   },

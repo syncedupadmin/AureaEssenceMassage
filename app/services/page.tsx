@@ -3,32 +3,30 @@ import Image from 'next/image';
 import CTAButton from '@/components/CTAButton';
 
 export const metadata: Metadata = {
-  title: 'Premium Massage Services | Aurea Essence Massage',
-  description: 'Swedish, deep tissue, couples & hot stone massage delivered to your location. Certified therapists, premium products. Book your session today.',
-  keywords: 'Swedish massage, deep tissue massage, couples massage, hot stone massage, mobile massage therapy',
+  title: 'Services | Áurea Essence Massage',
+  description: 'Swedish, deep tissue, couples & hot stone massage delivered to your location. Premium mobile massage therapy.',
+  keywords: 'Swedish massage, deep tissue massage, couples massage, hot stone massage, mobile massage',
 };
 
 export default function ServicesPage() {
   const services = [
     {
       title: 'Swedish Massage',
-      duration: '60 / 90 / 120 minutes',
-      pricing: '$120 / $175 / $230',
-      description: 'Long, flowing strokes release tension from head to toe. Our certified therapists customize pressure and technique to your body\'s unique needs. Aromatherapy included. Perfect for those seeking deep relaxation.',
+      duration: '60 / 90 / 120 min',
+      description: 'Long, flowing strokes release tension from head to toe. Customized pressure and technique to your needs. Aromatherapy included.',
       benefits: [
         'Reduces stress and anxiety',
-        'Improves blood circulation',
+        'Improves circulation',
         'Promotes better sleep',
         'Eases muscle tension',
       ],
       imageSrc: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80',
-      imageAlt: 'Swedish Massage Therapy',
+      imageAlt: 'Swedish Massage',
     },
     {
       title: 'Deep Tissue Therapy',
-      duration: '60 / 90 / 120 minutes',
-      pricing: '$140 / $200 / $260',
-      description: 'Targeted relief for chronic tension and muscle recovery. Our advanced techniques reach deep muscle layers, releasing years of stress. Ideal for athletes and those with persistent muscle issues.',
+      duration: '60 / 90 / 120 min',
+      description: 'Targeted relief for chronic tension and muscle recovery. Advanced techniques reach deep muscle layers, releasing persistent stress.',
       benefits: [
         'Relieves chronic muscle pain',
         'Breaks up scar tissue',
@@ -40,27 +38,25 @@ export default function ServicesPage() {
     },
     {
       title: 'Couples Massage',
-      duration: '120 min / 180 min',
-      pricing: '$280 / $420',
-      description: 'Share a relaxing experience with your partner. Our couples massage creates the perfect setting for connection and relaxation, whether celebrating a special occasion or simply enjoying time together.',
+      duration: '120 / 180 min',
+      description: 'Share a relaxing experience with your partner. Creates the perfect setting for connection and relaxation together.',
       benefits: [
-        'Shared relaxation experience',
-        'Romantic shared experience',
+        'Shared relaxation',
         'Perfect for special occasions',
         'Customized for each partner',
+        'Romantic experience',
       ],
       imageSrc: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80',
-      imageAlt: 'Couples Massage Experience',
+      imageAlt: 'Couples Massage',
     },
     {
       title: 'Hot Stone Massage',
-      duration: '75 / 90 / 120 minutes',
-      pricing: '$160 / $220 / $290',
-      description: 'Smooth, heated basalt stones are placed on key points and used as massage tools to melt away tension. The therapeutic heat penetrates deep into muscles for profound relaxation.',
+      duration: '75 / 90 / 120 min',
+      description: 'Smooth, heated basalt stones placed on key points and used as massage tools. Therapeutic heat penetrates deep for profound relaxation.',
       benefits: [
         'Deep muscle relaxation',
         'Improved circulation',
-        'Stress and anxiety relief',
+        'Stress relief',
         'Enhanced detoxification',
       ],
       imageSrc: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80',
@@ -68,56 +64,52 @@ export default function ServicesPage() {
     },
     {
       title: 'Prenatal Massage',
-      duration: '60 / 90 minutes',
-      pricing: '$130 / $190',
-      description: 'Specially designed for expectant mothers, our prenatal massage eases pregnancy-related discomfort with safe, nurturing techniques. Our therapists are trained in prenatal care.',
+      duration: '60 / 90 min',
+      description: 'Specially designed for expectant mothers. Safe, nurturing techniques ease pregnancy-related discomfort.',
       benefits: [
         'Reduces pregnancy discomfort',
         'Decreases swelling',
         'Improves sleep quality',
-        'Reduces stress hormones',
+        'Reduces stress',
       ],
       imageSrc: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800&q=80',
       imageAlt: 'Prenatal Massage',
     },
     {
       title: 'Sports Massage',
-      duration: '60 / 90 / 120 minutes',
-      pricing: '$140 / $200 / $260',
-      description: 'Performance-focused therapy designed for athletes before or after events. Combines stretching, compression, and targeted work to enhance performance and speed recovery.',
+      duration: '60 / 90 / 120 min',
+      description: 'Performance-focused therapy for athletes. Combines stretching, compression, and targeted work to enhance performance and recovery.',
       benefits: [
         'Prevents injuries',
         'Enhances flexibility',
-        'Speeds up recovery',
+        'Speeds recovery',
         'Improves performance',
       ],
       imageSrc: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80',
-      imageAlt: 'Sports Massage Therapy',
+      imageAlt: 'Sports Massage',
     },
   ];
 
   return (
     <>
       {/* Hero Section */}
-      <section className="relative pt-32 sm:pt-40 pb-16 sm:pb-24 bg-beige-300">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-medium text-charcoal mb-6 tracking-wide">
-              Our Services
-            </h1>
-            <p className="text-base sm:text-lg text-charcoal/70 leading-relaxed mb-10 max-w-2xl mx-auto">
-              Premium massage therapy delivered to your location by certified professionals
-            </p>
-            <CTAButton href="/contact" variant="primary">
-              Book Now
-            </CTAButton>
-          </div>
+      <section className="pt-32 sm:pt-40 pb-16 sm:pb-24 bg-champagne">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-medium text-charcoal mb-6 tracking-wide">
+            Our Services
+          </h1>
+          <p className="text-base sm:text-lg text-charcoal/70 leading-relaxed mb-10 max-w-2xl mx-auto">
+            Premium massage therapy delivered to your location
+          </p>
+          <CTAButton href="/contact" variant="primary">
+            Book Now
+          </CTAButton>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-16 sm:py-20 md:py-24 bg-cream">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-20 md:py-24 bg-champagne-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-16 md:space-y-24">
             {services.map((service, index) => (
               <div
@@ -142,15 +134,10 @@ export default function ServicesPage() {
 
                 {/* Content */}
                 <div className="w-full lg:w-1/2">
-                  <div className="flex flex-wrap gap-2 sm:gap-3 mb-4 sm:mb-6">
-                    <div className="px-3 sm:px-4 py-1 bg-rose-100 border-l-2 border-rose-500 text-rose-600 text-xs font-medium tracking-wide">
+                  <div className="mb-4 sm:mb-6">
+                    <span className="inline-block px-3 py-1 bg-rose-100 text-rose-600 text-xs font-medium tracking-wide border-l-2 border-rose-500">
                       {service.duration}
-                    </div>
-                    {service.pricing && (
-                      <div className="px-3 sm:px-4 py-1 bg-rose-100 border-l-2 border-rose-500 text-rose-600 text-xs font-medium tracking-wide">
-                        {service.pricing}
-                      </div>
-                    )}
+                    </span>
                   </div>
                   <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-medium text-charcoal mb-4 sm:mb-6 tracking-wide">
                     {service.title}
@@ -192,8 +179,8 @@ export default function ServicesPage() {
       </section>
 
       {/* Add-Ons Section */}
-      <section className="py-16 sm:py-20 md:py-24 bg-beige-200">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-20 md:py-24 bg-champagne-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-4 tracking-wide">
               Enhancements
@@ -203,8 +190,8 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
-            <div className="bg-white rounded-sm shadow-soft p-6 sm:p-8 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <div className="bg-white rounded-sm shadow-soft p-6 sm:p-8 text-center hover:shadow-elegant transition-shadow">
               <div className="w-12 h-12 mx-auto mb-4 text-rose-500 bg-rose-100 rounded-full flex items-center justify-center">
                 <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
@@ -218,7 +205,7 @@ export default function ServicesPage() {
               </p>
             </div>
 
-            <div className="bg-white rounded-sm shadow-soft p-6 sm:p-8 text-center">
+            <div className="bg-white rounded-sm shadow-soft p-6 sm:p-8 text-center hover:shadow-elegant transition-shadow">
               <div className="w-12 h-12 mx-auto mb-4 text-rose-500 bg-rose-100 rounded-full flex items-center justify-center">
                 <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
@@ -232,7 +219,7 @@ export default function ServicesPage() {
               </p>
             </div>
 
-            <div className="bg-white rounded-sm shadow-soft p-6 sm:p-8 text-center">
+            <div className="bg-white rounded-sm shadow-soft p-6 sm:p-8 text-center hover:shadow-elegant transition-shadow">
               <div className="w-12 h-12 mx-auto mb-4 text-rose-500 bg-rose-100 rounded-full flex items-center justify-center">
                 <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -251,7 +238,7 @@ export default function ServicesPage() {
 
       {/* CTA Section */}
       <section className="py-16 sm:py-20 md:py-24 bg-rose-500">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-white mb-6 tracking-wide">
             Ready to Book?
           </h2>

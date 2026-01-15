@@ -24,7 +24,6 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     document.addEventListener('keydown', handleEscape);
 
-    // Prevent body scroll when menu is open
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -43,24 +42,23 @@ export default function Header() {
     { href: '/services', label: 'Services' },
     { href: '/packages', label: 'Packages' },
     { href: '/about', label: 'About' },
-    { href: '/contact', label: 'Book Now' },
   ];
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-cream/98 backdrop-blur-sm shadow-soft py-2'
+          ? 'bg-champagne/98 backdrop-blur-sm shadow-soft py-2'
           : 'bg-transparent py-4'
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
               src="/images/aurea-essence-logo.png"
-              alt="Aurea Essence Massage"
+              alt="Áurea Essence Massage"
               width={200}
               height={100}
               priority
@@ -71,7 +69,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8 lg:space-x-10">
+          <nav className="hidden md:flex items-center gap-8 lg:gap-10">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -83,12 +81,18 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-6 py-2.5 bg-rose-500 text-white text-sm font-medium tracking-wide rounded-sm hover:bg-rose-600 transition-all shadow-soft hover:shadow-elegant focus-visible:outline-2 focus-visible:outline-rose-500 focus-visible:outline-offset-2"
+            >
+              Book Now
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-charcoal focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 p-2 rounded-md"
+            className="md:hidden text-charcoal focus-visible:outline-2 focus-visible:outline-rose-500 focus-visible:outline-offset-2 p-2 rounded-sm"
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
@@ -115,7 +119,7 @@ export default function Header() {
       {/* Mobile Menu - Full Screen Overlay */}
       <div
         id="mobile-menu"
-        className={`md:hidden fixed inset-0 top-0 bg-cream z-40 transition-transform duration-300 ease-in-out ${
+        className={`md:hidden fixed inset-0 top-0 bg-champagne z-40 transition-transform duration-300 ease-in-out ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -123,7 +127,7 @@ export default function Header() {
         <div className="flex justify-end p-4">
           <button
             onClick={() => setIsMobileMenuOpen(false)}
-            className="text-charcoal p-2 focus:outline-none focus:ring-2 focus:ring-rose-500 rounded-md"
+            className="text-charcoal p-2 focus-visible:outline-2 focus-visible:outline-rose-500 rounded-sm"
             aria-label="Close menu"
           >
             <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -132,7 +136,7 @@ export default function Header() {
           </button>
         </div>
 
-        <nav className="flex flex-col items-center justify-center h-full space-y-8 -mt-16" aria-label="Mobile navigation">
+        <nav className="flex flex-col items-center justify-center h-full gap-8 -mt-16" aria-label="Mobile navigation">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -145,6 +149,13 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          <Link
+            href="/contact"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="mt-4 inline-flex items-center justify-center px-10 py-4 bg-rose-500 text-white text-lg font-medium tracking-wide rounded-sm hover:bg-rose-600 transition-all"
+          >
+            Book Now
+          </Link>
         </nav>
       </div>
     </header>

@@ -2,33 +2,193 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+/* ============================================
+   ÁUREA ESSENCE DESIGN SYSTEM
+   Glamorous • Rose Gold • Black • Champagne
+   ============================================ */
+
+:root {
+  /* Primary Palette */
+  --color-champagne: #FAF6F0;
+  --color-champagne-dark: #F0E8DC;
+  --color-ivory: #FFFEF9;
+
+  /* Rose Gold Spectrum */
+  --color-rose-gold: #B76E79;
+  --color-rose-gold-light: #D4A5AA;
+  --color-rose-gold-dark: #9A5A63;
+
+  /* Neutral Blacks */
+  --color-charcoal: #1C1C1C;
+  --color-charcoal-soft: #2D2D2D;
+  --color-graphite: #3A3A3A;
+
+  /* Accent Metals */
+  --color-gold: #C9A96E;
+  --color-copper: #B87333;
+
+  /* Semantic */
+  --color-text: var(--color-charcoal);
+  --color-text-muted: #6B6B6B;
+  --color-border: #E8E0D4;
+  --color-border-dark: #3A3A3A;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 20px rgba(183, 110, 121, 0.08);
+  --shadow-elegant: 0 8px 40px rgba(183, 110, 121, 0.12);
+  --shadow-dark: 0 8px 40px rgba(0, 0, 0, 0.25);
+
+  /* Radius */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+}
 
 @layer base {
-  body {
-    @apply bg-beige-300 font-sans;
-    color: #2A2A2A;
-    line-height: 1.7;
+  html {
+    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
+  body {
+    @apply font-sans;
+    background-color: var(--color-champagne);
+    color: var(--color-text);
+    line-height: 1.7;
+  }
+
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    @apply font-serif font-medium;
     letter-spacing: 0.02em;
     line-height: 1.2;
   }
 
-  h1 {
-    @apply tracking-wide;
-  }
-
-  h2, h3 {
-    @apply tracking-wide;
-  }
+  h1 { @apply text-4xl sm:text-5xl md:text-6xl tracking-wide; }
+  h2 { @apply text-3xl sm:text-4xl tracking-wide; }
+  h3 { @apply text-xl sm:text-2xl tracking-wide; }
 
   p {
     line-height: 1.8;
+  }
+
+  /* Focus States - A11y */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-rose-gold);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Container */
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section Spacing */
+  .section-spacing {
+    @apply py-16 sm:py-20 md:py-24;
+  }
+
+  .section-spacing-sm {
+    @apply py-12 sm:py-16;
+  }
+
+  /* Button Base */
+  .btn {
+    @apply inline-flex items-center justify-center px-8 py-3.5 font-medium tracking-wide text-sm transition-all duration-300;
+    border-radius: var(--radius-sm);
+  }
+
+  .btn:focus-visible {
+    outline: 2px solid var(--color-rose-gold);
+    outline-offset: 2px;
+  }
+
+  .btn-primary {
+    background-color: var(--color-rose-gold);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-rose-gold-dark);
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .btn-secondary {
+    background-color: var(--color-charcoal);
+    color: var(--color-champagne);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-charcoal-soft);
+  }
+
+  .btn-outline {
+    border: 2px solid var(--color-rose-gold);
+    color: var(--color-rose-gold);
+    background: transparent;
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-rose-gold);
+    color: white;
+  }
+
+  .btn-white {
+    background-color: white;
+    color: var(--color-rose-gold);
+  }
+
+  .btn-white:hover {
+    background-color: var(--color-champagne);
+    box-shadow: var(--shadow-elegant);
+  }
+
+  /* Card */
+  .card {
+    background: white;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-soft);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-block px-3 py-1 text-xs font-medium tracking-wide;
+    background-color: rgba(183, 110, 121, 0.1);
+    color: var(--color-rose-gold);
+    border-left: 2px solid var(--color-rose-gold);
+  }
+
+  /* Dark Section */
+  .section-dark {
+    background-color: var(--color-charcoal);
+    color: var(--color-champagne);
+  }
+
+  .section-dark h1,
+  .section-dark h2,
+  .section-dark h3 {
+    color: white;
+  }
+
+  /* Rose Gold Section */
+  .section-rose {
+    background-color: var(--color-rose-gold);
+    color: white;
   }
 }
 
@@ -45,17 +205,9 @@
     animation: fadeInUp 0.6s ease-out;
   }
 
-  .animate-slide-up {
-    animation: slideUp 0.5s ease-out;
-  }
-
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
   @keyframes fadeInUp {
@@ -65,15 +217,6 @@
     }
     to {
       opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes slideUp {
-    from {
-      transform: translateY(100%);
-    }
-    to {
       transform: translateY(0);
     }
   }
@@ -100,38 +243,56 @@
     clip: auto;
     white-space: normal;
   }
+
+  /* Text Colors */
+  .text-rose-gold {
+    color: var(--color-rose-gold);
+  }
+
+  .text-muted {
+    color: var(--color-text-muted);
+  }
+
+  /* Background Colors */
+  .bg-champagne {
+    background-color: var(--color-champagne);
+  }
+
+  .bg-champagne-dark {
+    background-color: var(--color-champagne-dark);
+  }
+
+  .bg-ivory {
+    background-color: var(--color-ivory);
+  }
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-/* Elegant scrollbar - rose tones */
+/* Elegant Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F9F5F1;
+  background: var(--color-champagne);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D4B5A8;
+  background: var(--color-rose-gold-light);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #B07D6B;
+  background: var(--color-rose-gold);
 }
 
-/* Mobile touch improvements */
+/* Mobile Touch */
 @media (hover: none) {
   button, a {
     -webkit-tap-highlight-color: transparent;
   }
 }
 
-/* Safe area padding for notched phones */
+/* Safe Area */
 @supports (padding: env(safe-area-inset-bottom)) {
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom);

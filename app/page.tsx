@@ -1,75 +1,55 @@
 import Image from 'next/image';
 import CTAButton from '@/components/CTAButton';
 import ServiceCard from '@/components/ServiceCard';
-import TestimonialCard from '@/components/TestimonialCard';
 
 export default function Home() {
   const services = [
     {
       title: 'Swedish Massage',
-      description: 'Gentle, flowing strokes for stress relief and deep relaxation. Perfect for unwinding.',
+      description: 'Flowing strokes for deep relaxation and stress relief.',
       imageSrc: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80',
-      imageAlt: 'Swedish Massage therapy session',
+      imageAlt: 'Swedish Massage therapy',
     },
     {
       title: 'Deep Tissue',
-      description: 'Targeted therapy for chronic tension and muscle recovery. Relief that lasts.',
+      description: 'Targeted therapy for chronic tension and muscle recovery.',
       imageSrc: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80',
-      imageAlt: 'Deep Tissue Massage therapy',
+      imageAlt: 'Deep Tissue Massage',
     },
     {
       title: 'Couples Massage',
-      description: 'Share a relaxing experience with someone special. Create lasting memories together.',
+      description: 'Share a relaxing experience with someone special.',
       imageSrc: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80',
-      imageAlt: 'Couples Massage experience',
+      imageAlt: 'Couples Massage',
     },
     {
       title: 'Hot Stone',
-      description: 'Heated stones melt away tension. Deep warmth for ultimate relaxation.',
+      description: 'Heated stones melt away tension for ultimate relaxation.',
       imageSrc: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80',
-      imageAlt: 'Hot Stone Massage therapy',
-    },
-  ];
-
-  const testimonials = [
-    {
-      name: 'Jennifer M.',
-      text: 'An absolutely transformative experience. The therapist was professional and the massage was exactly what I needed.',
-      rating: 5,
-    },
-    {
-      name: 'Michael T.',
-      text: 'Best decision I made this month. The convenience of having a professional massage at home is unmatched.',
-      rating: 5,
-    },
-    {
-      name: 'Amanda K.',
-      text: 'The hot stone massage was heavenly. I felt completely renewed afterwards. Will definitely book again!',
-      rating: 5,
+      imageAlt: 'Hot Stone Massage',
     },
   ];
 
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-beige-300">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-champagne">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=1920&q=80"
-            alt="Luxury massage therapy"
+            alt="Luxury massage experience"
             fill
-            className="object-cover opacity-20"
+            className="object-cover opacity-15"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-beige-300/80 via-beige-300/60 to-beige-300" />
+          <div className="absolute inset-0 bg-gradient-to-b from-champagne/80 via-champagne/60 to-champagne" />
         </div>
 
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto pt-20 pb-12">
-          {/* Logo Display */}
           <div className="mb-8 animate-fade-in">
             <Image
               src="/images/aurea-essence-logo.png"
-              alt="Aurea Essence Massage"
+              alt="Áurea Essence Massage"
               width={400}
               height={200}
               className="mx-auto w-auto h-24 sm:h-32 md:h-40"
@@ -82,7 +62,8 @@ export default function Home() {
             <span className="text-rose-500">Massage Therapy</span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-charcoal/70 mb-10 max-w-2xl mx-auto leading-relaxed px-4">
-            Experience the golden standard in wellness. Certified therapists bring luxury spa treatments directly to you.
+            Spa-quality treatments delivered to your home, hotel, or office.
+            Experience luxury wellness on your terms.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
             <CTAButton href="/contact" variant="primary">
@@ -102,15 +83,67 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Preview Section */}
-      <section className="py-16 sm:py-20 md:py-24 bg-cream">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* How It Works Section */}
+      <section className="py-16 sm:py-20 md:py-24 bg-champagne-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-charcoal mb-4 tracking-wide">
+            <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-4 tracking-wide">
+              How It Works
+            </h2>
+            <p className="text-base text-charcoal/60 max-w-xl mx-auto">
+              Three simple steps to your perfect massage experience
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif">
+                1
+              </div>
+              <h3 className="text-xl font-serif font-medium text-charcoal mb-3">
+                Book Online
+              </h3>
+              <p className="text-charcoal/60 text-sm leading-relaxed">
+                Choose your service, select your preferred time, and tell us your location.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif">
+                2
+              </div>
+              <h3 className="text-xl font-serif font-medium text-charcoal mb-3">
+                We Arrive
+              </h3>
+              <p className="text-charcoal/60 text-sm leading-relaxed">
+                Your therapist arrives with everything needed—table, linens, premium products.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif">
+                3
+              </div>
+              <h3 className="text-xl font-serif font-medium text-charcoal mb-3">
+                You Relax
+              </h3>
+              <p className="text-charcoal/60 text-sm leading-relaxed">
+                Enjoy your treatment and continue relaxing in your own space afterward.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Preview Section */}
+      <section className="py-16 sm:py-20 md:py-24 bg-champagne-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-4 tracking-wide">
               Our Services
             </h2>
-            <p className="text-base sm:text-lg text-charcoal/60 max-w-xl mx-auto">
-              Curated treatments designed for your complete relaxation
+            <p className="text-base text-charcoal/60 max-w-xl mx-auto">
+              Curated treatments for your complete relaxation
             </p>
           </div>
 
@@ -128,30 +161,44 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="py-16 sm:py-20 md:py-24 bg-beige-200">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Trust Pillars Section */}
+      <section className="py-16 sm:py-20 md:py-24 bg-champagne-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-charcoal mb-4 tracking-wide">
-              The Aurea Difference
+            <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-4 tracking-wide">
+              The Áurea Difference
             </h2>
-            <p className="text-base sm:text-lg text-charcoal/60 max-w-xl mx-auto">
-              Luxury wellness delivered with care and expertise
+            <p className="text-base text-charcoal/60 max-w-xl mx-auto">
+              Luxury wellness delivered with care
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             <div className="text-center p-6">
               <div className="w-14 h-14 mx-auto mb-5 text-rose-500 bg-rose-100 rounded-full flex items-center justify-center">
                 <svg className="w-7 h-7" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                 </svg>
               </div>
               <h3 className="text-xl font-serif font-medium text-charcoal mb-3 tracking-wide">
-                Certified Therapists
+                Discreet Service
               </h3>
               <p className="text-charcoal/60 text-sm leading-relaxed">
-                Licensed professionals with extensive training and experience
+                Professional, private sessions in your space. Your comfort and privacy are paramount.
+              </p>
+            </div>
+
+            <div className="text-center p-6">
+              <div className="w-14 h-14 mx-auto mb-5 text-rose-500 bg-rose-100 rounded-full flex items-center justify-center">
+                <svg className="w-7 h-7" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 className="text-xl font-serif font-medium text-charcoal mb-3 tracking-wide">
+                Always On Time
+              </h3>
+              <p className="text-charcoal/60 text-sm leading-relaxed">
+                We respect your schedule. Punctual arrivals so your relaxation starts exactly when planned.
               </p>
             </div>
 
@@ -162,53 +209,19 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-serif font-medium text-charcoal mb-3 tracking-wide">
-                Premium Products
+                Premium Experience
               </h3>
               <p className="text-charcoal/60 text-sm leading-relaxed">
-                Organic oils and luxury linens for your comfort
+                Quality products, professional equipment, and attention to every detail.
               </p>
             </div>
-
-            <div className="text-center p-6">
-              <div className="w-14 h-14 mx-auto mb-5 text-rose-500 bg-rose-100 rounded-full flex items-center justify-center">
-                <svg className="w-7 h-7" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
-                  <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                </svg>
-              </div>
-              <h3 className="text-xl font-serif font-medium text-charcoal mb-3 tracking-wide">
-                Your Space
-              </h3>
-              <p className="text-charcoal/60 text-sm leading-relaxed">
-                Home, hotel, or office - wherever you feel most comfortable
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-16 sm:py-20 md:py-24 bg-cream">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-charcoal mb-4 tracking-wide">
-              Client Stories
-            </h2>
-            <p className="text-base sm:text-lg text-charcoal/60 max-w-xl mx-auto">
-              Hear from those who have experienced our services
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard key={index} {...testimonial} />
-            ))}
           </div>
         </div>
       </section>
 
       {/* Final CTA Section */}
       <section className="py-16 sm:py-20 md:py-24 bg-rose-500">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-white mb-6 tracking-wide">
             Begin Your Wellness Journey
           </h2>
