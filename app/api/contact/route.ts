@@ -37,7 +37,7 @@ export async function POST(request: Request) {
       ${preferredTime ? `<p><strong>Preferred Time:</strong> ${preferredTime}</p>` : ''}
       ${message ? `<p><strong>Message:</strong></p><p>${message}</p>` : ''}
       <hr />
-      <p style="color: #666; font-size: 12px;">This message was sent from the Destiny Eden Mobile Massage website contact form.</p>
+      <p style="color: #666; font-size: 12px;">This message was sent from the Aurea Essence Massage website contact form.</p>
     `;
 
     const emailText = `
@@ -52,7 +52,7 @@ ${preferredTime ? `Preferred Time: ${preferredTime}` : ''}
 ${message ? `Message: ${message}` : ''}
 
 ---
-This message was sent from the Destiny Eden Mobile Massage website contact form.
+This message was sent from the Aurea Essence Massage website contact form.
     `;
 
     // Send email via SendGrid

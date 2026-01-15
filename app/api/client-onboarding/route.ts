@@ -79,7 +79,7 @@ export async function POST(request: Request) {
       <div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto;">
         <div style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); padding: 30px; text-align: center;">
           <h1 style="color: #d4af37; margin: 0;">New Client Onboarding Submission</h1>
-          <p style="color: #f5f5dc; margin-top: 10px;">Destiny Eden Mobile Massage</p>
+          <p style="color: #f5f5dc; margin-top: 10px;">Aurea Essence Massage</p>
         </div>
 
         <div style="padding: 30px; background: #f9f9f9;">
@@ -197,7 +197,7 @@ export async function POST(request: Request) {
 
         <div style="background: #1a1a1a; padding: 20px; text-align: center;">
           <p style="color: #888; margin: 0; font-size: 12px;">
-            This submission was received from the Destiny Eden Mobile Massage client onboarding form.
+            This submission was received from the Aurea Essence Massage client onboarding form.
           </p>
         </div>
       </div>

@@ -132,26 +132,26 @@ export default function ClientOnboardingForm() {
     }
   };
 
-  const inputClasses = "w-full px-4 py-3 bg-black/50 border border-charcoal-light text-cream placeholder-cream/30 focus:outline-none focus:ring-1 focus:ring-gold-300 transition-colors rounded";
-  const labelClasses = "block text-sm font-medium text-cream/80 mb-2 tracking-wide";
+  const inputClasses = "w-full px-4 py-3 bg-beige-100 border border-beige-300 text-charcoal placeholder-charcoal/40 focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors rounded-sm text-sm";
+  const labelClasses = "block text-sm font-medium text-charcoal/80 mb-2 tracking-wide";
   const sectionClasses = "space-y-6";
 
   if (isSubmitted) {
     return (
-      <div className="bg-charcoal border border-charcoal-light p-10 rounded-lg text-center">
-        <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-          <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="bg-white shadow-elegant p-10 rounded-sm text-center">
+        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h2 className="text-2xl font-serif text-cream mb-4">Thank You!</h2>
-        <p className="text-cream/70 mb-6">
+        <h2 className="text-2xl font-serif text-charcoal mb-4 tracking-wide">Thank You!</h2>
+        <p className="text-charcoal/70 mb-6 text-sm">
           Your information has been submitted successfully. We&apos;ll review your details and
           update your website accordingly. You&apos;ll receive a confirmation email shortly.
         </p>
         <a
           href="/"
-          className="inline-block bg-gold-300 text-black px-8 py-3 font-medium tracking-wide hover:bg-gold-400 transition-colors"
+          className="inline-block bg-rose-500 text-white px-8 py-3 font-medium tracking-wide hover:bg-rose-600 transition-colors rounded-sm"
         >
           Return Home
         </a>
@@ -160,7 +160,7 @@ export default function ClientOnboardingForm() {
   }
 
   return (
-    <div className="bg-charcoal border border-charcoal-light p-8 md:p-10 rounded-lg">
+    <div className="bg-white shadow-elegant p-8 md:p-10 rounded-sm">
       {/* Progress Indicator */}
       <div className="flex justify-between mb-10 overflow-x-auto pb-2">
         {sections.map((section, index) => (
@@ -170,19 +170,19 @@ export default function ClientOnboardingForm() {
             onClick={() => setCurrentSection(index)}
             className={`flex flex-col items-center min-w-[80px] ${
               index === currentSection
-                ? 'text-gold-300'
+                ? 'text-rose-500'
                 : index < currentSection
-                ? 'text-green-500'
-                : 'text-cream/40'
+                ? 'text-green-600'
+                : 'text-charcoal/40'
             }`}
           >
             <div
               className={`w-8 h-8 rounded-full flex items-center justify-center mb-2 text-sm font-medium ${
                 index === currentSection
-                  ? 'bg-gold-300 text-black'
+                  ? 'bg-rose-500 text-white'
                   : index < currentSection
-                  ? 'bg-green-500 text-white'
-                  : 'bg-charcoal-light text-cream/40'
+                  ? 'bg-green-600 text-white'
+                  : 'bg-beige-200 text-charcoal/40'
               }`}
             >
               {index < currentSection ? '✓' : index + 1}
@@ -193,8 +193,8 @@ export default function ClientOnboardingForm() {
       </div>
 
       {error && (
-        <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-md">
-          <p className="text-red-400 text-sm">{error}</p>
+        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-sm">
+          <p className="text-red-600 text-sm">{error}</p>
         </div>
       )}
 
@@ -202,18 +202,18 @@ export default function ClientOnboardingForm() {
         {/* Section 1: Business Information */}
         {currentSection === 0 && (
           <div className={sectionClasses}>
-            <h2 className="text-2xl font-serif text-cream mb-6">Business Information</h2>
+            <h2 className="text-2xl font-serif text-charcoal mb-6">Business Information</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className={labelClasses}>
-                  Business Name <span className="text-gold-300">*</span>
+                  Business Name <span className="text-rose-500">*</span>
                 </label>
                 <input
                   type="text"
                   {...register('businessName', { required: 'Business name is required' })}
                   className={inputClasses}
-                  placeholder="Destiny Eden Mobile Massage"
+                  placeholder="Aurea Essence Massage"
                 />
                 {errors.businessName && (
                   <p className="mt-1 text-sm text-red-400">{errors.businessName.message}</p>
@@ -222,7 +222,7 @@ export default function ClientOnboardingForm() {
 
               <div>
                 <label className={labelClasses}>
-                  Owner/Contact Name <span className="text-gold-300">*</span>
+                  Owner/Contact Name <span className="text-rose-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -237,7 +237,7 @@ export default function ClientOnboardingForm() {
 
               <div>
                 <label className={labelClasses}>
-                  Email Address <span className="text-gold-300">*</span>
+                  Email Address <span className="text-rose-500">*</span>
                 </label>
                 <input
                   type="email"
@@ -252,7 +252,7 @@ export default function ClientOnboardingForm() {
 
               <div>
                 <label className={labelClasses}>
-                  Phone Number <span className="text-gold-300">*</span>
+                  Phone Number <span className="text-rose-500">*</span>
                 </label>
                 <input
                   type="tel"
@@ -296,8 +296,8 @@ export default function ClientOnboardingForm() {
               </div>
             </div>
 
-            <div className="border-t border-charcoal-light pt-6 mt-6">
-              <h3 className="text-lg font-medium text-cream mb-4">Branding Preferences</h3>
+            <div className="border-t border-beige-300 pt-6 mt-6">
+              <h3 className="text-lg font-medium text-charcoal mb-4">Branding Preferences</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className={labelClasses}>Brand Colors</label>
@@ -326,11 +326,11 @@ export default function ClientOnboardingForm() {
         {currentSection === 1 && (
           <div className={sectionClasses}>
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-serif text-cream">Your Services</h2>
+              <h2 className="text-2xl font-serif text-charcoal">Your Services</h2>
               <button
                 type="button"
                 onClick={() => append({ name: '', price: '', duration: '', description: '' })}
-                className="px-4 py-2 bg-gold-300/20 text-gold-300 border border-gold-300/50 rounded hover:bg-gold-300/30 transition-colors text-sm"
+                className="px-4 py-2 bg-rose-100 text-rose-500 border border-rose-300 rounded hover:bg-rose-200 transition-colors text-sm"
               >
                 + Add Service
               </button>
@@ -340,7 +340,7 @@ export default function ClientOnboardingForm() {
               {fields.map((field, index) => (
                 <div
                   key={field.id}
-                  className="p-6 bg-black/30 border border-charcoal-light rounded-lg relative"
+                  className="p-6 bg-beige-100 border border-beige-300 rounded-lg relative"
                 >
                   {fields.length > 1 && (
                     <button
@@ -354,7 +354,7 @@ export default function ClientOnboardingForm() {
                     </button>
                   )}
 
-                  <h3 className="text-gold-300 font-medium mb-4">Service {index + 1}</h3>
+                  <h3 className="text-rose-500 font-medium mb-4">Service {index + 1}</h3>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
@@ -401,7 +401,7 @@ export default function ClientOnboardingForm() {
             <button
               type="button"
               onClick={() => append({ name: '', price: '', duration: '', description: '' })}
-              className="w-full mt-4 py-3 border-2 border-dashed border-charcoal-light text-cream/50 hover:border-gold-300/50 hover:text-gold-300 transition-colors rounded"
+              className="w-full mt-4 py-3 border-2 border-dashed border-beige-300 text-charcoal/50 hover:border-rose-300 hover:text-rose-500 transition-colors rounded"
             >
               + Add Another Service
             </button>
@@ -411,11 +411,11 @@ export default function ClientOnboardingForm() {
         {/* Section 3: About You */}
         {currentSection === 2 && (
           <div className={sectionClasses}>
-            <h2 className="text-2xl font-serif text-cream mb-6">About You & Your Business</h2>
+            <h2 className="text-2xl font-serif text-charcoal mb-6">About You & Your Business</h2>
 
             <div>
               <label className={labelClasses}>
-                Your Bio / About the Owner <span className="text-gold-300">*</span>
+                Your Bio / About the Owner <span className="text-rose-500">*</span>
               </label>
               <textarea
                 {...register('ownerBio', { required: 'Please tell us about yourself' })}
@@ -448,12 +448,12 @@ export default function ClientOnboardingForm() {
               />
             </div>
 
-            <div className="border-t border-charcoal-light pt-6">
-              <h3 className="text-lg font-medium text-cream mb-4">Credentials & Licensing</h3>
+            <div className="border-t border-beige-300 pt-6">
+              <h3 className="text-lg font-medium text-charcoal mb-4">Credentials & Licensing</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className={labelClasses}>
-                    License Number (LMT) <span className="text-gold-300">*</span>
+                    License Number (LMT) <span className="text-rose-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -497,7 +497,7 @@ export default function ClientOnboardingForm() {
         {/* Section 4: Operations */}
         {currentSection === 3 && (
           <div className={sectionClasses}>
-            <h2 className="text-2xl font-serif text-cream mb-6">Operations & Availability</h2>
+            <h2 className="text-2xl font-serif text-charcoal mb-6">Operations & Availability</h2>
 
             <div>
               <label className={labelClasses}>Operating Hours</label>
@@ -517,7 +517,7 @@ export default function ClientOnboardingForm() {
                   { value: 'onsite', label: 'Clients come to my location only' },
                   { value: 'both', label: 'Both options available' },
                 ].map((option) => (
-                  <label key={option.value} className="flex items-center text-cream/80">
+                  <label key={option.value} className="flex items-center text-charcoal/80">
                     <input
                       type="radio"
                       value={option.value}
@@ -552,7 +552,7 @@ export default function ClientOnboardingForm() {
 
             <div>
               <label className={labelClasses}>
-                Payment Methods Accepted <span className="text-gold-300">*</span>
+                Payment Methods Accepted <span className="text-rose-500">*</span>
               </label>
               <input
                 type="text"
@@ -572,8 +572,8 @@ export default function ClientOnboardingForm() {
               />
             </div>
 
-            <div className="border-t border-charcoal-light pt-6">
-              <h3 className="text-lg font-medium text-cream mb-4">Messaging Preferences</h3>
+            <div className="border-t border-beige-300 pt-6">
+              <h3 className="text-lg font-medium text-charcoal mb-4">Messaging Preferences</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -612,7 +612,7 @@ export default function ClientOnboardingForm() {
         {/* Section 5: Social & Reviews */}
         {currentSection === 4 && (
           <div className={sectionClasses}>
-            <h2 className="text-2xl font-serif text-cream mb-6">Social Media & Reviews</h2>
+            <h2 className="text-2xl font-serif text-charcoal mb-6">Social Media & Reviews</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
@@ -656,8 +656,8 @@ export default function ClientOnboardingForm() {
               </div>
             </div>
 
-            <div className="border-t border-charcoal-light pt-6 mt-6">
-              <h3 className="text-lg font-medium text-cream mb-4">Testimonials</h3>
+            <div className="border-t border-beige-300 pt-6 mt-6">
+              <h3 className="text-lg font-medium text-charcoal mb-4">Testimonials</h3>
               <div>
                 <label className={labelClasses}>Client Testimonials to Feature</label>
                 <textarea
@@ -674,19 +674,19 @@ export default function ClientOnboardingForm() {
         {/* Section 6: Final Details */}
         {currentSection === 5 && (
           <div className={sectionClasses}>
-            <h2 className="text-2xl font-serif text-cream mb-6">Final Details</h2>
+            <h2 className="text-2xl font-serif text-charcoal mb-6">Final Details</h2>
 
             {/* Logo/Photos Notice */}
-            <div className="p-4 bg-gold-300/10 border border-gold-300/30 rounded-lg mb-6">
-              <h3 className="text-gold-300 font-medium mb-2 flex items-center">
+            <div className="p-4 bg-rose-50 border border-rose-200 rounded-lg mb-6">
+              <h3 className="text-rose-500 font-medium mb-2 flex items-center">
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 Logo & Photos
               </h3>
-              <p className="text-cream/70 text-sm">
+              <p className="text-charcoal/70 text-sm">
                 After submitting this form, please email your logo and any photos (headshot, massage images) to{' '}
-                <a href="mailto:support@syncedupsolutions.com" className="text-gold-300 underline">
+                <a href="mailto:support@syncedupsolutions.com" className="text-rose-500 underline">
                   support@syncedupsolutions.com
                 </a>
               </p>
@@ -695,7 +695,7 @@ export default function ClientOnboardingForm() {
             <div>
               <label className={labelClasses}>Do you have existing legal documents?</label>
               <div className="space-y-2 mt-2">
-                <label className="flex items-center text-cream/80">
+                <label className="flex items-center text-charcoal/80">
                   <input
                     type="radio"
                     value="yes"
@@ -704,7 +704,7 @@ export default function ClientOnboardingForm() {
                   />
                   Yes, I have terms/policies/waivers
                 </label>
-                <label className="flex items-center text-cream/80">
+                <label className="flex items-center text-charcoal/80">
                   <input
                     type="radio"
                     value="no"
@@ -736,12 +736,12 @@ export default function ClientOnboardingForm() {
               />
             </div>
 
-            <div className="border-t border-charcoal-light pt-6">
-              <h3 className="text-lg font-medium text-cream mb-4">Authorization</h3>
+            <div className="border-t border-beige-300 pt-6">
+              <h3 className="text-lg font-medium text-charcoal mb-4">Authorization</h3>
 
               <div>
                 <label className={labelClasses}>
-                  Digital Signature (Type Your Full Name) <span className="text-gold-300">*</span>
+                  Digital Signature (Type Your Full Name) <span className="text-rose-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -754,7 +754,7 @@ export default function ClientOnboardingForm() {
                 )}
               </div>
 
-              <label className="flex items-start mt-4 text-cream/80">
+              <label className="flex items-start mt-4 text-charcoal/80">
                 <input
                   type="checkbox"
                   {...register('agreedToTerms', { required: 'You must agree to continue' })}
@@ -773,11 +773,11 @@ export default function ClientOnboardingForm() {
         )}
 
         {/* Navigation Buttons */}
-        <div className="flex justify-between mt-10 pt-6 border-t border-charcoal-light">
+        <div className="flex justify-between mt-10 pt-6 border-t border-beige-300">
           <button
             type="button"
             onClick={() => setCurrentSection(Math.max(0, currentSection - 1))}
-            className={`px-6 py-3 border border-charcoal-light text-cream rounded hover:bg-charcoal-light transition-colors ${
+            className={`px-6 py-3 border border-beige-300 text-charcoal rounded hover:bg-beige-200 transition-colors ${
               currentSection === 0 ? 'opacity-50 cursor-not-allowed' : ''
             }`}
             disabled={currentSection === 0}
@@ -789,7 +789,7 @@ export default function ClientOnboardingForm() {
             <button
               type="button"
               onClick={() => setCurrentSection(currentSection + 1)}
-              className="px-6 py-3 bg-gold-300 text-black font-medium rounded hover:bg-gold-400 transition-colors"
+              className="px-6 py-3 bg-rose-500 text-white font-medium rounded hover:bg-rose-600 transition-colors"
             >
               Next →
             </button>
@@ -797,8 +797,8 @@ export default function ClientOnboardingForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`px-8 py-3 bg-gold-300 text-black font-medium rounded transition-colors ${
-                isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gold-400'
+              className={`px-8 py-3 bg-rose-500 text-white font-medium rounded transition-colors ${
+                isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-rose-600'
               }`}
             >
               {isSubmitting ? 'Submitting...' : 'Submit Information'}
