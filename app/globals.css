@@ -23,8 +23,9 @@
   --color-charcoal-soft: #2D2D2D;
   --color-graphite: #3A3A3A;
 
-  /* Accent Metals */
+  /* Accent Metals - Gold for micro-accents only */
   --color-gold: #C9A96E;
+  --color-gold-light: #D4B896;
   --color-copper: #B87333;
 
   /* Semantic */
@@ -37,11 +38,17 @@
   --shadow-soft: 0 4px 20px rgba(183, 110, 121, 0.08);
   --shadow-elegant: 0 8px 40px rgba(183, 110, 121, 0.12);
   --shadow-dark: 0 8px 40px rgba(0, 0, 0, 0.25);
+  --shadow-gold: 0 2px 8px rgba(201, 169, 110, 0.15);
 
   /* Radius */
   --radius-sm: 2px;
   --radius-md: 4px;
   --radius-lg: 8px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
 }
 
 @layer base {
@@ -197,12 +204,17 @@
     text-wrap: balance;
   }
 
+  /* Animations - respect reduced motion preference */
   .animate-fade-in {
     animation: fadeIn 0.8s ease-out;
   }
 
   .animate-fade-in-up {
     animation: fadeInUp 0.6s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
   }
 
   @keyframes fadeIn {
@@ -219,6 +231,41 @@
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Reduced motion - disable animations for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in,
+    .animate-fade-in-up,
+    .animate-slide-up {
+      animation: none;
+    }
+
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Gold accent utilities - use sparingly */
+  .accent-gold {
+    color: var(--color-gold);
+  }
+
+  .border-gold {
+    border-color: var(--color-gold);
   }
 
   .sr-only {

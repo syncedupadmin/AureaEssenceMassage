@@ -65,7 +65,7 @@ export default function PackagesPage() {
       name: 'Ultimate Indulgence',
       tagline: 'Pure Luxury',
       duration: '120 minutes',
-      description: 'Our most comprehensive treatment—a full two hours of blissful relaxation. The pinnacle of at-home spa experiences.',
+      description: 'Our most comprehensive treatment—two full hours of focused restoration. The pinnacle of at-home wellness.',
       includes: [
         'Full body Swedish massage',
         'Hot stone therapy',

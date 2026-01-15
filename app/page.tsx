@@ -205,11 +205,11 @@ export default function Home() {
             <div className="text-center p-6">
               <div className="w-14 h-14 mx-auto mb-5 text-rose-500 bg-rose-100 rounded-full flex items-center justify-center">
                 <svg className="w-7 h-7" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
-                  <path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                  <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                 </svg>
               </div>
               <h3 className="text-xl font-serif font-medium text-charcoal mb-3 tracking-wide">
-                Premium Experience
+                Premium Quality
               </h3>
               <p className="text-charcoal/60 text-sm leading-relaxed">
                 Quality products, professional equipment, and attention to every detail.

@@ -20,11 +20,11 @@ export default function AboutPage() {
       ),
     },
     {
-      title: 'Luxury Experience',
-      description: 'From premium products to professional equipment, we bring every detail of a high-end spa to you.',
+      title: 'Premium Quality',
+      description: 'From premium products to professional equipment, we bring every detail of a high-end experience to you.',
       icon: (
         <svg className="w-7 h-7" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
-          <path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+          <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
         </svg>
       ),
     },
@@ -78,7 +78,7 @@ export default function AboutPage() {
                   We created a mobile service that delivers spa-quality experiences wherever our clients are most comfortable—whether at home, in a hotel, or at the office.
                 </p>
                 <p>
-                  Today, we serve busy professionals, couples celebrating special moments, and anyone seeking a sanctuary of relaxation without the need to travel.
+                  Today, we serve busy professionals, couples celebrating special moments, and anyone who values exceptional wellness without the need to travel.
                 </p>
                 <p className="text-rose-500 font-medium">
                   We bring the golden essence of wellness to you.
