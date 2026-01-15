@@ -21,9 +21,9 @@ export default function Footer() {
             <Image
               src="/images/aurea-essence-logo.png"
               alt={businessConfig.name}
-              width={180}
-              height={90}
-              className="h-12 w-auto mb-4 brightness-0 invert opacity-90"
+              width={400}
+              height={100}
+              className="h-10 w-auto mb-4 brightness-0 invert opacity-90"
             />
             <p className="text-sm text-champagne/70 mb-4 leading-relaxed max-w-sm">
               {businessConfig.tagline}. We bring the spa experience to your location.

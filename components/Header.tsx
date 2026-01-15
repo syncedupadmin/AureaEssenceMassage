@@ -59,11 +59,11 @@ export default function Header() {
             <Image
               src="/images/aurea-essence-logo.png"
               alt="Áurea Essence Massage"
-              width={200}
+              width={400}
               height={100}
               priority
               className={`w-auto transition-all duration-300 ${
-                isScrolled ? 'h-12 sm:h-14' : 'h-14 sm:h-16'
+                isScrolled ? 'h-10 sm:h-12' : 'h-12 sm:h-14'
               }`}
             />
           </Link>

@@ -50,9 +50,9 @@ export default function Home() {
             <Image
               src="/images/aurea-essence-logo.png"
               alt="Áurea Essence Massage"
-              width={400}
+              width={800}
               height={200}
-              className="mx-auto w-auto h-24 sm:h-32 md:h-40"
+              className="mx-auto w-auto h-16 sm:h-20 md:h-24"
               priority
             />
           </div>
