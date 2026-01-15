@@ -3,9 +3,9 @@ import BookingCalendar from '@/components/BookingCalendar';
 import ContactForm from '@/components/ContactForm';
 
 export const metadata: Metadata = {
-  title: 'Book Your Session | Aurea Essence Massage',
+  title: 'Book Your Session | Áurea Essence Massage',
   description: 'Book your mobile massage session. Same-day availability. We bring luxury spa treatments to your location.',
-  keywords: 'book mobile massage, schedule massage, mobile massage booking, Aurea Essence',
+  keywords: 'book mobile massage, schedule massage, mobile massage booking, Áurea Essence',
 };
 
 const faqSchema = {
@@ -47,22 +47,20 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {/* Hero Section */}
-      <section className="relative pt-32 sm:pt-40 pb-16 sm:pb-20 bg-beige-300">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-medium text-charcoal mb-6 tracking-wide">
-              Book Your Session
-            </h1>
-            <p className="text-base sm:text-lg text-charcoal/70 leading-relaxed mb-4 max-w-2xl mx-auto">
-              Select your service and preferred time
-            </p>
-          </div>
+      <section className="pt-32 sm:pt-40 pb-16 sm:pb-24 bg-champagne">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-medium text-charcoal mb-6 tracking-wide">
+            Book Your Session
+          </h1>
+          <p className="text-base sm:text-lg text-charcoal/70 leading-relaxed max-w-2xl mx-auto">
+            Select your service and preferred time
+          </p>
         </div>
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-cream">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-20 md:py-24 bg-champagne-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <ContactForm />
           </div>
@@ -70,8 +68,8 @@ export default function ContactPage() {
       </section>
 
       {/* Booking Calendar Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-beige-200">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-20 md:py-24 bg-champagne-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-2xl sm:text-3xl font-serif font-medium text-charcoal mb-4 tracking-wide">
               Direct Booking
@@ -87,8 +85,8 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Info Section */}
-      <section className="py-16 sm:py-20 md:py-24 bg-cream">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-20 md:py-24 bg-champagne-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-2xl sm:text-3xl font-serif font-medium text-charcoal mb-4 tracking-wide">
@@ -108,13 +106,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-medium text-charcoal mb-2 tracking-wide">Phone</h3>
-                <a
-                  href="tel:+15551234567"
-                  className="text-rose-500 hover:text-rose-600 text-base font-medium"
-                >
-                  (555) 123-4567
-                </a>
-                <p className="text-xs text-charcoal/50 mt-2">8am-9pm Daily</p>
+                <span className="text-charcoal/60 text-sm">[[Client to confirm]]</span>
               </div>
 
               {/* Email */}
@@ -125,13 +117,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-medium text-charcoal mb-2 tracking-wide">Email</h3>
-                <a
-                  href="mailto:info@aureaessence.com"
-                  className="text-rose-500 hover:text-rose-600 text-sm sm:text-base font-medium break-all"
-                >
-                  info@aureaessence.com
-                </a>
-                <p className="text-xs text-charcoal/50 mt-2">Response within 2 hours</p>
+                <span className="text-charcoal/60 text-sm">[[Client to confirm]]</span>
               </div>
 
               {/* Text */}
@@ -142,13 +128,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-medium text-charcoal mb-2 tracking-wide">Text</h3>
-                <a
-                  href="sms:+15551234567"
-                  className="text-rose-500 hover:text-rose-600 text-base font-medium"
-                >
-                  (555) 123-4567
-                </a>
-                <p className="text-xs text-charcoal/50 mt-2">Quick Replies</p>
+                <span className="text-charcoal/60 text-sm">[[Client to confirm]]</span>
               </div>
             </div>
           </div>
@@ -156,11 +136,11 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-beige-200">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-20 md:py-24 bg-champagne-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-10">
-              <h2 className="text-2xl sm:text-3xl font-serif font-medium text-charcoal mb-4 tracking-wide">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-4 tracking-wide">
                 Common Questions
               </h2>
               <p className="text-base text-charcoal/60">
@@ -169,47 +149,47 @@ export default function ContactPage() {
             </div>
 
             <div className="space-y-4">
-              <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6">
+              <div className="bg-white rounded-sm shadow-soft p-6 sm:p-8">
                 <h3 className="text-base sm:text-lg font-medium text-charcoal mb-2">
                   How far in advance should I book?
                 </h3>
-                <p className="text-charcoal/60 text-sm">
-                  We recommend booking at least 48 hours in advance for optimal availability. Same-day appointments may be available—call us to check!
+                <p className="text-charcoal/60 text-sm leading-relaxed">
+                  We recommend booking at least 48 hours in advance for optimal availability. Same-day appointments may be available—contact us to check!
                 </p>
               </div>
 
-              <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6">
+              <div className="bg-white rounded-sm shadow-soft p-6 sm:p-8">
                 <h3 className="text-base sm:text-lg font-medium text-charcoal mb-2">
                   What do I need to prepare at home?
                 </h3>
-                <p className="text-charcoal/60 text-sm">
+                <p className="text-charcoal/60 text-sm leading-relaxed">
                   Nothing! We bring everything: massage table, linens, oils, music, and all equipment. Just provide a quiet space approximately 8x10 feet.
                 </p>
               </div>
 
-              <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6">
+              <div className="bg-white rounded-sm shadow-soft p-6 sm:p-8">
                 <h3 className="text-base sm:text-lg font-medium text-charcoal mb-2">
                   Do you travel to hotels and offices?
                 </h3>
-                <p className="text-charcoal/60 text-sm">
+                <p className="text-charcoal/60 text-sm leading-relaxed">
                   Absolutely! We serve homes, hotels, resorts, offices, and special event venues.
                 </p>
               </div>
 
-              <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6">
+              <div className="bg-white rounded-sm shadow-soft p-6 sm:p-8">
                 <h3 className="text-base sm:text-lg font-medium text-charcoal mb-2">
                   What&apos;s your cancellation policy?
                 </h3>
-                <p className="text-charcoal/60 text-sm">
+                <p className="text-charcoal/60 text-sm leading-relaxed">
                   We require 24 hours notice for cancellations or rescheduling. Late cancellations may incur a fee.
                 </p>
               </div>
 
-              <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6">
+              <div className="bg-white rounded-sm shadow-soft p-6 sm:p-8">
                 <h3 className="text-base sm:text-lg font-medium text-charcoal mb-2">
                   How do I pay?
                 </h3>
-                <p className="text-charcoal/60 text-sm">
+                <p className="text-charcoal/60 text-sm leading-relaxed">
                   We accept all major credit cards, cash, Venmo, and Zelle. Payment is collected at the time of service.
                 </p>
               </div>
@@ -218,20 +198,18 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Service Area Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-rose-500">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl font-serif font-medium text-white mb-4 tracking-wide">
-              We Come to You
-            </h2>
-            <p className="text-base sm:text-lg text-white/80 mb-6">
-              Proudly serving your area and surrounding regions
-            </p>
-            <p className="text-white/70 text-sm">
-              Don&apos;t see your location? Contact us—we often accommodate special requests!
-            </p>
-          </div>
+      {/* CTA Section */}
+      <section className="py-16 sm:py-20 md:py-24 bg-rose-500">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-white mb-6 tracking-wide">
+            We Come to You
+          </h2>
+          <p className="text-base sm:text-lg text-white/80 mb-6 max-w-lg mx-auto">
+            Proudly serving South Florida and surrounding regions
+          </p>
+          <p className="text-white/70 text-sm">
+            Don&apos;t see your location? Contact us—we often accommodate special requests!
+          </p>
         </div>
       </section>
     </>

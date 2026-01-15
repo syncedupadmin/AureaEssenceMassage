@@ -129,8 +129,8 @@ export default function ContactForm() {
               required: 'Name is required',
               minLength: { value: 2, message: 'Name must be at least 2 characters' },
             })}
-            className={`w-full px-4 py-3 bg-beige-100 border text-charcoal placeholder-charcoal/40 rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm ${
-              errors.name ? 'border-red-500' : 'border-beige-300'
+            className={`w-full px-4 py-3 bg-champagne-50 border text-charcoal placeholder-charcoal/40 rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm ${
+              errors.name ? 'border-red-500' : 'border-champagne-200'
             }`}
             placeholder="Your full name"
           />
@@ -154,8 +154,8 @@ export default function ContactForm() {
                 message: 'Invalid email address',
               },
             })}
-            className={`w-full px-4 py-3 bg-beige-100 border text-charcoal placeholder-charcoal/40 rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm ${
-              errors.email ? 'border-red-500' : 'border-beige-300'
+            className={`w-full px-4 py-3 bg-champagne-50 border text-charcoal placeholder-charcoal/40 rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm ${
+              errors.email ? 'border-red-500' : 'border-champagne-200'
             }`}
             placeholder="your@email.com"
           />
@@ -180,8 +180,8 @@ export default function ContactForm() {
               },
               minLength: { value: 10, message: 'Phone number must be at least 10 digits' },
             })}
-            className={`w-full px-4 py-3 bg-beige-100 border text-charcoal placeholder-charcoal/40 rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm ${
-              errors.phone ? 'border-red-500' : 'border-beige-300'
+            className={`w-full px-4 py-3 bg-champagne-50 border text-charcoal placeholder-charcoal/40 rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm ${
+              errors.phone ? 'border-red-500' : 'border-champagne-200'
             }`}
             placeholder="(555) 123-4567"
           />
@@ -198,8 +198,8 @@ export default function ContactForm() {
           <select
             id="service"
             {...register('service', { required: 'Please select a service' })}
-            className={`w-full px-4 py-3 bg-beige-100 border text-charcoal rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm ${
-              errors.service ? 'border-red-500' : 'border-beige-300'
+            className={`w-full px-4 py-3 bg-champagne-50 border text-charcoal rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm ${
+              errors.service ? 'border-red-500' : 'border-champagne-200'
             }`}
           >
             <option value="">Select a service...</option>
@@ -224,7 +224,7 @@ export default function ContactForm() {
               type="date"
               id="preferredDate"
               {...register('preferredDate')}
-              className="w-full px-4 py-3 bg-beige-100 border border-beige-300 text-charcoal rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm"
+              className="w-full px-4 py-3 bg-champagne-50 border border-champagne-200 text-charcoal rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm"
             />
           </div>
           <div>
@@ -234,7 +234,7 @@ export default function ContactForm() {
             <select
               id="preferredTime"
               {...register('preferredTime')}
-              className="w-full px-4 py-3 bg-beige-100 border border-beige-300 text-charcoal rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm"
+              className="w-full px-4 py-3 bg-champagne-50 border border-champagne-200 text-charcoal rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors text-sm"
             >
               <option value="">Select time...</option>
               <option value="morning">Morning (8am - 12pm)</option>
@@ -253,7 +253,7 @@ export default function ContactForm() {
             id="message"
             {...register('message')}
             rows={4}
-            className="w-full px-4 py-3 bg-beige-100 border border-beige-300 text-charcoal placeholder-charcoal/40 rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors resize-none text-sm"
+            className="w-full px-4 py-3 bg-champagne-50 border border-champagne-200 text-charcoal placeholder-charcoal/40 rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-colors resize-none text-sm"
             placeholder="Tell us more about what you're looking for..."
           />
         </div>

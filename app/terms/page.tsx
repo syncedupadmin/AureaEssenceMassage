@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | Aurea Essence Massage',
-  description: 'Terms of service for Aurea Essence mobile massage services.',
+  title: 'Terms of Service | Áurea Essence Massage',
+  description: 'Terms of service for Áurea Essence mobile massage services.',
 };
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-beige-300 pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-champagne pt-32 pb-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-sm shadow-elegant p-8 md:p-12">
           <h1 className="text-4xl sm:text-5xl font-serif font-medium text-charcoal mb-6 tracking-wide">
@@ -25,7 +25,7 @@ export default function TermsPage() {
                 Agreement to Terms
               </h2>
               <p className="text-charcoal/70 leading-relaxed text-sm">
-                By accessing or using Aurea Essence Massage mobile massage services, you agree to be bound by these Terms of Service. If you disagree with any part of these terms, you may not access our services.
+                By accessing or using Áurea Essence Massage mobile massage services, you agree to be bound by these Terms of Service. If you disagree with any part of these terms, you may not access our services.
               </p>
             </section>
 
@@ -34,7 +34,7 @@ export default function TermsPage() {
                 Service Description
               </h2>
               <p className="text-charcoal/70 leading-relaxed mb-4 text-sm">
-                Aurea Essence Massage provides professional mobile massage therapy services. Our licensed massage therapists travel to your home, hotel, or office to provide spa-quality massage treatments.
+                Áurea Essence Massage provides professional mobile massage therapy services. Our massage therapists travel to your home, hotel, or office to provide spa-quality massage treatments.
               </p>
             </section>
 
@@ -100,7 +100,7 @@ export default function TermsPage() {
                 Limitation of Liability
               </h2>
               <p className="text-charcoal/70 leading-relaxed text-sm">
-                Aurea Essence Massage shall not be liable for any indirect, incidental, special, or consequential damages arising out of or in connection with our services.
+                Áurea Essence Massage shall not be liable for any indirect, incidental, special, or consequential damages arising out of or in connection with our services.
               </p>
             </section>
 
@@ -109,19 +109,15 @@ export default function TermsPage() {
                 Contact Information
               </h2>
               <p className="text-charcoal/70 leading-relaxed text-sm">
-                For questions about these Terms of Service, please contact us:
-              </p>
-              <p className="text-charcoal/70 mt-2 text-sm">
-                Email: <a href="mailto:info@aureaessence.com" className="text-rose-500 hover:text-rose-600">info@aureaessence.com</a><br />
-                Phone: <a href="tel:+15551234567" className="text-rose-500 hover:text-rose-600">(555) 123-4567</a>
+                For questions about these Terms of Service, please contact us through our website.
               </p>
             </section>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-beige-300">
+          <div className="mt-12 pt-8 border-t border-champagne-200">
             <Link
               href="/"
-              className="inline-block text-rose-500 hover:text-rose-600 font-medium transition-colors text-sm"
+              className="inline-block text-rose-500 hover:text-rose-600 font-medium transition-colors text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2"
             >
               &larr; Back to Home
             </Link>

@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Aurea Essence Massage',
-  description: 'Privacy policy for Aurea Essence mobile massage services.',
+  title: 'Privacy Policy | Áurea Essence Massage',
+  description: 'Privacy policy for Áurea Essence mobile massage services.',
 };
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen bg-beige-300 pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-champagne pt-32 pb-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-sm shadow-elegant p-8 md:p-12">
           <h1 className="text-4xl sm:text-5xl font-serif font-medium text-charcoal mb-6 tracking-wide">
@@ -25,7 +25,7 @@ export default function PrivacyPage() {
                 Overview
               </h2>
               <p className="text-charcoal/70 leading-relaxed mb-4 text-sm">
-                Aurea Essence Massage ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
+                Áurea Essence Massage (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
               </p>
             </section>
 
@@ -94,19 +94,15 @@ export default function PrivacyPage() {
                 Contact Us
               </h2>
               <p className="text-charcoal/70 leading-relaxed text-sm">
-                If you have questions about this Privacy Policy, please contact us at:
-              </p>
-              <p className="text-charcoal/70 mt-2 text-sm">
-                Email: <a href="mailto:info@aureaessence.com" className="text-rose-500 hover:text-rose-600">info@aureaessence.com</a><br />
-                Phone: <a href="tel:+15551234567" className="text-rose-500 hover:text-rose-600">(555) 123-4567</a>
+                If you have questions about this Privacy Policy, please contact us through our website.
               </p>
             </section>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-beige-300">
+          <div className="mt-12 pt-8 border-t border-champagne-200">
             <Link
               href="/"
-              className="inline-block text-rose-500 hover:text-rose-600 font-medium transition-colors text-sm"
+              className="inline-block text-rose-500 hover:text-rose-600 font-medium transition-colors text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2"
             >
               &larr; Back to Home
             </Link>

@@ -3,9 +3,9 @@ import Image from 'next/image';
 import CTAButton from '@/components/CTAButton';
 
 export const metadata: Metadata = {
-  title: 'Massage Packages | Aurea Essence Massage',
-  description: 'Curated massage packages for relaxation, recovery, and special occasions. Executive, couples, and custom packages available.',
-  keywords: 'luxury massage packages, couples massage, executive massage packages, mobile spa membership',
+  title: 'Packages | Áurea Essence Massage',
+  description: 'Curated massage packages for relaxation, recovery, and special occasions. Premium mobile spa experiences.',
+  keywords: 'massage packages, couples massage package, executive massage, mobile spa packages',
 };
 
 export default function PackagesPage() {
@@ -14,91 +14,85 @@ export default function PackagesPage() {
       name: 'Executive Relief',
       tagline: 'For Busy Professionals',
       duration: '90 minutes',
-      price: 'Premium Package',
-      description: 'Designed for busy professionals who need deep relaxation and mental clarity. This intensive package melts away tension from long hours and high-stress environments.',
+      description: 'Designed for busy professionals who need deep relaxation and mental clarity. Intensive therapy that melts away tension from long hours.',
       includes: [
-        'Deep tissue massage (60 min)',
-        'Aromatherapy with stress-relief blend',
+        'Deep tissue massage',
+        'Aromatherapy blend',
         'Hot towel treatment',
-        'Scalp and neck focus (30 min)',
-        'Premium CBD oil upgrade',
+        'Scalp and neck focus',
+        'Premium product upgrade',
       ],
-      idealFor: 'Executives, entrepreneurs, and busy professionals',
+      idealFor: 'Executives, entrepreneurs, busy professionals',
       imageSrc: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80',
-      imageAlt: 'Executive stress relief massage',
+      imageAlt: 'Executive massage',
     },
     {
       name: 'Couples Retreat',
-      tagline: 'Romance & Relaxation',
+      tagline: 'Shared Relaxation',
       duration: '180 minutes total',
-      price: 'Romantic Package',
-      description: 'An unforgettable shared spa experience in the intimacy of your home. Our therapist provides consecutive massage sessions for both partners, creating a romantic journey of relaxation.',
+      description: 'An unforgettable shared spa experience at your location. Consecutive massage sessions for both partners.',
       includes: [
-        'Swedish or deep tissue massage (90 min each)',
-        'Rose petal aromatherapy',
-        'Champagne and chocolate pairing',
-        'Candlelit ambiance setup',
-        'Complimentary luxury gift',
+        'Swedish or deep tissue (90 min each)',
+        'Aromatherapy',
+        'Premium products',
+        'Relaxing ambiance setup',
+        'Complimentary gift',
       ],
       idealFor: 'Couples, anniversaries, special celebrations',
       imageSrc: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80',
-      imageAlt: 'Couples massage retreat',
+      imageAlt: 'Couples massage',
     },
     {
       name: 'Athlete Recovery',
       tagline: 'Performance & Restoration',
       duration: '75 minutes',
-      price: 'Performance Package',
-      description: 'Sport-specific therapy designed to enhance performance, prevent injury, and accelerate recovery. Perfect for athletes at all levels.',
+      description: 'Sport-specific therapy designed to enhance performance and accelerate recovery. Perfect for athletes at all levels.',
       includes: [
-        'Sports massage with targeted muscle work',
+        'Sports massage with targeted work',
         'Dynamic stretching session',
-        'CBD muscle recovery treatment',
+        'Muscle recovery treatment',
         'Percussion therapy',
-        'Customized recovery plan',
+        'Recovery guidance',
       ],
       idealFor: 'Athletes, fitness enthusiasts, active individuals',
       imageSrc: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80',
-      imageAlt: 'Athlete recovery massage',
+      imageAlt: 'Athletic recovery massage',
     },
     {
       name: 'Ultimate Indulgence',
       tagline: 'Pure Luxury',
       duration: '120 minutes',
-      price: 'Signature Package',
-      description: 'Our most comprehensive treatment—a full two hours of blissful luxury. This is the pinnacle of at-home spa experiences.',
+      description: 'Our most comprehensive treatment—full two hours of blissful luxury. The pinnacle of at-home spa experiences.',
       includes: [
-        'Full body Swedish massage (60 min)',
-        'Hot stone therapy (30 min)',
+        'Full body Swedish massage',
+        'Hot stone therapy',
         'Aromatherapy facial massage',
-        'Hand and foot reflexology (30 min)',
-        'Premium organic oils and products',
+        'Hand and foot reflexology',
+        'Premium organic products',
       ],
-      idealFor: 'Special occasions, ultimate relaxation seekers',
+      idealFor: 'Special occasions, luxury seekers',
       imageSrc: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80',
-      imageAlt: 'Ultimate indulgence spa package',
+      imageAlt: 'Ultimate spa package',
     },
   ];
 
   return (
     <>
       {/* Hero Section */}
-      <section className="relative pt-32 sm:pt-40 pb-16 sm:pb-24 bg-beige-300">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-medium text-charcoal mb-6 tracking-wide">
-              Curated Packages
-            </h1>
-            <p className="text-base sm:text-lg text-charcoal/70 leading-relaxed mb-8 max-w-2xl mx-auto">
-              Complete experiences designed for relaxation, recovery, and special occasions
-            </p>
-          </div>
+      <section className="pt-32 sm:pt-40 pb-16 sm:pb-24 bg-champagne">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-medium text-charcoal mb-6 tracking-wide">
+            Curated Packages
+          </h1>
+          <p className="text-base sm:text-lg text-charcoal/70 leading-relaxed mb-8 max-w-2xl mx-auto">
+            Complete experiences designed for relaxation, recovery, and special occasions
+          </p>
         </div>
       </section>
 
       {/* Packages Grid */}
-      <section className="py-16 sm:py-20 md:py-24 bg-cream">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-20 md:py-24 bg-champagne-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {packages.map((pkg, index) => (
               <div
@@ -115,9 +109,9 @@ export default function PackagesPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/30 to-transparent" />
                   <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
-                    <div className="px-3 py-1 bg-rose-500/90 text-white text-xs font-medium tracking-wide mb-2 inline-block rounded-sm">
+                    <span className="inline-block px-3 py-1 bg-rose-500/90 text-white text-xs font-medium tracking-wide mb-2 rounded-sm">
                       {pkg.duration}
-                    </div>
+                    </span>
                     <h2 className="text-xl sm:text-2xl font-serif font-medium text-white tracking-wide">
                       {pkg.name}
                     </h2>
@@ -157,7 +151,7 @@ export default function PackagesPage() {
                     </ul>
                   </div>
 
-                  <div className="mb-6 p-4 bg-beige-100 rounded-sm border-l-2 border-rose-500">
+                  <div className="mb-6 p-4 bg-champagne-200 rounded-sm border-l-2 border-rose-500">
                     <p className="text-xs text-rose-600 mb-1 tracking-wide uppercase font-medium">Ideal For</p>
                     <p className="text-charcoal/70 text-sm">{pkg.idealFor}</p>
                   </div>
@@ -177,95 +171,48 @@ export default function PackagesPage() {
       </section>
 
       {/* Custom Packages Section */}
-      <section className="py-16 sm:py-20 md:py-24 bg-beige-200">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-6 tracking-wide">
-              Custom Experiences
-            </h2>
-            <p className="text-base text-charcoal/60 mb-10 leading-relaxed max-w-2xl mx-auto">
-              Tailored treatments for special events and celebrations
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-10">
-              <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6">
-                <h3 className="font-medium text-charcoal mb-2 text-sm tracking-wide">Corporate</h3>
-                <p className="text-xs text-charcoal/60">
-                  Team wellness and on-site sessions
-                </p>
-              </div>
-              <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6">
-                <h3 className="font-medium text-charcoal mb-2 text-sm tracking-wide">Weddings</h3>
-                <p className="text-xs text-charcoal/60">
-                  Bridal party relaxation
-                </p>
-              </div>
-              <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6">
-                <h3 className="font-medium text-charcoal mb-2 text-sm tracking-wide">Celebrations</h3>
-                <p className="text-xs text-charcoal/60">
-                  Birthdays and special occasions
-                </p>
-              </div>
+      <section className="py-16 sm:py-20 md:py-24 bg-champagne-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-6 tracking-wide">
+            Custom Experiences
+          </h2>
+          <p className="text-base text-charcoal/60 mb-10 leading-relaxed max-w-2xl mx-auto">
+            Tailored treatments for special events and celebrations
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-10">
+            <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6 hover:shadow-elegant transition-shadow">
+              <h3 className="font-medium text-charcoal mb-2 text-sm tracking-wide">Corporate</h3>
+              <p className="text-xs text-charcoal/60">
+                Team wellness and on-site sessions
+              </p>
             </div>
-            <CTAButton href="/contact" variant="primary">
-              Inquire About Custom Packages
-            </CTAButton>
-          </div>
-        </div>
-      </section>
-
-      {/* Membership Section */}
-      <section className="py-16 sm:py-20 md:py-24 bg-cream">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-6 tracking-wide">
-              Monthly Membership
-            </h2>
-            <p className="text-base text-charcoal/60 mb-10 max-w-lg mx-auto">
-              Make wellness a regular practice with exclusive member benefits
-            </p>
-            <div className="bg-white rounded-sm shadow-elegant p-6 sm:p-8 md:p-10 mb-10">
-              <ul className="space-y-4 text-left max-w-md mx-auto">
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-rose-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                    <path d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  <span className="text-charcoal/70 text-sm">Priority booking access</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-rose-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                    <path d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  <span className="text-charcoal/70 text-sm">Member pricing (up to 20% savings)</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-rose-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                    <path d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  <span className="text-charcoal/70 text-sm">Complimentary upgrades</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-rose-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                    <path d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  <span className="text-charcoal/70 text-sm">Flexible session rollover</span>
-                </li>
-              </ul>
+            <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6 hover:shadow-elegant transition-shadow">
+              <h3 className="font-medium text-charcoal mb-2 text-sm tracking-wide">Events</h3>
+              <p className="text-xs text-charcoal/60">
+                Bridal parties and celebrations
+              </p>
             </div>
-            <CTAButton href="/contact" variant="secondary">
-              Learn More About Membership
-            </CTAButton>
+            <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6 hover:shadow-elegant transition-shadow">
+              <h3 className="font-medium text-charcoal mb-2 text-sm tracking-wide">Private</h3>
+              <p className="text-xs text-charcoal/60">
+                Fully customized experiences
+              </p>
+            </div>
           </div>
+          <CTAButton href="/contact" variant="primary">
+            Inquire About Custom Packages
+          </CTAButton>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-16 sm:py-20 md:py-24 bg-rose-500">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-white mb-6 tracking-wide">
             Reserve Your Package
           </h2>
           <p className="text-base sm:text-lg text-white/80 mb-10 max-w-lg mx-auto">
-            Experience the golden standard in mobile massage therapy
+            Experience premium mobile massage therapy
           </p>
           <CTAButton href="/contact" variant="white">
             Book Now
