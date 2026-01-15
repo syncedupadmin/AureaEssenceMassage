@@ -17,7 +17,7 @@ export default function BookingCalendar() {
   }, []);
 
   return (
-    <div className="w-full bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className="w-full bg-white rounded-sm shadow-elegant overflow-hidden">
       <iframe
         src="https://links.syncedupsolutions.com/widget/booking/EggKHnSiJTHNpypqk4wA"
         style={{

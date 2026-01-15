@@ -3,16 +3,16 @@ import Image from 'next/image';
 import CTAButton from '@/components/CTAButton';
 
 export const metadata: Metadata = {
-  title: 'Spa Package Deals & Couples Massage | Destiny Eden FL',
-  description: 'Curated massage packages for executives, couples & athletes. Monthly memberships with priority booking. South Florida\'s premier mobile spa experience.',
-  keywords: 'luxury massage packages, couples massage South Florida, executive massage packages, athlete recovery massage, mobile spa membership',
+  title: 'Massage Packages | Aurea Essence Massage',
+  description: 'Curated massage packages for relaxation, recovery, and special occasions. Executive, couples, and custom packages available.',
+  keywords: 'luxury massage packages, couples massage, executive massage packages, mobile spa membership',
 };
 
 export default function PackagesPage() {
   const packages = [
     {
-      name: 'Executive Stress Relief',
-      tagline: 'Escape the Boardroom',
+      name: 'Executive Relief',
+      tagline: 'For Busy Professionals',
       duration: '90 minutes',
       price: 'Premium Package',
       description: 'Designed for busy professionals who need deep relaxation and mental clarity. This intensive package melts away tension from long hours and high-stress environments.',
@@ -26,16 +26,15 @@ export default function PackagesPage() {
       idealFor: 'Executives, entrepreneurs, and busy professionals',
       imageSrc: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80',
       imageAlt: 'Executive stress relief massage',
-      accentColor: 'gold',
     },
     {
       name: 'Couples Retreat',
       tagline: 'Romance & Relaxation',
-      duration: '180 minutes total (90 min per person)',
+      duration: '180 minutes total',
       price: 'Romantic Package',
-      description: 'An unforgettable shared spa experience in the intimacy of your home or hotel. One skilled therapist provides consecutive massage sessions for both partners, creating a romantic journey of relaxation.',
+      description: 'An unforgettable shared spa experience in the intimacy of your home. Our therapist provides consecutive massage sessions for both partners, creating a romantic journey of relaxation.',
       includes: [
-        'Back-to-back Swedish or deep tissue massage (90 min each)',
+        'Swedish or deep tissue massage (90 min each)',
         'Rose petal aromatherapy',
         'Champagne and chocolate pairing',
         'Candlelit ambiance setup',
@@ -43,8 +42,7 @@ export default function PackagesPage() {
       ],
       idealFor: 'Couples, anniversaries, special celebrations',
       imageSrc: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80',
-      imageAlt: 'Back-to-back couples massage retreat',
-      accentColor: 'terracotta',
+      imageAlt: 'Couples massage retreat',
     },
     {
       name: 'Athlete Recovery',
@@ -62,7 +60,6 @@ export default function PackagesPage() {
       idealFor: 'Athletes, fitness enthusiasts, active individuals',
       imageSrc: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80',
       imageAlt: 'Athlete recovery massage',
-      accentColor: 'gold',
     },
     {
       name: 'Ultimate Indulgence',
@@ -80,20 +77,19 @@ export default function PackagesPage() {
       idealFor: 'Special occasions, ultimate relaxation seekers',
       imageSrc: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80',
       imageAlt: 'Ultimate indulgence spa package',
-      accentColor: 'terracotta',
     },
   ];
 
   return (
     <>
       {/* Hero Section */}
-      <section className="relative pt-40 pb-32 bg-black">
-        <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="relative pt-32 sm:pt-40 pb-16 sm:pb-24 bg-beige-300">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl sm:text-6xl font-serif font-light text-cream mb-8 tracking-wide">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-medium text-charcoal mb-6 tracking-wide">
               Curated Packages
             </h1>
-            <p className="text-base text-cream/70 leading-relaxed mb-8 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-charcoal/70 leading-relaxed mb-8 max-w-2xl mx-auto">
               Complete experiences designed for relaxation, recovery, and special occasions
             </p>
           </div>
@@ -101,77 +97,77 @@ export default function PackagesPage() {
       </section>
 
       {/* Packages Grid */}
-      <section className="py-32 bg-charcoal">
-        <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <section className="py-16 sm:py-20 md:py-24 bg-cream">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {packages.map((pkg, index) => (
               <div
                 key={index}
-                className="bg-black-light border-l-2 border-gold-300/30 overflow-hidden"
+                className="bg-white rounded-sm shadow-soft hover:shadow-elegant transition-all duration-300 overflow-hidden"
               >
                 {/* Image */}
-                <div className="relative h-80 overflow-hidden">
+                <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
                   <Image
                     src={pkg.imageSrc}
                     alt={pkg.imageAlt}
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                  <div className="absolute bottom-8 left-8 right-8">
-                    <div className="px-3 py-1 bg-gold-300/10 border-l-2 border-gold-300 text-gold-300 text-xs font-medium tracking-wide mb-3 inline-block">
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/30 to-transparent" />
+                  <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
+                    <div className="px-3 py-1 bg-rose-500/90 text-white text-xs font-medium tracking-wide mb-2 inline-block rounded-sm">
                       {pkg.duration}
                     </div>
-                    <h2 className="text-3xl font-serif font-light text-cream tracking-wide">
+                    <h2 className="text-xl sm:text-2xl font-serif font-medium text-white tracking-wide">
                       {pkg.name}
                     </h2>
-                    <p className="text-gold-300 font-medium text-sm mt-1">
+                    <p className="text-white/80 text-sm mt-1">
                       {pkg.tagline}
                     </p>
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-10">
-                  <p className="text-cream/80 mb-8 leading-relaxed text-sm">
+                <div className="p-5 sm:p-6 md:p-8">
+                  <p className="text-charcoal/70 mb-6 leading-relaxed text-sm">
                     {pkg.description}
                   </p>
 
-                  <div className="mb-8">
-                    <h3 className="text-xs font-medium text-gold-300 mb-4 tracking-wide uppercase">
+                  <div className="mb-6">
+                    <h3 className="text-xs font-medium text-rose-500 mb-3 tracking-wide uppercase">
                       Includes
                     </h3>
-                    <ul className="space-y-3">
+                    <ul className="space-y-2">
                       {pkg.includes.map((item, i) => (
                         <li key={i} className="flex items-start">
                           <svg
-                            className="w-4 h-4 text-gold-300 mr-3 flex-shrink-0 mt-0.5"
+                            className="w-4 h-4 text-rose-500 mr-2 flex-shrink-0 mt-0.5"
                             fill="none"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            strokeWidth="1.5"
+                            strokeWidth="2"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
                           >
                             <path d="M5 13l4 4L19 7"></path>
                           </svg>
-                          <span className="text-cream/70 text-xs">{item}</span>
+                          <span className="text-charcoal/60 text-xs sm:text-sm">{item}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="mb-8 p-5 bg-charcoal border-l-2 border-gold-300/30">
-                    <p className="text-xs text-gold-300 mb-2 tracking-wide uppercase">Ideal For</p>
-                    <p className="text-cream text-sm">{pkg.idealFor}</p>
+                  <div className="mb-6 p-4 bg-beige-100 rounded-sm border-l-2 border-rose-500">
+                    <p className="text-xs text-rose-600 mb-1 tracking-wide uppercase font-medium">Ideal For</p>
+                    <p className="text-charcoal/70 text-sm">{pkg.idealFor}</p>
                   </div>
 
                   <CTAButton
                     href="/contact"
-                    variant="secondary"
+                    variant="outline"
                     className="w-full"
                   >
-                    Reserve
+                    Book This Package
                   </CTAButton>
                 </div>
               </div>
@@ -181,100 +177,97 @@ export default function PackagesPage() {
       </section>
 
       {/* Custom Packages Section */}
-      <section className="py-32 bg-black">
-        <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="py-16 sm:py-20 md:py-24 bg-beige-200">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-serif font-light text-cream mb-8 tracking-wide">
+            <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-6 tracking-wide">
               Custom Experiences
             </h2>
-            <p className="text-base text-cream/70 mb-12 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-base text-charcoal/60 mb-10 leading-relaxed max-w-2xl mx-auto">
               Tailored treatments for special events and celebrations
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              <div className="bg-charcoal border-l-2 border-gold-300/30 p-8">
-                <h3 className="font-medium text-cream mb-3 text-sm tracking-wide">Corporate</h3>
-                <p className="text-xs text-cream/70">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-10">
+              <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6">
+                <h3 className="font-medium text-charcoal mb-2 text-sm tracking-wide">Corporate</h3>
+                <p className="text-xs text-charcoal/60">
                   Team wellness and on-site sessions
                 </p>
               </div>
-              <div className="bg-charcoal border-l-2 border-gold-300/30 p-8">
-                <h3 className="font-medium text-cream mb-3 text-sm tracking-wide">Weddings</h3>
-                <p className="text-xs text-cream/70">
+              <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6">
+                <h3 className="font-medium text-charcoal mb-2 text-sm tracking-wide">Weddings</h3>
+                <p className="text-xs text-charcoal/60">
                   Bridal party relaxation
                 </p>
               </div>
-              <div className="bg-charcoal border-l-2 border-gold-300/30 p-8">
-                <h3 className="font-medium text-cream mb-3 text-sm tracking-wide">Celebrations</h3>
-                <p className="text-xs text-cream/70">
+              <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6">
+                <h3 className="font-medium text-charcoal mb-2 text-sm tracking-wide">Celebrations</h3>
+                <p className="text-xs text-charcoal/60">
                   Birthdays and special occasions
                 </p>
               </div>
             </div>
             <CTAButton href="/contact" variant="primary">
-              Inquire
+              Inquire About Custom Packages
             </CTAButton>
           </div>
         </div>
       </section>
 
       {/* Membership Section */}
-      <section className="py-32 bg-charcoal">
-        <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="py-16 sm:py-20 md:py-24 bg-cream">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl font-serif font-light text-cream mb-8 tracking-wide">
+            <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-6 tracking-wide">
               Monthly Membership
             </h2>
-            <p className="text-base text-cream/70 mb-12 max-w-lg mx-auto">
-              Make wellness a regular practice
+            <p className="text-base text-charcoal/60 mb-10 max-w-lg mx-auto">
+              Make wellness a regular practice with exclusive member benefits
             </p>
-            <div className="bg-black border-l-2 border-gold-300/30 p-10 mb-12">
+            <div className="bg-white rounded-sm shadow-elegant p-6 sm:p-8 md:p-10 mb-10">
               <ul className="space-y-4 text-left max-w-md mx-auto">
                 <li className="flex items-start">
-                  <svg className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gold-300" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-rose-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M5 13l4 4L19 7"></path>
                   </svg>
-                  <span className="text-cream/80 text-sm">Priority booking</span>
+                  <span className="text-charcoal/70 text-sm">Priority booking access</span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gold-300" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-rose-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M5 13l4 4L19 7"></path>
                   </svg>
-                  <span className="text-cream/80 text-sm">Member pricing (up to 20% savings)</span>
+                  <span className="text-charcoal/70 text-sm">Member pricing (up to 20% savings)</span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gold-300" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-rose-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M5 13l4 4L19 7"></path>
                   </svg>
-                  <span className="text-cream/80 text-sm">Complimentary upgrades</span>
+                  <span className="text-charcoal/70 text-sm">Complimentary upgrades</span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gold-300" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-rose-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M5 13l4 4L19 7"></path>
                   </svg>
-                  <span className="text-cream/80 text-sm">Flexible session rollover</span>
+                  <span className="text-charcoal/70 text-sm">Flexible session rollover</span>
                 </li>
               </ul>
             </div>
-            <CTAButton
-              href="/contact"
-              variant="secondary"
-            >
-              Learn More
+            <CTAButton href="/contact" variant="secondary">
+              Learn More About Membership
             </CTAButton>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 bg-black">
-        <div className="container mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <h2 className="text-4xl font-serif font-light text-cream mb-8 tracking-wide">
+      <section className="py-16 sm:py-20 md:py-24 bg-rose-500">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-white mb-6 tracking-wide">
             Reserve Your Package
           </h2>
-          <p className="text-base text-cream/70 mb-12 max-w-lg mx-auto">
-            South Florida's preferred mobile spa
+          <p className="text-base sm:text-lg text-white/80 mb-10 max-w-lg mx-auto">
+            Experience the golden standard in mobile massage therapy
           </p>
-          <CTAButton href="/contact" variant="primary">
+          <CTAButton href="/contact" variant="white">
             Book Now
           </CTAButton>
         </div>
