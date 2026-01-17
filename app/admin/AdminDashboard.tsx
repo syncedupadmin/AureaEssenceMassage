@@ -847,24 +847,56 @@ function ServiceEditModal({
 
             {/* Image Selection */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                Service Image
+              <label className="block text-sm font-medium text-gray-700 mb-3">
+                Service Image <span className="font-normal text-gray-500">(click to select)</span>
               </label>
-              <select
-                value={formData.imageSrc}
-                onChange={(e) => setFormData({ ...formData, imageSrc: e.target.value })}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500"
-              >
-                <option value="/images/generated/service-swedish.png">Swedish Massage Image</option>
-                <option value="/images/generated/service-deep-tissue.png">Deep Tissue Image</option>
-                <option value="/images/generated/service-reflexology.png">Reflexology Image</option>
-                <option value="/images/generated/service-lymphatic-drainage.png">Lymphatic Drainage Image</option>
-                <option value="/images/generated/service-post-surgical.png">Post-Surgical Image</option>
-                <option value="/images/generated/service-couples.png">Couples Image</option>
-                <option value="/images/generated/service-prenatal.png">Prenatal Image</option>
-                <option value="/images/generated/addon-hot-stones.png">Hot Stones Image</option>
-              </select>
-              <p className="mt-1 text-xs text-gray-500">Choose an image that best represents this service</p>
+              <div className="grid grid-cols-4 gap-3">
+                {[
+                  { src: '/images/generated/service-swedish.png', label: 'Swedish' },
+                  { src: '/images/generated/service-deep-tissue.png', label: 'Deep Tissue' },
+                  { src: '/images/generated/service-reflexology.png', label: 'Reflexology' },
+                  { src: '/images/generated/service-lymphatic-drainage.png', label: 'Lymphatic' },
+                  { src: '/images/generated/service-post-surgical.png', label: 'Post-Surgery' },
+                  { src: '/images/generated/service-couples.png', label: 'Couples' },
+                  { src: '/images/generated/service-prenatal.png', label: 'Prenatal' },
+                  { src: '/images/generated/addon-hot-stones.png', label: 'Hot Stones' },
+                  { src: '/images/generated/addon-aromatherapy.png', label: 'Aromatherapy' },
+                  { src: '/images/generated/addon-cbd-oil.png', label: 'CBD Oil' },
+                  { src: '/images/generated/hero-about.png', label: 'Spa Scene' },
+                  { src: '/images/generated/hero-main.png', label: 'Hero' },
+                ].map((img) => (
+                  <button
+                    key={img.src}
+                    type="button"
+                    onClick={() => setFormData({ ...formData, imageSrc: img.src })}
+                    className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all ${
+                      formData.imageSrc === img.src
+                        ? 'border-rose-500 ring-2 ring-rose-500/30'
+                        : 'border-gray-200 hover:border-gray-300'
+                    }`}
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.label}
+                      fill
+                      className="object-cover"
+                    />
+                    {formData.imageSrc === img.src && (
+                      <div className="absolute inset-0 bg-rose-500/20 flex items-center justify-center">
+                        <div className="w-6 h-6 bg-rose-500 rounded-full flex items-center justify-center">
+                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                      </div>
+                    )}
+                    <div className="absolute bottom-0 left-0 right-0 bg-black/60 px-1 py-0.5">
+                      <p className="text-white text-xs text-center truncate">{img.label}</p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+              <p className="mt-2 text-xs text-gray-500">Selected: {formData.imageSrc.split('/').pop()?.replace('.png', '')}</p>
             </div>
           </form>
 
