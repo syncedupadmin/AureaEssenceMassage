@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import CTAButton from '@/components/CTAButton';
 import ServiceCard from '@/components/ServiceCard';
 import TestimonialsSection from '@/components/TestimonialsSection';
@@ -20,48 +21,77 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-champagne">
-        <div className="absolute inset-0 z-0">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Layers */}
+        <div className="absolute inset-0">
+          {/* Base Image */}
           <Image
             src="/images/generated/hero-main.png"
-            alt="Luxury massage experience"
+            alt="Luxury spa experience"
             fill
-            className="object-cover opacity-25"
             priority
+            className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-champagne/80 via-champagne/60 to-champagne" />
+          {/* Gradient Overlay - shows image on edges */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'radial-gradient(ellipse at center, rgba(245,240,232,0.92) 0%, rgba(245,240,232,0.75) 60%, rgba(245,240,232,0.5) 100%)'
+            }}
+          />
         </div>
 
-        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto pt-20 pb-12">
-          <div className="mb-8 animate-fade-in">
-            <Image
-              src="/images/aurea-essence-logo.png"
-              alt="Áurea Essence Massage"
-              width={800}
-              height={200}
-              className="mx-auto w-auto h-16 sm:h-20 md:h-24"
-              priority
-            />
-          </div>
+        {/* Content */}
+        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+          {/* Gold Decorative Line */}
+          <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mb-6" />
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-charcoal mb-6 animate-fade-in tracking-wide leading-tight">
-            Luxury Wellness,<br />
-            <span className="text-rose-500">Delivered to Your Door</span>
+          {/* Logo */}
+          <Image
+            src="/images/aurea-essence-logo.png"
+            alt="Áurea Essence Massage"
+            width={400}
+            height={100}
+            priority
+            className="mx-auto mb-8 w-auto h-16 sm:h-20 md:h-24"
+          />
+
+          {/* Headline */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium tracking-wide mb-4">
+            <span className="text-charcoal">Luxury Wellness,</span>
+            <br />
+            <span className="bg-gradient-to-r from-rose-400 via-gold-500 to-rose-400 bg-clip-text text-transparent">
+              Delivered to Your Door
+            </span>
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-charcoal/70 mb-10 max-w-2xl mx-auto leading-relaxed px-4">
-            Five-star spa. Your private setting.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
-            <CTAButton href="/contact" variant="primary">
+
+          {/* Subheadline with Gold Lines */}
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mb-10">
+            <div className="hidden sm:block w-8 md:w-12 h-px bg-gradient-to-r from-transparent to-gold-400" />
+            <p className="text-charcoal/60 text-base sm:text-lg md:text-xl tracking-wide">
+              Five-star spa. Your private setting.
+            </p>
+            <div className="hidden sm:block w-8 md:w-12 h-px bg-gradient-to-l from-transparent to-gold-400" />
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-8 py-3.5 bg-rose-500 text-white text-base font-medium tracking-wide rounded-sm hover:bg-rose-600 transition-all shadow-elegant hover:shadow-dark ring-1 ring-gold-400/30 hover:ring-gold-400/60"
+            >
               Book Your Session
-            </CTAButton>
-            <CTAButton href="/services" variant="outline">
+            </Link>
+            <Link
+              href="/services"
+              className="inline-flex items-center justify-center px-8 py-3.5 bg-transparent text-charcoal text-base font-medium tracking-wide rounded-sm border border-gold-400/50 hover:border-gold-500 hover:bg-gold-50/30 transition-all"
+            >
               Explore Services
-            </CTAButton>
+            </Link>
           </div>
         </div>
 
-        {/* Scroll indicator */}
+        {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
           <svg className="w-6 h-6 text-gold-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
             <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
