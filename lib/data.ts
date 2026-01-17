@@ -1,3 +1,4 @@
+import { kv } from '@vercel/kv';
 import { promises as fs } from 'fs';
 import path from 'path';
 
@@ -34,28 +35,72 @@ export interface BusinessData {
 }
 
 const DATA_FILE_PATH = path.join(process.cwd(), 'data', 'business.json');
+const KV_KEY = 'business_data';
 
 /**
- * Read business data from JSON file
+ * Check if Vercel KV is configured
  */
-export async function getBusinessData(): Promise<BusinessData> {
+function isKVConfigured(): boolean {
+  return !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
+}
+
+/**
+ * Read business data from JSON file (fallback/initial data)
+ */
+async function getDataFromFile(): Promise<BusinessData> {
   try {
     const fileContent = await fs.readFile(DATA_FILE_PATH, 'utf-8');
     return JSON.parse(fileContent) as BusinessData;
   } catch (error) {
-    console.error('Error reading business data:', error);
+    console.error('Error reading business data from file:', error);
     throw new Error('Failed to read business data');
   }
 }
 
 /**
- * Write business data to JSON file
+ * Read business data - uses KV if available, falls back to file
+ */
+export async function getBusinessData(): Promise<BusinessData> {
+  // If KV is configured, use it
+  if (isKVConfigured()) {
+    try {
+      const data = await kv.get<BusinessData>(KV_KEY);
+      if (data) {
+        return data;
+      }
+      // KV is empty, initialize from file
+      const fileData = await getDataFromFile();
+      await kv.set(KV_KEY, fileData);
+      return fileData;
+    } catch (error) {
+      console.error('KV error, falling back to file:', error);
+      return getDataFromFile();
+    }
+  }
+
+  // No KV, use file (local development)
+  return getDataFromFile();
+}
+
+/**
+ * Save business data - uses KV if available, falls back to file
  */
 export async function saveBusinessData(data: BusinessData): Promise<void> {
+  if (isKVConfigured()) {
+    try {
+      await kv.set(KV_KEY, data);
+      return;
+    } catch (error) {
+      console.error('KV save error:', error);
+      throw new Error('Failed to save business data');
+    }
+  }
+
+  // No KV, save to file (local development only)
   try {
     await fs.writeFile(DATA_FILE_PATH, JSON.stringify(data, null, 2), 'utf-8');
   } catch (error) {
-    console.error('Error saving business data:', error);
+    console.error('Error saving business data to file:', error);
     throw new Error('Failed to save business data');
   }
 }
