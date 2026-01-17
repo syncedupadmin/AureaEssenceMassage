@@ -125,7 +125,7 @@ export const coreServices = [
       'Promotes better sleep',
       'Eases muscle tension',
     ],
-    imageSrc: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80',
+    imageSrc: '/images/generated/service-swedish.png',
     imageAlt: 'Swedish Massage therapy',
   },
   {
@@ -141,7 +141,7 @@ export const coreServices = [
       'Improves athletic recovery',
       'Increases range of motion',
     ],
-    imageSrc: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80',
+    imageSrc: '/images/generated/service-deep-tissue.png',
     imageAlt: 'Deep Tissue Massage',
   },
   {
@@ -157,7 +157,7 @@ export const coreServices = [
       'Improves circulation',
       'Enhances overall well-being',
     ],
-    imageSrc: 'https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=800&q=80',
+    imageSrc: '/images/generated/service-reflexology.png',
     imageAlt: 'Reflexology foot massage',
   },
   {
@@ -173,7 +173,7 @@ export const coreServices = [
       'Promotes detoxification',
       'Aids post-surgical recovery',
     ],
-    imageSrc: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80',
+    imageSrc: '/images/generated/service-lymphatic-drainage.png',
     imageAlt: 'Lymphatic Drainage Massage',
   },
   {
@@ -189,7 +189,7 @@ export const coreServices = [
       'Speeds up recovery time',
       'Improves range of motion',
     ],
-    imageSrc: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800&q=80',
+    imageSrc: '/images/generated/service-post-surgical.png',
     imageAlt: 'Post-Surgical Massage therapy',
   },
   {
@@ -205,7 +205,7 @@ export const coreServices = [
       'Customized for each partner',
       'Creates lasting memories',
     ],
-    imageSrc: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80',
+    imageSrc: '/images/generated/service-couples.png',
     imageAlt: 'Couples Massage experience',
   },
   {
@@ -221,7 +221,7 @@ export const coreServices = [
       'Improves sleep quality',
       'Reduces stress and anxiety',
     ],
-    imageSrc: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800&q=80',
+    imageSrc: '/images/generated/service-prenatal.png',
     imageAlt: 'Prenatal Massage',
   },
 ] as const;

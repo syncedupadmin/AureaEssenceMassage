@@ -26,7 +26,7 @@ export default function PackagesPage() {
         ...(packageInclusions.premiumProductUpgrade ? ['Premium product selection'] : []),
       ],
       idealFor: 'Executives, entrepreneurs, professionals',
-      imageSrc: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80',
+      imageSrc: '/images/generated/service-deep-tissue.png',
       imageAlt: 'Executive massage',
     },
     {
@@ -42,7 +42,7 @@ export default function PackagesPage() {
         ...(packageInclusions.complimentaryGift ? ['Complimentary gift'] : []),
       ],
       idealFor: 'Couples, anniversaries, celebrations',
-      imageSrc: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80',
+      imageSrc: '/images/generated/service-couples.png',
       imageAlt: 'Couples massage',
     },
     {
@@ -58,7 +58,7 @@ export default function PackagesPage() {
         'Recovery guidance',
       ],
       idealFor: 'Athletes, fitness enthusiasts, active individuals',
-      imageSrc: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80',
+      imageSrc: '/images/generated/service-swedish.png',
       imageAlt: 'Athletic recovery massage',
     },
     {
@@ -74,7 +74,7 @@ export default function PackagesPage() {
         'Premium organic products',
       ],
       idealFor: 'Special occasions, self-care, gift experiences',
-      imageSrc: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80',
+      imageSrc: '/images/generated/addon-hot-stones.png',
       imageAlt: 'Ultimate spa package',
     },
   ];

@@ -23,7 +23,7 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-champagne">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=1920&q=80"
+            src="/images/generated/hero-main.png"
             alt="Luxury massage experience"
             fill
             className="object-cover opacity-15"

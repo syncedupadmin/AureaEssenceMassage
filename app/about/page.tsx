@@ -61,7 +61,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div className="relative h-64 sm:h-80 lg:h-[500px] overflow-hidden rounded-sm shadow-elegant">
               <Image
-                src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80"
+                src="/images/generated/hero-about.png"
                 alt="Luxury massage experience"
                 fill
                 className="object-cover"
