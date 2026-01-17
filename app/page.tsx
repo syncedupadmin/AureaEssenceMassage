@@ -75,7 +75,7 @@ export default function Home() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <Link
               href="/contact"
               className="inline-flex items-center justify-center px-8 py-3.5 bg-rose-500 text-white text-base font-medium tracking-wide rounded-sm hover:bg-rose-600 transition-all shadow-elegant hover:shadow-dark ring-1 ring-gold-400/30 hover:ring-gold-400/60"
@@ -88,6 +88,22 @@ export default function Home() {
             >
               Explore Services
             </Link>
+          </div>
+
+          {/* Trust Badges */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-sm text-charcoal/50">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <span>Limited availability this week</span>
+            </div>
+            <div className="hidden sm:block w-px h-4 bg-charcoal/20" />
+            <div className="flex items-center gap-4 text-xs tracking-wide">
+              <span>Licensed & Insured</span>
+              <span className="text-gold-500">•</span>
+              <span>5-Star Rated</span>
+              <span className="text-gold-500">•</span>
+              <span>South Florida</span>
+            </div>
           </div>
         </div>
 
@@ -307,17 +323,24 @@ export default function Home() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-16 sm:py-20 md:py-24 bg-rose-500">
+      <section className="py-16 sm:py-20 md:py-24 bg-charcoal">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-white mb-6 tracking-wide">
-            Begin Your Wellness Journey
+          <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6" />
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-champagne mb-6 tracking-wide">
+            Your Relaxation Awaits
           </h2>
-          <p className="text-base sm:text-lg text-white/80 mb-10 max-w-lg mx-auto">
-            Book your personalized massage experience today
+          <p className="text-base sm:text-lg text-champagne/70 mb-10 max-w-lg mx-auto">
+            Don&apos;t wait for a special occasion. You deserve this today.
           </p>
-          <CTAButton href="/contact" variant="white">
-            Book Now
-          </CTAButton>
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center px-10 py-4 bg-gold-500 text-charcoal text-base font-medium tracking-wide rounded-sm hover:bg-gold-400 transition-all shadow-elegant hover:shadow-gold"
+          >
+            Book Your Session
+          </Link>
+          <p className="mt-6 text-champagne/50 text-sm">
+            Same-week availability • Easy rescheduling • No commitment
+          </p>
         </div>
       </section>
     </>

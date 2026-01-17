@@ -128,6 +128,12 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-charcoal-300 mt-10 pt-8 text-center text-sm text-champagne/50">
+          <p className="flex items-center justify-center gap-2 mb-2">
+            <svg className="w-4 h-4 text-gold-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+            <span className="text-champagne/60">Licensed Massage Therapist • Florida</span>
+          </p>
           <p>&copy; {currentYear} {businessConfig.name}. All rights reserved.</p>
           <div className="mt-3 space-x-4">
             <Link href="/privacy" className="hover:text-rose-400 transition-colors focus:outline-none focus-visible:text-rose-400">

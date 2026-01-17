@@ -15,6 +15,13 @@ export const metadata: Metadata = {
   keywords: 'Swedish massage, deep tissue massage, reflexology, lymphatic drainage, post-surgical massage, couples massage, prenatal massage, mobile massage',
 };
 
+// Service badges for highlighting
+const serviceBadges: Record<string, { text: string; color: string }> = {
+  'swedish': { text: 'Most Popular', color: 'bg-gold-500 text-charcoal' },
+  'couples': { text: 'Perfect for Two', color: 'bg-rose-500 text-white' },
+  'post-surgical': { text: 'Recovery Support', color: 'bg-charcoal text-champagne' },
+};
+
 export default function ServicesPage() {
   const enabledAddOns = serviceAddOns.filter(a => a.enabled);
 
@@ -98,10 +105,15 @@ export default function ServicesPage() {
 
                   {/* Content */}
                   <div className="w-full lg:w-1/2">
-                    <div className="mb-4 sm:mb-6">
+                    <div className="mb-4 sm:mb-6 flex flex-wrap items-center gap-2">
                       <span className="inline-block px-3 py-1 bg-gold-100 text-gold-700 text-xs font-medium tracking-wide border-l-2 border-gold-500">
                         {service.durations.join(' / ')}
                       </span>
+                      {serviceBadges[service.id] && (
+                        <span className={`inline-block px-3 py-1 text-xs font-medium tracking-wide rounded-sm ${serviceBadges[service.id].color}`}>
+                          {serviceBadges[service.id].text}
+                        </span>
+                      )}
                     </div>
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-medium text-charcoal mb-4 sm:mb-6 tracking-wide">
                       {service.title}
