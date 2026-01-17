@@ -2,12 +2,11 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import CTAButton from '@/components/CTAButton';
 import {
-  coreServices,
-  serviceAddOns,
-  getServicePrice,
-  getAddOnPrice,
-  hasAnyPricing,
-} from '@/config/business';
+  getBusinessData,
+  getServicePriceDisplay,
+  getAddOnPriceDisplay,
+  hasAnyServicePricing,
+} from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Services | Áurea Essence Massage',
@@ -22,8 +21,12 @@ const serviceBadges: Record<string, { text: string; color: string }> = {
   'post-surgical': { text: 'Recovery Support', color: 'bg-charcoal text-champagne' },
 };
 
-export default function ServicesPage() {
-  const enabledAddOns = serviceAddOns.filter(a => a.enabled);
+export const revalidate = 60; // Revalidate every 60 seconds
+
+export default async function ServicesPage() {
+  const data = await getBusinessData();
+  const { services, addOns, pricing } = data;
+  const enabledAddOns = addOns.filter(a => a.enabled);
 
   // Icon mapping for add-ons
   const getAddOnIcon = (iconName: string) => {
@@ -79,8 +82,8 @@ export default function ServicesPage() {
       <section className="py-16 sm:py-20 md:py-24 bg-champagne-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-16 md:space-y-24">
-            {coreServices.map((service, index) => {
-              const hasPricing = hasAnyPricing(service.id);
+            {services.map((service, index) => {
+              const hasPricing = hasAnyServicePricing(pricing, service.id);
 
               return (
                 <div
@@ -133,7 +136,7 @@ export default function ServicesPage() {
                         </h3>
                         <div className="flex flex-wrap gap-3">
                           {service.durations.map((duration) => {
-                            const price = getServicePrice(service.id, duration);
+                            const price = getServicePriceDisplay(pricing, service.id, duration);
                             if (!price) return null;
                             return (
                               <div key={duration} className="text-sm bg-white px-3 py-1.5 rounded-sm shadow-sm">
@@ -203,7 +206,7 @@ export default function ServicesPage() {
 
             <div className={`grid grid-cols-1 ${enabledAddOns.length === 2 ? 'md:grid-cols-2 max-w-2xl mx-auto' : 'md:grid-cols-3'} gap-6 md:gap-8`}>
               {enabledAddOns.map((addOn) => {
-                const price = getAddOnPrice(addOn.id);
+                const price = getAddOnPriceDisplay(pricing, addOn.id);
                 return (
                   <div key={addOn.id} className="bg-white rounded-sm shadow-soft p-6 sm:p-8 text-center hover:shadow-gold transition-shadow border-t-2 border-gold-400">
                     <div className="w-12 h-12 mx-auto mb-4 text-gold-600 bg-gold-100 rounded-full flex items-center justify-center ring-1 ring-gold-300">

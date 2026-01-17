@@ -1,0 +1,178 @@
+{
+  "services": [
+    {
+      "id": "swedish",
+      "title": "Swedish Massage",
+      "shortDescription": "Flowing strokes for deep relaxation and stress relief.",
+      "description": "Long, flowing strokes release tension from head to toe. Customized pressure and technique tailored to your preferences.",
+      "durations": ["60 min", "90 min", "120 min"],
+      "idealFor": "Anyone seeking relaxation and stress relief",
+      "benefits": [
+        "Reduces stress and anxiety",
+        "Improves circulation",
+        "Promotes better sleep",
+        "Eases muscle tension"
+      ],
+      "imageSrc": "/images/generated/service-swedish.png",
+      "imageAlt": "Swedish Massage therapy"
+    },
+    {
+      "id": "deep-tissue",
+      "title": "Deep Tissue Massage",
+      "shortDescription": "Targeted therapy for chronic tension and muscle recovery.",
+      "description": "Targeted relief for chronic tension and muscle recovery. Advanced techniques reach deep muscle layers, releasing persistent stress.",
+      "durations": ["60 min", "90 min", "120 min"],
+      "idealFor": "Those with chronic tension or muscle pain",
+      "benefits": [
+        "Relieves chronic muscle pain",
+        "Breaks up scar tissue",
+        "Improves athletic recovery",
+        "Increases range of motion"
+      ],
+      "imageSrc": "/images/generated/service-deep-tissue.png",
+      "imageAlt": "Deep Tissue Massage"
+    },
+    {
+      "id": "reflexology",
+      "title": "Reflexology",
+      "shortDescription": "Pressure point therapy targeting feet for whole-body wellness.",
+      "description": "Specialized pressure point therapy focused on the feet. Based on the principle that specific points correspond to different body systems.",
+      "durations": ["45 min", "60 min"],
+      "idealFor": "Those seeking holistic healing and relaxation",
+      "benefits": [
+        "Promotes natural healing",
+        "Reduces tension throughout the body",
+        "Improves circulation",
+        "Enhances overall well-being"
+      ],
+      "imageSrc": "/images/generated/service-reflexology.png",
+      "imageAlt": "Reflexology foot massage"
+    },
+    {
+      "id": "lymphatic-drainage",
+      "title": "Lymphatic Drainage Massage",
+      "shortDescription": "Gentle technique to support the body's natural detox.",
+      "description": "Gentle, rhythmic massage technique designed to stimulate the lymphatic system and support the body's natural detoxification process.",
+      "durations": ["60 min", "90 min"],
+      "idealFor": "Those with swelling, post-surgery, or seeking detox",
+      "benefits": [
+        "Reduces swelling and water retention",
+        "Supports immune function",
+        "Promotes detoxification",
+        "Aids post-surgical recovery"
+      ],
+      "imageSrc": "/images/generated/service-lymphatic-drainage.png",
+      "imageAlt": "Lymphatic Drainage Massage"
+    },
+    {
+      "id": "post-surgical",
+      "title": "Post-Surgical Massage",
+      "shortDescription": "Specialized recovery support for post-operative healing.",
+      "description": "Specialized therapeutic massage designed to support healing after surgical procedures. Gentle techniques reduce scar tissue and improve recovery.",
+      "durations": ["60 min", "90 min"],
+      "idealFor": "Post-operative recovery, particularly cosmetic procedures",
+      "benefits": [
+        "Reduces post-surgical swelling",
+        "Minimizes scar tissue formation",
+        "Speeds up recovery time",
+        "Improves range of motion"
+      ],
+      "imageSrc": "/images/generated/service-post-surgical.png",
+      "imageAlt": "Post-Surgical Massage therapy"
+    },
+    {
+      "id": "couples",
+      "title": "Couples Massage",
+      "shortDescription": "Share a relaxing experience with someone special.",
+      "description": "Share a relaxing experience with your partner. Consecutive sessions create the perfect setting for connection and relaxation together.",
+      "durations": ["120 min", "180 min"],
+      "idealFor": "Partners, anniversaries, special occasions",
+      "benefits": [
+        "Shared relaxation experience",
+        "Perfect for special occasions",
+        "Customized for each partner",
+        "Creates lasting memories"
+      ],
+      "imageSrc": "/images/generated/service-couples.png",
+      "imageAlt": "Couples Massage experience"
+    },
+    {
+      "id": "prenatal",
+      "title": "Prenatal Massage",
+      "shortDescription": "Safe, nurturing care for expectant mothers.",
+      "description": "Specially designed for expectant mothers. Safe, nurturing techniques ease pregnancy-related discomfort with proper positioning.",
+      "durations": ["60 min", "90 min"],
+      "idealFor": "Expectant mothers (2nd & 3rd trimester)",
+      "benefits": [
+        "Reduces pregnancy discomfort",
+        "Decreases swelling",
+        "Improves sleep quality",
+        "Reduces stress and anxiety"
+      ],
+      "imageSrc": "/images/generated/service-prenatal.png",
+      "imageAlt": "Prenatal Massage"
+    }
+  ],
+  "addOns": [
+    {
+      "id": "hot-stones",
+      "title": "Hot Stones",
+      "description": "Heated basalt stones for deeper relaxation",
+      "enabled": true,
+      "icon": "fire"
+    },
+    {
+      "id": "cbd-oil",
+      "title": "CBD Oil",
+      "description": "Therapeutic CBD-infused treatment",
+      "enabled": true,
+      "icon": "leaf"
+    },
+    {
+      "id": "aromatherapy",
+      "title": "Aromatherapy",
+      "description": "Essential oil blends tailored to your needs",
+      "enabled": true,
+      "icon": "sparkles"
+    }
+  ],
+  "pricing": {
+    "services": {
+      "swedish": {
+        "60 min": null,
+        "90 min": null,
+        "120 min": null
+      },
+      "deep-tissue": {
+        "60 min": null,
+        "90 min": null,
+        "120 min": null
+      },
+      "reflexology": {
+        "45 min": null,
+        "60 min": null
+      },
+      "lymphatic-drainage": {
+        "60 min": null,
+        "90 min": null
+      },
+      "post-surgical": {
+        "60 min": null,
+        "90 min": null
+      },
+      "couples": {
+        "120 min": null,
+        "180 min": null
+      },
+      "prenatal": {
+        "60 min": null,
+        "90 min": null
+      }
+    },
+    "addOns": {
+      "hot-stones": null,
+      "cbd-oil": null,
+      "aromatherapy": null
+    }
+  }
+}
