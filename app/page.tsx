@@ -26,7 +26,7 @@ export default function Home() {
             src="/images/generated/hero-main.png"
             alt="Luxury massage experience"
             fill
-            className="object-cover opacity-15"
+            className="object-cover opacity-25"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-champagne/80 via-champagne/60 to-champagne" />
