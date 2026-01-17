@@ -55,6 +55,8 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="pt-32 sm:pt-40 pb-16 sm:pb-24 bg-champagne">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Gold decorative element */}
+          <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6" />
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-medium text-charcoal mb-6 tracking-wide">
             Book Your Session
           </h1>
@@ -78,6 +80,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
+              <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6" />
               <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-4 tracking-wide">
                 What Happens Next
               </h2>
@@ -88,7 +91,7 @@ export default function ContactPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif">
+                <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif ring-2 ring-gold-400 ring-offset-4 ring-offset-champagne-200">
                   1
                 </div>
                 <h3 className="text-xl font-serif font-medium text-charcoal mb-3">
@@ -100,7 +103,7 @@ export default function ContactPage() {
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif">
+                <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif ring-2 ring-gold-400 ring-offset-4 ring-offset-champagne-200">
                   2
                 </div>
                 <h3 className="text-xl font-serif font-medium text-charcoal mb-3">
@@ -112,7 +115,7 @@ export default function ContactPage() {
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif">
+                <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif ring-2 ring-gold-400 ring-offset-4 ring-offset-champagne-200">
                   3
                 </div>
                 <h3 className="text-xl font-serif font-medium text-charcoal mb-3">
@@ -133,6 +136,7 @@ export default function ContactPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
+                <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6" />
                 <h2 className="text-2xl sm:text-3xl font-serif font-medium text-charcoal mb-4 tracking-wide">
                   Get in Touch
                 </h2>
@@ -143,8 +147,8 @@ export default function ContactPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                 {contact.phone && (
-                  <div className="text-center bg-white rounded-sm shadow-soft p-6 sm:p-8">
-                    <div className="w-12 h-12 mx-auto mb-4 text-rose-500 bg-rose-100 rounded-full flex items-center justify-center">
+                  <div className="text-center bg-white rounded-sm shadow-soft p-6 sm:p-8 hover:shadow-gold transition-shadow border-t-2 border-gold-400">
+                    <div className="w-12 h-12 mx-auto mb-4 text-gold-600 bg-gold-100 rounded-full flex items-center justify-center ring-1 ring-gold-300">
                       <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                       </svg>
@@ -160,8 +164,8 @@ export default function ContactPage() {
                 )}
 
                 {contact.email && (
-                  <div className="text-center bg-white rounded-sm shadow-soft p-6 sm:p-8">
-                    <div className="w-12 h-12 mx-auto mb-4 text-rose-500 bg-rose-100 rounded-full flex items-center justify-center">
+                  <div className="text-center bg-white rounded-sm shadow-soft p-6 sm:p-8 hover:shadow-gold transition-shadow border-t-2 border-gold-400">
+                    <div className="w-12 h-12 mx-auto mb-4 text-gold-600 bg-gold-100 rounded-full flex items-center justify-center ring-1 ring-gold-300">
                       <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                       </svg>
@@ -177,8 +181,8 @@ export default function ContactPage() {
                 )}
 
                 {contact.textNumber && (
-                  <div className="text-center bg-white rounded-sm shadow-soft p-6 sm:p-8">
-                    <div className="w-12 h-12 mx-auto mb-4 text-rose-500 bg-rose-100 rounded-full flex items-center justify-center">
+                  <div className="text-center bg-white rounded-sm shadow-soft p-6 sm:p-8 hover:shadow-gold transition-shadow border-t-2 border-gold-400">
+                    <div className="w-12 h-12 mx-auto mb-4 text-gold-600 bg-gold-100 rounded-full flex items-center justify-center ring-1 ring-gold-300">
                       <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
                       </svg>
@@ -203,6 +207,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
+              <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6" />
               <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-4 tracking-wide">
                 Common Questions
               </h2>

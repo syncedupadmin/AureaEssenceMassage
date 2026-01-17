@@ -44,6 +44,8 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="pt-32 sm:pt-40 pb-16 sm:pb-24 bg-champagne">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Gold decorative element */}
+          <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6" />
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-medium text-charcoal mb-6 tracking-wide">
             About Áurea Essence
           </h1>
@@ -67,6 +69,7 @@ export default function AboutPage() {
             </div>
 
             <div>
+              <div className="w-12 h-0.5 bg-gold-500 mb-6" />
               <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-6 tracking-wide">
                 Our Philosophy
               </h2>
@@ -93,6 +96,7 @@ export default function AboutPage() {
       <section className="py-16 sm:py-20 md:py-24 bg-champagne-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
+            <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6" />
             <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-4 tracking-wide">
               Our Approach
             </h2>
@@ -104,7 +108,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {values.map((value, index) => (
               <div key={index} className="text-center p-6">
-                <div className="w-14 h-14 mx-auto mb-5 text-rose-500 bg-rose-100 rounded-full flex items-center justify-center">
+                <div className="w-14 h-14 mx-auto mb-5 text-gold-600 bg-gold-100 rounded-full flex items-center justify-center ring-1 ring-gold-300">
                   {value.icon}
                 </div>
                 <h3 className="text-xl font-serif font-medium text-charcoal mb-3 tracking-wide">
@@ -122,14 +126,15 @@ export default function AboutPage() {
       {/* Service Area Section */}
       <section className="py-16 sm:py-20 md:py-24 bg-champagne-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6" />
           <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-6 tracking-wide">
             Service Area
           </h2>
           <p className="text-base sm:text-lg text-charcoal/70 mb-8">
             We bring luxury massage experiences to homes, hotels, and offices throughout the region.
           </p>
-          <div className="bg-rose-50 border border-rose-200 rounded-sm p-6 sm:p-8 mb-8">
-            <p className="text-sm font-medium text-rose-600 mb-4 tracking-wide uppercase">
+          <div className="bg-gold-50 border border-gold-200 rounded-sm p-6 sm:p-8 mb-8">
+            <p className="text-sm font-medium text-gold-700 mb-4 tracking-wide uppercase">
               Currently Serving
             </p>
             <p className="text-charcoal/70">

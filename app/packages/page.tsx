@@ -84,6 +84,8 @@ export default function PackagesPage() {
       {/* Hero Section */}
       <section className="pt-32 sm:pt-40 pb-16 sm:pb-24 bg-champagne">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Gold decorative element */}
+          <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6" />
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-medium text-charcoal mb-6 tracking-wide">
             Curated Packages
           </h1>
@@ -100,7 +102,7 @@ export default function PackagesPage() {
             {packages.map((pkg, index) => (
               <div
                 key={index}
-                className="bg-white rounded-sm shadow-soft hover:shadow-elegant transition-all duration-300 overflow-hidden"
+                className="bg-white rounded-sm shadow-soft hover:shadow-gold transition-all duration-300 overflow-hidden border-t-2 border-gold-400"
               >
                 {/* Image */}
                 <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
@@ -131,14 +133,14 @@ export default function PackagesPage() {
                   </p>
 
                   <div className="mb-6">
-                    <h3 className="text-xs font-medium text-rose-500 mb-3 tracking-wide uppercase">
+                    <h3 className="text-xs font-medium text-gold-600 mb-3 tracking-wide uppercase">
                       Includes
                     </h3>
                     <ul className="space-y-2">
                       {pkg.includes.map((item, i) => (
                         <li key={i} className="flex items-start">
                           <svg
-                            className="w-4 h-4 text-rose-500 mr-2 flex-shrink-0 mt-0.5"
+                            className="w-4 h-4 text-gold-500 mr-2 flex-shrink-0 mt-0.5"
                             fill="none"
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -154,8 +156,8 @@ export default function PackagesPage() {
                     </ul>
                   </div>
 
-                  <div className="mb-6 p-4 bg-champagne-200 rounded-sm border-l-2 border-rose-500">
-                    <p className="text-xs text-rose-600 mb-1 tracking-wide uppercase font-medium">Ideal For</p>
+                  <div className="mb-6 p-4 bg-champagne-200 rounded-sm border-l-2 border-gold-500">
+                    <p className="text-xs text-gold-700 mb-1 tracking-wide uppercase font-medium">Ideal For</p>
                     <p className="text-charcoal/70 text-sm">{pkg.idealFor}</p>
                   </div>
 
@@ -176,6 +178,7 @@ export default function PackagesPage() {
       {/* Custom Packages Section */}
       <section className="py-16 sm:py-20 md:py-24 bg-champagne-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6" />
           <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-6 tracking-wide">
             Custom Experiences
           </h2>
@@ -183,19 +186,19 @@ export default function PackagesPage() {
             Tailored treatments for special events and celebrations
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-10">
-            <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6 hover:shadow-elegant transition-shadow">
+            <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6 hover:shadow-gold transition-shadow border-t-2 border-gold-400">
               <h3 className="font-medium text-charcoal mb-2 text-sm tracking-wide">Corporate</h3>
               <p className="text-xs text-charcoal/60">
                 Team wellness and on-site sessions
               </p>
             </div>
-            <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6 hover:shadow-elegant transition-shadow">
+            <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6 hover:shadow-gold transition-shadow border-t-2 border-gold-400">
               <h3 className="font-medium text-charcoal mb-2 text-sm tracking-wide">Events</h3>
               <p className="text-xs text-charcoal/60">
                 Bridal parties and celebrations
               </p>
             </div>
-            <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6 hover:shadow-elegant transition-shadow">
+            <div className="bg-white rounded-sm shadow-soft p-5 sm:p-6 hover:shadow-gold transition-shadow border-t-2 border-gold-400">
               <h3 className="font-medium text-charcoal mb-2 text-sm tracking-wide">Private</h3>
               <p className="text-xs text-charcoal/60">
                 Fully customized experiences

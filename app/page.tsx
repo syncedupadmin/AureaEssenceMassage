@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import CTAButton from '@/components/CTAButton';
 import ServiceCard from '@/components/ServiceCard';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import LocationsSection from '@/components/LocationsSection';
 import { coreServices, serviceAddOns, getAddOnPrice } from '@/config/business';
 
 export default function Home() {
@@ -47,7 +49,7 @@ export default function Home() {
             <span className="text-rose-500">Delivered to Your Door</span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-charcoal/70 mb-10 max-w-2xl mx-auto leading-relaxed px-4">
-            Personalized spa experiences in the comfort of your home, hotel, or event.
+            Five-star spa. Your private setting.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
             <CTAButton href="/contact" variant="primary">
@@ -67,14 +69,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How It Works Section */}
+      {/* Your Experience Section */}
       <section className="py-16 sm:py-20 md:py-24 bg-champagne-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             {/* Gold decorative element */}
             <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6"></div>
             <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-4 tracking-wide">
-              How It Works
+              Your Experience
             </h2>
             <p className="text-base text-charcoal/60 max-w-xl mx-auto">
               Three simple steps to your perfect massage experience
@@ -121,14 +123,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Preview Section */}
+      {/* Signature Treatments Section */}
       <section className="py-16 sm:py-20 md:py-24 bg-champagne-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             {/* Gold decorative element */}
             <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6"></div>
             <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-4 tracking-wide">
-              Our Services
+              Signature Treatments
             </h2>
             <p className="text-base text-charcoal/60 max-w-xl mx-auto">
               Curated treatments for your complete relaxation
@@ -149,7 +151,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Add-ons Preview Section */}
+      {/* Elevate Your Session Section */}
       {enabledAddOns.length > 0 && (
         <section className="py-16 sm:py-20 md:py-24 bg-champagne-200">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -157,7 +159,7 @@ export default function Home() {
               {/* Gold decorative element */}
               <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6"></div>
               <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-4 tracking-wide">
-                Enhance Your Experience
+                Elevate Your Session
               </h2>
               <p className="text-base text-charcoal/60 max-w-xl mx-auto">
                 Premium add-ons to elevate any session
@@ -208,14 +210,20 @@ export default function Home() {
         </section>
       )}
 
-      {/* Trust Pillars Section */}
+      {/* Testimonials Section */}
+      <TestimonialsSection />
+
+      {/* Locations Section */}
+      <LocationsSection />
+
+      {/* The Áurea Standard Section */}
       <section className="py-16 sm:py-20 md:py-24 bg-champagne-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             {/* Gold decorative element */}
             <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6"></div>
             <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-4 tracking-wide">
-              The Áurea Difference
+              The Áurea Standard
             </h2>
             <p className="text-base text-charcoal/60 max-w-xl mx-auto">
               Luxury wellness delivered with care
