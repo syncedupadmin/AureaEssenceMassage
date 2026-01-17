@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { getServiceNames } from '@/config/business';
 
 interface ContactFormData {
   name: string;
@@ -55,15 +56,8 @@ export default function ContactForm() {
     }
   };
 
-  const services = [
-    'Swedish Massage',
-    'Deep Tissue Massage',
-    'Couples Massage',
-    'Hot Stone Massage',
-    'Prenatal Massage',
-    'Sports Massage',
-    'Package/Custom Service',
-  ];
+  // Get services from centralized config and add custom option
+  const services = [...getServiceNames(), 'Package/Custom Service'];
 
   const locationTypes = [
     { value: 'home', label: 'Home' },

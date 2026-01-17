@@ -1,34 +1,16 @@
 import Image from 'next/image';
 import CTAButton from '@/components/CTAButton';
 import ServiceCard from '@/components/ServiceCard';
+import { coreServices } from '@/config/business';
 
 export default function Home() {
-  const services = [
-    {
-      title: 'Swedish Massage',
-      description: 'Flowing strokes for deep relaxation and stress relief.',
-      imageSrc: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80',
-      imageAlt: 'Swedish Massage therapy',
-    },
-    {
-      title: 'Deep Tissue',
-      description: 'Targeted therapy for chronic tension and muscle recovery.',
-      imageSrc: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80',
-      imageAlt: 'Deep Tissue Massage',
-    },
-    {
-      title: 'Couples Massage',
-      description: 'Share a relaxing experience with someone special.',
-      imageSrc: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80',
-      imageAlt: 'Couples Massage',
-    },
-    {
-      title: 'Hot Stone',
-      description: 'Heated stones melt away tension for ultimate relaxation.',
-      imageSrc: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80',
-      imageAlt: 'Hot Stone Massage',
-    },
-  ];
+  // Take first 4 services for homepage preview
+  const previewServices = coreServices.slice(0, 4).map(service => ({
+    title: service.title,
+    description: service.shortDescription,
+    imageSrc: service.imageSrc,
+    imageAlt: service.imageAlt,
+  }));
 
   return (
     <>
@@ -58,12 +40,11 @@ export default function Home() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-charcoal mb-6 animate-fade-in tracking-wide leading-tight">
-            Premium Mobile<br />
-            <span className="text-rose-500">Massage Therapy</span>
+            Luxury Wellness,<br />
+            <span className="text-rose-500">Delivered to Your Door</span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-charcoal/70 mb-10 max-w-2xl mx-auto leading-relaxed px-4">
-            Spa-quality treatments delivered to your home, hotel, or office.
-            Experience luxury wellness on your terms.
+            Personalized spa experiences in the comfort of your home, hotel, or event.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
             <CTAButton href="/contact" variant="primary">
@@ -148,7 +129,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {services.map((service, index) => (
+            {previewServices.map((service, index) => (
               <ServiceCard key={index} {...service} />
             ))}
           </div>
@@ -181,10 +162,10 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-serif font-medium text-charcoal mb-3 tracking-wide">
-                Discreet Service
+                Professional Service
               </h3>
               <p className="text-charcoal/60 text-sm leading-relaxed">
-                Professional, private sessions in your space. Your comfort and privacy are paramount.
+                Private in-home sessions with attentive care. Your comfort and privacy are paramount.
               </p>
             </div>
 

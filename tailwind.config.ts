@@ -22,6 +22,19 @@ const config: Config = {
           800: '#5E363C',
           900: '#3F2428',
         },
+        // Soft Gold - Accent color for premium highlights
+        gold: {
+          50: '#FFFDF5',
+          100: '#FEF9E7',
+          200: '#FCF0C3',
+          300: '#F9E49B',
+          400: '#F5D56E',
+          500: '#D4AF37',  // Primary soft gold
+          600: '#B8942E',  // Slightly darker for text
+          700: '#8B7121',
+          800: '#5E4D16',
+          900: '#31280B',
+        },
         // Champagne/Ivory backgrounds
         champagne: {
           DEFAULT: '#FAF6F0',
@@ -67,9 +80,13 @@ const config: Config = {
         'soft': '0 4px 20px rgba(183, 110, 121, 0.08)',
         'elegant': '0 8px 40px rgba(183, 110, 121, 0.12)',
         'dark': '0 8px 40px rgba(0, 0, 0, 0.25)',
+        'gold': '0 4px 20px rgba(212, 175, 55, 0.15)',
       },
       maxWidth: {
         '8xl': '88rem',
+      },
+      borderColor: {
+        'gold-accent': 'rgba(212, 175, 55, 0.3)',
       },
     },
   },
