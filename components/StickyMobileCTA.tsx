@@ -30,18 +30,18 @@ export default function StickyMobileCTA() {
 
   return (
     <div
-      className={`fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-charcoal text-white px-4 py-3 shadow-2xl safe-bottom transition-transform duration-300 ease-out ${
+      className={`fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-champagne border-t border-champagne-300 px-4 py-3 shadow-dark safe-bottom transition-transform duration-300 ease-out ${
         isVisible ? 'translate-y-0' : 'translate-y-full'
       }`}
     >
       <div className="flex items-center justify-center gap-2 max-w-screen-sm mx-auto">
-        {/* WhatsApp Button */}
+        {/* WhatsApp Button - Keep green for recognition */}
         {showContactButtons && (
           <a
             href={getWhatsAppHref(phoneRaw, bookingMessage)}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 bg-green-500 text-white px-3 py-2.5 rounded-sm font-medium text-sm tracking-wide active:scale-98 transition-transform"
+            className="flex-1 flex items-center justify-center gap-2 bg-green-600 text-white px-3 py-2.5 rounded-sm font-medium text-sm tracking-wide active:scale-[0.98] transition-all shadow-soft"
             aria-label="Contact via WhatsApp"
           >
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -51,11 +51,11 @@ export default function StickyMobileCTA() {
           </a>
         )}
 
-        {/* Text/SMS Button */}
+        {/* Text/SMS Button - Brand colors */}
         {showContactButtons && (
           <a
             href={getSmsHref(phoneRaw, bookingMessage)}
-            className="flex-1 flex items-center justify-center gap-2 bg-rose-400 text-white px-3 py-2.5 rounded-sm font-medium text-sm tracking-wide active:scale-98 transition-transform"
+            className="flex-1 flex items-center justify-center gap-2 bg-charcoal text-champagne px-3 py-2.5 rounded-sm font-medium text-sm tracking-wide active:scale-[0.98] transition-all shadow-soft"
             aria-label="Send a text message"
           >
             <svg className="w-4 h-4" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -65,10 +65,10 @@ export default function StickyMobileCTA() {
           </a>
         )}
 
-        {/* Book Online Button */}
+        {/* Book Online Button - Primary rose */}
         <Link
           href="/contact"
-          className={`${showContactButtons ? 'flex-1' : 'flex-1 max-w-xs'} flex items-center justify-center gap-2 bg-rose-500 text-white px-3 py-2.5 rounded-sm font-medium text-sm tracking-wide active:scale-98 transition-transform`}
+          className={`${showContactButtons ? 'flex-1' : 'flex-1 max-w-xs'} flex items-center justify-center gap-2 bg-rose-500 text-white px-3 py-2.5 rounded-sm font-medium text-sm tracking-wide active:scale-[0.98] transition-all shadow-soft`}
           aria-label="Book an appointment online"
         >
           <svg className="w-4 h-4" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">

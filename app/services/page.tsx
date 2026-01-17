@@ -31,7 +31,7 @@ export default function ServicesPage() {
       case 'leaf':
         return (
           <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
-            <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
           </svg>
         );
       case 'sparkles':
@@ -54,6 +54,8 @@ export default function ServicesPage() {
       {/* Hero Section */}
       <section className="pt-32 sm:pt-40 pb-16 sm:pb-24 bg-champagne">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Gold decorative element */}
+          <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6"></div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-medium text-charcoal mb-6 tracking-wide">
             Our Services
           </h1>
@@ -82,7 +84,7 @@ export default function ServicesPage() {
                 >
                   {/* Image */}
                   <div className="w-full lg:w-1/2">
-                    <div className="relative h-64 sm:h-80 md:h-[400px] lg:h-[500px] overflow-hidden rounded-sm shadow-elegant">
+                    <div className="relative h-64 sm:h-80 md:h-[400px] lg:h-[500px] overflow-hidden rounded-sm shadow-elegant ring-1 ring-gold-200">
                       <Image
                         src={service.imageSrc}
                         alt={service.imageAlt}
@@ -97,7 +99,7 @@ export default function ServicesPage() {
                   {/* Content */}
                   <div className="w-full lg:w-1/2">
                     <div className="mb-4 sm:mb-6">
-                      <span className="inline-block px-3 py-1 bg-rose-100 text-rose-600 text-xs font-medium tracking-wide border-l-2 border-rose-500">
+                      <span className="inline-block px-3 py-1 bg-gold-100 text-gold-700 text-xs font-medium tracking-wide border-l-2 border-gold-500">
                         {service.durations.join(' / ')}
                       </span>
                     </div>
@@ -122,7 +124,7 @@ export default function ServicesPage() {
                             const price = getServicePrice(service.id, duration);
                             if (!price) return null;
                             return (
-                              <div key={duration} className="text-sm">
+                              <div key={duration} className="text-sm bg-white px-3 py-1.5 rounded-sm shadow-sm">
                                 <span className="text-charcoal/60">{duration}:</span>{' '}
                                 <span className="font-medium text-charcoal">{price}</span>
                               </div>
@@ -146,7 +148,7 @@ export default function ServicesPage() {
                         {service.benefits.map((benefit, i) => (
                           <li key={i} className="flex items-start">
                             <svg
-                              className="w-4 h-4 sm:w-5 sm:h-5 text-rose-500 mr-2 sm:mr-3 flex-shrink-0 mt-0.5"
+                              className="w-4 h-4 sm:w-5 sm:h-5 text-gold-500 mr-2 sm:mr-3 flex-shrink-0 mt-0.5"
                               fill="none"
                               strokeLinecap="round"
                               strokeLinejoin="round"
@@ -177,6 +179,8 @@ export default function ServicesPage() {
         <section className="py-16 sm:py-20 md:py-24 bg-champagne-200">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 md:mb-16">
+              {/* Gold decorative element */}
+              <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6"></div>
               <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-4 tracking-wide">
                 Enhancements
               </h2>
@@ -189,8 +193,8 @@ export default function ServicesPage() {
               {enabledAddOns.map((addOn) => {
                 const price = getAddOnPrice(addOn.id);
                 return (
-                  <div key={addOn.id} className="bg-white rounded-sm shadow-soft p-6 sm:p-8 text-center hover:shadow-elegant transition-shadow">
-                    <div className="w-12 h-12 mx-auto mb-4 text-rose-500 bg-rose-100 rounded-full flex items-center justify-center">
+                  <div key={addOn.id} className="bg-white rounded-sm shadow-soft p-6 sm:p-8 text-center hover:shadow-gold transition-shadow border-t-2 border-gold-400">
+                    <div className="w-12 h-12 mx-auto mb-4 text-gold-600 bg-gold-100 rounded-full flex items-center justify-center ring-1 ring-gold-300">
                       {getAddOnIcon(addOn.icon)}
                     </div>
                     <h3 className="text-lg font-serif font-medium text-charcoal mb-2 tracking-wide">

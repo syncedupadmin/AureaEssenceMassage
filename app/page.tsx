@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import CTAButton from '@/components/CTAButton';
 import ServiceCard from '@/components/ServiceCard';
-import { coreServices } from '@/config/business';
+import { coreServices, serviceAddOns, getAddOnPrice } from '@/config/business';
 
 export default function Home() {
   // Take first 4 services for homepage preview
@@ -11,6 +11,9 @@ export default function Home() {
     imageSrc: service.imageSrc,
     imageAlt: service.imageAlt,
   }));
+
+  // Get enabled add-ons for preview
+  const enabledAddOns = serviceAddOns.filter(a => a.enabled);
 
   return (
     <>
@@ -58,7 +61,7 @@ export default function Home() {
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
-          <svg className="w-6 h-6 text-rose-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-6 h-6 text-gold-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
             <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
           </svg>
         </div>
@@ -68,6 +71,8 @@ export default function Home() {
       <section className="py-16 sm:py-20 md:py-24 bg-champagne-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
+            {/* Gold decorative element */}
+            <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6"></div>
             <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-4 tracking-wide">
               How It Works
             </h2>
@@ -78,7 +83,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif">
+              <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif ring-2 ring-gold-400 ring-offset-4 ring-offset-champagne-200">
                 1
               </div>
               <h3 className="text-xl font-serif font-medium text-charcoal mb-3">
@@ -90,7 +95,7 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif">
+              <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif ring-2 ring-gold-400 ring-offset-4 ring-offset-champagne-200">
                 2
               </div>
               <h3 className="text-xl font-serif font-medium text-charcoal mb-3">
@@ -102,7 +107,7 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif">
+              <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif ring-2 ring-gold-400 ring-offset-4 ring-offset-champagne-200">
                 3
               </div>
               <h3 className="text-xl font-serif font-medium text-charcoal mb-3">
@@ -120,6 +125,8 @@ export default function Home() {
       <section className="py-16 sm:py-20 md:py-24 bg-champagne-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
+            {/* Gold decorative element */}
+            <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6"></div>
             <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-4 tracking-wide">
               Our Services
             </h2>
@@ -142,10 +149,71 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Add-ons Preview Section */}
+      {enabledAddOns.length > 0 && (
+        <section className="py-16 sm:py-20 md:py-24 bg-champagne-200">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10 md:mb-12">
+              {/* Gold decorative element */}
+              <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6"></div>
+              <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-4 tracking-wide">
+                Enhance Your Experience
+              </h2>
+              <p className="text-base text-charcoal/60 max-w-xl mx-auto">
+                Premium add-ons to elevate any session
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+              {enabledAddOns.map((addOn) => {
+                const price = getAddOnPrice(addOn.id);
+                return (
+                  <div
+                    key={addOn.id}
+                    className="bg-white rounded-sm p-5 sm:p-6 text-center shadow-soft hover:shadow-gold transition-shadow border-t-2 border-gold-400"
+                  >
+                    <div className="w-10 h-10 mx-auto mb-3 text-gold-600 bg-gold-100 rounded-full flex items-center justify-center">
+                      {addOn.icon === 'fire' && (
+                        <svg className="w-5 h-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
+                          <path d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path>
+                        </svg>
+                      )}
+                      {addOn.icon === 'leaf' && (
+                        <svg className="w-5 h-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
+                          <path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                        </svg>
+                      )}
+                      {addOn.icon === 'sparkles' && (
+                        <svg className="w-5 h-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
+                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                      )}
+                    </div>
+                    <h3 className="text-base font-serif font-medium text-charcoal mb-1">
+                      {addOn.title}
+                    </h3>
+                    <p className="text-charcoal/50 text-xs mb-2">
+                      {addOn.description}
+                    </p>
+                    {price ? (
+                      <span className="text-gold-600 font-medium text-sm">{price}</span>
+                    ) : (
+                      <span className="text-charcoal/40 text-xs italic">Price upon request</span>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Trust Pillars Section */}
-      <section className="py-16 sm:py-20 md:py-24 bg-champagne-200">
+      <section className="py-16 sm:py-20 md:py-24 bg-champagne-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
+            {/* Gold decorative element */}
+            <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6"></div>
             <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-4 tracking-wide">
               The Áurea Difference
             </h2>
@@ -156,7 +224,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             <div className="text-center p-6">
-              <div className="w-14 h-14 mx-auto mb-5 text-rose-500 bg-rose-100 rounded-full flex items-center justify-center">
+              <div className="w-14 h-14 mx-auto mb-5 text-gold-600 bg-gold-100 rounded-full flex items-center justify-center ring-1 ring-gold-300">
                 <svg className="w-7 h-7" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                 </svg>
@@ -170,7 +238,7 @@ export default function Home() {
             </div>
 
             <div className="text-center p-6">
-              <div className="w-14 h-14 mx-auto mb-5 text-rose-500 bg-rose-100 rounded-full flex items-center justify-center">
+              <div className="w-14 h-14 mx-auto mb-5 text-gold-600 bg-gold-100 rounded-full flex items-center justify-center ring-1 ring-gold-300">
                 <svg className="w-7 h-7" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
@@ -184,7 +252,7 @@ export default function Home() {
             </div>
 
             <div className="text-center p-6">
-              <div className="w-14 h-14 mx-auto mb-5 text-rose-500 bg-rose-100 rounded-full flex items-center justify-center">
+              <div className="w-14 h-14 mx-auto mb-5 text-gold-600 bg-gold-100 rounded-full flex items-center justify-center ring-1 ring-gold-300">
                 <svg className="w-7 h-7" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                 </svg>
