@@ -21,7 +21,8 @@ const serviceBadges: Record<string, { text: string; color: string }> = {
   'post-surgical': { text: 'Recovery Support', color: 'bg-charcoal text-champagne' },
 };
 
-export const revalidate = 60; // Revalidate every 60 seconds
+// Static generation - rebuilds on each deploy
+export const dynamic = 'force-static';
 
 export default async function ServicesPage() {
   const data = await getBusinessData();
