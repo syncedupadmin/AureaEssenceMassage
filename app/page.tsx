@@ -4,11 +4,17 @@ import CTAButton from '@/components/CTAButton';
 import ServiceCard from '@/components/ServiceCard';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import LocationsSection from '@/components/LocationsSection';
-import { coreServices, serviceAddOns, getAddOnPrice } from '@/config/business';
+import { getBusinessData, getAddOnPriceDisplay } from '@/lib/data';
 
-export default function Home() {
+// ISR - revalidate every 60 seconds for fresh pricing data
+export const revalidate = 60;
+
+export default async function Home() {
+  const data = await getBusinessData();
+  const { services, addOns, pricing } = data;
+
   // Take first 4 services for homepage preview
-  const previewServices = coreServices.slice(0, 4).map(service => ({
+  const previewServices = services.slice(0, 4).map(service => ({
     title: service.title,
     description: service.shortDescription,
     imageSrc: service.imageSrc,
@@ -16,7 +22,7 @@ export default function Home() {
   }));
 
   // Get enabled add-ons for preview
-  const enabledAddOns = serviceAddOns.filter(a => a.enabled);
+  const enabledAddOns = addOns.filter(a => a.enabled);
 
   return (
     <>
@@ -214,7 +220,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
               {enabledAddOns.map((addOn) => {
-                const price = getAddOnPrice(addOn.id);
+                const price = getAddOnPriceDisplay(pricing, addOn.id);
                 return (
                   <div
                     key={addOn.id}
