@@ -35,8 +35,8 @@ const KEYS = {
 // Default settings (used if nothing in KV)
 const DEFAULT_SETTINGS: SiteSettings = {
   emailProvider: 'resend',
-  fromEmail: process.env.FROM_EMAIL || 'noreply@aureaessencemassage.com',
-  adminEmail: process.env.ADMIN_EMAIL || '',
+  fromEmail: process.env.FROM_EMAIL || 'bookings@notifications.aureaessencemassage.com',
+  adminEmail: process.env.ADMIN_EMAIL || 'admin@syncedupsolution.com',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://aureaessencemassage.com',
   businessName: 'Áurea Essence Massage',
   businessPhone: '(305) 519-4034',
