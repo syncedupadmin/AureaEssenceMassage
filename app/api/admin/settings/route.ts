@@ -11,8 +11,8 @@ import { z } from 'zod';
 
 // Schema for updating settings
 const updateSettingsSchema = z.object({
-  emailProvider: z.enum(['sendgrid', 'none']).optional(),
-  sendgridApiKey: z.string().optional(),
+  emailProvider: z.enum(['resend', 'none']).optional(),
+  resendApiKey: z.string().optional(),
   fromEmail: z.string().email().optional(),
   adminEmail: z.string().email().optional(),
   siteUrl: z.string().url().optional(),
@@ -38,8 +38,8 @@ export async function GET() {
     // Don't expose the actual API key, just indicate if it's set
     const safeSettings = {
       ...settings,
-      sendgridApiKey: settings.sendgridApiKey ? '••••••••' : undefined,
-      hasApiKey: !!settings.sendgridApiKey || !!process.env.RESEND_API_KEY,
+      resendApiKey: settings.resendApiKey ? '••••••••' : undefined,
+      hasApiKey: !!settings.resendApiKey || !!process.env.RESEND_API_KEY,
     };
 
     return NextResponse.json({
@@ -81,8 +81,8 @@ export async function PATCH(request: NextRequest) {
     // Don't expose the actual API key in response
     const safeSettings = {
       ...updated,
-      sendgridApiKey: updated.sendgridApiKey ? '••••••••' : undefined,
-      hasApiKey: !!updated.sendgridApiKey,
+      resendApiKey: updated.resendApiKey ? '••••••••' : undefined,
+      hasApiKey: !!updated.resendApiKey,
     };
 
     return NextResponse.json({

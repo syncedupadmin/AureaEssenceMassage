@@ -1,21 +1,20 @@
-import sgMail from '@sendgrid/mail';
+import { Resend } from 'resend';
 import type { Booking } from './bookings';
 import { formatETDate, formatETDateShort } from './timezone';
 import { TIME_SLOT_LABELS, LOCATION_TYPE_LABELS } from './schemas/booking';
 import { businessConfig } from '@/config/business';
-import { getSendGridApiKey, getFromEmail, getAdminEmail, getSettings } from './settings';
+import { getResendApiKey, getFromEmail, getAdminEmail, getSettings } from './settings';
 
 /**
- * Initialize SendGrid with API key from settings
+ * Get configured Resend client
  */
-async function initSendGrid(): Promise<boolean> {
-  const apiKey = await getSendGridApiKey();
+async function getResendClient(): Promise<Resend | null> {
+  const apiKey = await getResendApiKey();
   if (!apiKey) {
-    console.warn('SendGrid API key not configured');
-    return false;
+    console.warn('Resend API key not configured');
+    return null;
   }
-  sgMail.setApiKey(apiKey);
-  return true;
+  return new Resend(apiKey);
 }
 
 /**
@@ -81,8 +80,8 @@ function getLocationLabel(locationType: string): string {
  * Sent immediately when a booking request is submitted
  */
 export async function sendBookingReceivedEmail(booking: Booking): Promise<void> {
-  const initialized = await initSendGrid();
-  if (!initialized) return;
+  const resend = await getResendClient();
+  if (!resend) return;
 
   const config = await getEmailConfig();
   const statusUrl = `${config.siteUrl}/booking/status?ref=${booking.lookupToken}`;
@@ -179,7 +178,7 @@ ${businessConfig.name}
 Luxury Wellness, Delivered to Your Door
   `;
 
-  await sgMail.send({
+  await resend.emails.send({
     from: config.fromEmail,
     to: booking.customerEmail,
     subject: `Booking Request Received - ${booking.lookupToken}`,
@@ -193,8 +192,8 @@ Luxury Wellness, Delivered to Your Door
  * Sent when admin confirms the booking with date/time
  */
 export async function sendBookingConfirmedEmail(booking: Booking): Promise<void> {
-  const initialized = await initSendGrid();
-  if (!initialized) return;
+  const resend = await getResendClient();
+  if (!resend) return;
 
   const config = await getEmailConfig();
   const statusUrl = `${config.siteUrl}/booking/status?ref=${booking.lookupToken}`;
@@ -297,7 +296,7 @@ ${businessConfig.name}
 Luxury Wellness, Delivered to Your Door
   `;
 
-  await sgMail.send({
+  await resend.emails.send({
     from: config.fromEmail,
     to: booking.customerEmail,
     subject: `Appointment Confirmed - ${formatETDateShort(booking.confirmedDate + 'T12:00:00Z')}`,
@@ -311,8 +310,8 @@ Luxury Wellness, Delivered to Your Door
  * Sent when booking is cancelled (by customer or admin)
  */
 export async function sendBookingCancelledEmail(booking: Booking, cancelledByCustomer: boolean): Promise<void> {
-  const initialized = await initSendGrid();
-  if (!initialized) return;
+  const resend = await getResendClient();
+  if (!resend) return;
 
   const config = await getEmailConfig();
 
@@ -408,7 +407,7 @@ ${businessConfig.name}
 Luxury Wellness, Delivered to Your Door
   `;
 
-  await sgMail.send({
+  await resend.emails.send({
     from: config.fromEmail,
     to: booking.customerEmail,
     subject: `Booking Cancelled - ${booking.lookupToken}`,
@@ -422,8 +421,8 @@ Luxury Wellness, Delivered to Your Door
  * Sent 24 hours before confirmed appointment
  */
 export async function sendAppointmentReminderEmail(booking: Booking): Promise<void> {
-  const initialized = await initSendGrid();
-  if (!initialized) return;
+  const resend = await getResendClient();
+  if (!resend) return;
 
   const config = await getEmailConfig();
   const statusUrl = `${config.siteUrl}/booking/status?ref=${booking.lookupToken}`;
@@ -525,7 +524,7 @@ ${businessConfig.name}
 Luxury Wellness, Delivered to Your Door
   `;
 
-  await sgMail.send({
+  await resend.emails.send({
     from: config.fromEmail,
     to: booking.customerEmail,
     subject: `Reminder: Your Appointment Tomorrow - ${getTimeLabel(booking.confirmedTime)}`,
@@ -539,8 +538,8 @@ Luxury Wellness, Delivered to Your Door
  * Sent immediately when a new booking is submitted
  */
 export async function sendNewBookingAdminAlert(booking: Booking): Promise<void> {
-  const initialized = await initSendGrid();
-  if (!initialized) return;
+  const resend = await getResendClient();
+  if (!resend) return;
 
   const config = await getEmailConfig();
   const adminUrl = `${config.siteUrl}/admin`;
@@ -654,7 +653,7 @@ Admin Dashboard: ${adminUrl}
 Submitted: ${new Date(booking.createdAt).toLocaleString('en-US', { timeZone: 'America/New_York' })} ET
   `;
 
-  await sgMail.send({
+  await resend.emails.send({
     from: config.fromEmail,
     to: config.adminEmail,
     subject: `New Booking: ${booking.service} - ${booking.customerName}`,

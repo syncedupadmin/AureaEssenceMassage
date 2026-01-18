@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 
 interface SiteSettings {
-  emailProvider: 'sendgrid' | 'none';
-  sendgridApiKey?: string;
+  emailProvider: 'resend' | 'none';
+  resendApiKey?: string;
   fromEmail: string;
   adminEmail: string;
   siteUrl: string;
@@ -28,7 +28,7 @@ export default function SettingsTab({ onMessage }: SettingsTabProps) {
 
   // Form state for settings
   const [formData, setFormData] = useState({
-    sendgridApiKey: '',
+    resendApiKey: '',
     fromEmail: '',
     adminEmail: '',
     siteUrl: '',
@@ -61,7 +61,7 @@ export default function SettingsTab({ onMessage }: SettingsTabProps) {
 
       // Populate form with current settings
       setFormData({
-        sendgridApiKey: '', // Don't populate API key for security
+        resendApiKey: '', // Don't populate API key for security
         fromEmail: data.settings.fromEmail || '',
         adminEmail: data.settings.adminEmail || '',
         siteUrl: data.settings.siteUrl || '',
@@ -83,7 +83,7 @@ export default function SettingsTab({ onMessage }: SettingsTabProps) {
     setSaving(true);
 
     try {
-      // Only include sendgridApiKey if it was changed (not empty)
+      // Only include resendApiKey if it was changed (not empty)
       const updates: Record<string, unknown> = {
         fromEmail: formData.fromEmail,
         adminEmail: formData.adminEmail,
@@ -94,8 +94,8 @@ export default function SettingsTab({ onMessage }: SettingsTabProps) {
         cancellationHours: formData.cancellationHours,
       };
 
-      if (formData.sendgridApiKey) {
-        updates.sendgridApiKey = formData.sendgridApiKey;
+      if (formData.resendApiKey) {
+        updates.resendApiKey = formData.resendApiKey;
       }
 
       const res = await fetch('/api/admin/settings', {
@@ -110,7 +110,7 @@ export default function SettingsTab({ onMessage }: SettingsTabProps) {
       }
 
       onMessage('Settings saved successfully', 'success');
-      setFormData(prev => ({ ...prev, sendgridApiKey: '' })); // Clear API key input
+      setFormData(prev => ({ ...prev, resendApiKey: '' })); // Clear API key input
       fetchSettings(); // Refresh to get updated state
     } catch (error) {
       console.error('Error saving settings:', error);
@@ -202,20 +202,20 @@ export default function SettingsTab({ onMessage }: SettingsTabProps) {
         </div>
 
         <div className="p-6 space-y-6">
-          {/* SendGrid API Key */}
+          {/* Resend API Key */}
           <div>
             <label className="block text-sm font-medium text-stone-700 mb-2">
-              SendGrid API Key
+              Resend API Key
             </label>
             <input
               type="password"
-              value={formData.sendgridApiKey}
-              onChange={(e) => setFormData(prev => ({ ...prev, sendgridApiKey: e.target.value }))}
+              value={formData.resendApiKey}
+              onChange={(e) => setFormData(prev => ({ ...prev, resendApiKey: e.target.value }))}
               className="w-full px-4 py-2.5 border border-stone-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
-              placeholder={settings?.hasApiKey ? '••••••••••••••••' : 'Enter API key'}
+              placeholder={settings?.hasApiKey ? '••••••••••••••••' : 'Enter API key (starts with re_)'}
             />
             <p className="text-xs text-stone-500 mt-1">
-              {settings?.hasApiKey ? 'API key is set. Enter a new value to update.' : 'Required for sending emails.'}
+              {settings?.hasApiKey ? 'API key is set. Enter a new value to update.' : 'Get your free API key from resend.com'}
             </p>
           </div>
 

@@ -4,8 +4,8 @@ import { hash, compare } from './password';
 // Settings stored in KV
 export interface SiteSettings {
   // Email Configuration
-  emailProvider: 'sendgrid' | 'none';
-  sendgridApiKey?: string;
+  emailProvider: 'resend' | 'none';
+  resendApiKey?: string;
   fromEmail: string;
   adminEmail: string;
 
@@ -34,9 +34,9 @@ const KEYS = {
 
 // Default settings (used if nothing in KV)
 const DEFAULT_SETTINGS: SiteSettings = {
-  emailProvider: 'sendgrid',
-  fromEmail: process.env.RESEND_FROM_EMAIL || 'noreply@aureaessencemassage.com',
-  adminEmail: process.env.RESEND_TO_EMAIL || '',
+  emailProvider: 'resend',
+  fromEmail: process.env.FROM_EMAIL || 'noreply@aureaessencemassage.com',
+  adminEmail: process.env.ADMIN_EMAIL || '',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://aureaessencemassage.com',
   businessName: 'Áurea Essence Massage',
   businessPhone: '(305) 519-4034',
@@ -173,14 +173,14 @@ export async function hasCustomAdminPassword(): Promise<boolean> {
 // ==================== EMAIL SETTINGS HELPERS ====================
 
 /**
- * Get SendGrid API key (from KV settings or env var)
+ * Get Resend API key (from KV settings or env var)
  */
-export async function getSendGridApiKey(): Promise<string | null> {
+export async function getResendApiKey(): Promise<string | null> {
   const settings = await getSettings();
 
   // Check KV settings first
-  if (settings.sendgridApiKey) {
-    return settings.sendgridApiKey;
+  if (settings.resendApiKey) {
+    return settings.resendApiKey;
   }
 
   // Fall back to environment variable
@@ -192,7 +192,7 @@ export async function getSendGridApiKey(): Promise<string | null> {
  */
 export async function getFromEmail(): Promise<string> {
   const settings = await getSettings();
-  return settings.fromEmail || process.env.RESEND_FROM_EMAIL || 'noreply@aureaessencemassage.com';
+  return settings.fromEmail || process.env.FROM_EMAIL || 'noreply@aureaessencemassage.com';
 }
 
 /**
@@ -200,13 +200,13 @@ export async function getFromEmail(): Promise<string> {
  */
 export async function getAdminEmail(): Promise<string> {
   const settings = await getSettings();
-  return settings.adminEmail || process.env.RESEND_TO_EMAIL || '';
+  return settings.adminEmail || process.env.ADMIN_EMAIL || '';
 }
 
 /**
  * Check if email is configured
  */
 export async function isEmailConfigured(): Promise<boolean> {
-  const apiKey = await getSendGridApiKey();
-  return !!apiKey && apiKey.startsWith('SG.');
+  const apiKey = await getResendApiKey();
+  return !!apiKey && apiKey.startsWith('re_');
 }
