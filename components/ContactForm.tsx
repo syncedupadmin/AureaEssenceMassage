@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Link from 'next/link';
 import { getServiceNames } from '@/config/business';
 
 interface ContactFormData {
@@ -17,10 +18,15 @@ interface ContactFormData {
   message: string;
 }
 
+interface BookingResult {
+  lookupToken: string;
+}
+
 export default function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [bookingResult, setBookingResult] = useState<BookingResult | null>(null);
 
   const {
     register,
@@ -34,7 +40,7 @@ export default function ContactForm() {
     setError(null);
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('/api/bookings', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -43,13 +49,17 @@ export default function ContactForm() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || 'Failed to send message');
+        if (response.status === 429) {
+          throw new Error('Too many requests. Please wait a moment and try again.');
+        }
+        throw new Error(result.error || 'Failed to submit booking');
       }
 
+      setBookingResult({ lookupToken: result.lookupToken });
       setIsSubmitted(true);
       reset();
     } catch (err) {
-      setError('Something went wrong. Please try again or call us directly.');
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again or call us directly.');
       console.error('Form submission error:', err);
     } finally {
       setIsSubmitting(false);
@@ -73,7 +83,7 @@ export default function ContactForm() {
     { value: 'varies', label: 'Varies - Different areas' },
   ];
 
-  if (isSubmitted) {
+  if (isSubmitted && bookingResult) {
     return (
       <div className="bg-white rounded-sm shadow-elegant p-6 sm:p-8 md:p-10">
         <div className="text-center py-8">
@@ -96,18 +106,43 @@ export default function ContactForm() {
           <p className="text-charcoal/70 mb-6 max-w-md mx-auto">
             Thank you for your booking request. We&apos;ll review your details and confirm your appointment within 24 hours.
           </p>
-          <div className="bg-champagne-100 border border-champagne-200 rounded-sm p-4 mb-6 max-w-md mx-auto">
+
+          {/* Reference Number */}
+          <div className="bg-champagne-100 border border-champagne-200 rounded-sm p-5 mb-6 max-w-md mx-auto">
+            <p className="text-charcoal/60 text-xs uppercase tracking-wider mb-2">Your Reference Number</p>
+            <p className="text-2xl font-semibold text-rose-500 tracking-widest mb-3">
+              {bookingResult.lookupToken}
+            </p>
             <p className="text-charcoal/60 text-sm">
-              <strong className="text-charcoal">What happens next:</strong><br />
-              We&apos;ll reach out via email or phone to confirm your date, time, and any special requests.
+              Save this number to check your booking status or make changes.
             </p>
           </div>
-          <button
-            onClick={() => setIsSubmitted(false)}
-            className="text-rose-500 hover:text-rose-600 font-medium transition-colors text-sm"
-          >
-            Submit another request
-          </button>
+
+          <div className="bg-stone-50 border border-stone-200 rounded-sm p-4 mb-6 max-w-md mx-auto">
+            <p className="text-charcoal/60 text-sm">
+              <strong className="text-charcoal">What happens next:</strong><br />
+              We&apos;ll reach out via email to confirm your date, time, and any special requests.
+              You can check your booking status anytime using your reference number.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
+            <Link
+              href={`/booking/status?ref=${bookingResult.lookupToken}`}
+              className="px-6 py-3 bg-rose-500 text-white rounded-sm font-medium text-sm hover:bg-rose-600 transition-colors"
+            >
+              Check Booking Status
+            </Link>
+            <button
+              onClick={() => {
+                setIsSubmitted(false);
+                setBookingResult(null);
+              }}
+              className="px-6 py-3 border border-stone-300 text-charcoal/70 rounded-sm font-medium text-sm hover:bg-stone-50 transition-colors"
+            >
+              Submit Another Request
+            </button>
+          </div>
         </div>
       </div>
     );

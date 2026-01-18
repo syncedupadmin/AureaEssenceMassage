@@ -1,14 +1,55 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import type { Service, AddOn, Pricing } from '@/lib/data';
+import type { BookingStatus } from '@/lib/schemas/booking';
+import BookingsTab from '@/components/admin/BookingsTab';
+import AvailabilityTab from '@/components/admin/AvailabilityTab';
+import BookingDetailModal from '@/components/admin/BookingDetailModal';
 
 interface BusinessData {
   services: Service[];
   addOns: AddOn[];
   pricing: Pricing;
+}
+
+interface Booking {
+  id: string;
+  lookupToken: string;
+  status: BookingStatus;
+  customerName: string;
+  customerEmail: string;
+  customerPhone: string;
+  service: string;
+  locationType: string;
+  address?: string;
+  preferredDate?: string;
+  preferredTime?: string;
+  preferredPressure?: string;
+  confirmedDate?: string;
+  confirmedTime?: string;
+  message?: string;
+  adminNotes?: string;
+  cancellationReason?: string;
+  createdAt: string;
+  updatedAt: string;
+  confirmedAt?: string;
+  completedAt?: string;
+  cancelledAt?: string;
+}
+
+interface BookingStats {
+  pending: number;
+  confirmed: number;
+  completed: number;
+  cancelled: number;
+}
+
+interface BlockedDate {
+  date: string;
+  reason?: string;
 }
 
 // Available stock images
@@ -32,17 +73,79 @@ export default function AdminDashboard() {
   const [data, setData] = useState<BusinessData | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [activeTab, setActiveTab] = useState<'services' | 'pricing' | 'addons'>('services');
+  const [activeTab, setActiveTab] = useState<'services' | 'pricing' | 'addons' | 'bookings' | 'availability'>('bookings');
   const [editingService, setEditingService] = useState<Service | null>(null);
   const [isAddingService, setIsAddingService] = useState(false);
   const [notification, setNotification] = useState<{ type: 'success' | 'error' | 'info'; title: string; message: string } | null>(null);
   const [confirmDialog, setConfirmDialog] = useState<{ title: string; message: string; onConfirm: () => void } | null>(null);
   const [hasUnsavedPricing, setHasUnsavedPricing] = useState(false);
 
+  // Booking state
+  const [bookings, setBookings] = useState<Booking[]>([]);
+  const [bookingStats, setBookingStats] = useState<BookingStats>({ pending: 0, confirmed: 0, completed: 0, cancelled: 0 });
+  const [bookingsLoading, setBookingsLoading] = useState(false);
+  const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
+  const [bookingStatusFilter, setBookingStatusFilter] = useState<BookingStatus | 'all'>('all');
+
+  // Availability state
+  const [blockedDates, setBlockedDates] = useState<BlockedDate[]>([]);
+  const [availabilityLoading, setAvailabilityLoading] = useState(false);
+
+  // Fetch bookings
+  const fetchBookings = useCallback(async () => {
+    setBookingsLoading(true);
+    try {
+      const statusParam = bookingStatusFilter !== 'all' ? `?status=${bookingStatusFilter}` : '';
+      const response = await fetch(`/api/admin/bookings${statusParam}`);
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch bookings');
+      }
+
+      const data = await response.json();
+      setBookings(data.bookings);
+      setBookingStats(data.stats);
+    } catch (error) {
+      console.error('Error fetching bookings:', error);
+      showNotification('error', 'Connection Error', 'Could not load bookings.');
+    } finally {
+      setBookingsLoading(false);
+    }
+  }, [bookingStatusFilter]);
+
+  // Fetch availability
+  const fetchAvailability = useCallback(async () => {
+    setAvailabilityLoading(true);
+    try {
+      const response = await fetch('/api/admin/availability');
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch availability');
+      }
+
+      const data = await response.json();
+      setBlockedDates(data.blockedDates);
+    } catch (error) {
+      console.error('Error fetching availability:', error);
+      showNotification('error', 'Connection Error', 'Could not load availability.');
+    } finally {
+      setAvailabilityLoading(false);
+    }
+  }, []);
+
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Fetch bookings when tab changes or filter changes
+  useEffect(() => {
+    if (activeTab === 'bookings') {
+      fetchBookings();
+    } else if (activeTab === 'availability') {
+      fetchAvailability();
+    }
+  }, [activeTab, bookingStatusFilter, fetchBookings, fetchAvailability]);
 
   const fetchData = async () => {
     try {
@@ -215,6 +318,86 @@ export default function AdminDashboard() {
     setHasUnsavedPricing(true);
   };
 
+  // Booking handlers
+  const handleUpdateBooking = async (id: string, updates: Partial<Booking>) => {
+    setSaving(true);
+    try {
+      const response = await fetch(`/api/admin/bookings/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updates),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Failed to update booking');
+      }
+
+      const data = await response.json();
+
+      // Update local state
+      setBookings((prev) =>
+        prev.map((b) => (b.id === id ? data.booking : b))
+      );
+
+      // Update selected booking if it's the one being edited
+      if (selectedBooking?.id === id) {
+        setSelectedBooking(data.booking);
+      }
+
+      // Refresh stats
+      await fetchBookings();
+
+      showNotification('success', 'Booking Updated', 'The booking has been updated successfully.');
+    } catch (error) {
+      console.error('Error updating booking:', error);
+      showNotification('error', 'Update Failed', error instanceof Error ? error.message : 'Could not update booking.');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  // Availability handlers
+  const handleAddBlockedDate = async (date: string, reason?: string) => {
+    try {
+      const response = await fetch('/api/admin/availability/blocked', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ date, reason }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to block date');
+      }
+
+      await fetchAvailability();
+      showNotification('success', 'Date Blocked', `${date} has been blocked.`);
+    } catch (error) {
+      console.error('Error blocking date:', error);
+      showNotification('error', 'Error', 'Could not block date.');
+    }
+  };
+
+  const handleRemoveBlockedDate = async (date: string) => {
+    try {
+      const response = await fetch('/api/admin/availability/blocked', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ date }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to unblock date');
+      }
+
+      await fetchAvailability();
+      showNotification('success', 'Date Unblocked', `${date} is now available.`);
+    } catch (error) {
+      console.error('Error unblocking date:', error);
+      showNotification('error', 'Error', 'Could not unblock date.');
+    }
+  };
+
   // Get list of images already in use
   const usedImages = data?.services.map(s => s.imageSrc) || [];
 
@@ -347,8 +530,10 @@ export default function AdminDashboard() {
       {/* Tab Navigation */}
       <div className="bg-white border-b border-stone-200 sticky top-[65px] z-30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex gap-8">
+          <div className="flex gap-8 overflow-x-auto">
             {[
+              { id: 'bookings', label: 'Bookings', badge: bookingStats.pending > 0 ? bookingStats.pending : undefined },
+              { id: 'availability', label: 'Availability' },
               { id: 'services', label: 'Services' },
               { id: 'pricing', label: 'Pricing' },
               { id: 'addons', label: 'Add-ons' },
@@ -356,13 +541,18 @@ export default function AdminDashboard() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as typeof activeTab)}
-                className={`relative py-4 text-sm tracking-wide transition-colors ${
+                className={`relative py-4 text-sm tracking-wide transition-colors whitespace-nowrap ${
                   activeTab === tab.id
                     ? 'text-rose-500 font-medium'
                     : 'text-stone-500 hover:text-stone-700 font-light'
                 }`}
               >
                 {tab.label}
+                {'badge' in tab && tab.badge && (
+                  <span className="ml-2 px-1.5 py-0.5 text-xs font-medium bg-rose-500 text-white rounded-full">
+                    {tab.badge}
+                  </span>
+                )}
                 {activeTab === tab.id && (
                   <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-rose-400"></div>
                 )}
@@ -377,6 +567,30 @@ export default function AdminDashboard() {
 
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24">
+        {/* Bookings Tab */}
+        {activeTab === 'bookings' && (
+          <BookingsTab
+            bookings={bookings}
+            stats={bookingStats}
+            loading={bookingsLoading}
+            onRefresh={fetchBookings}
+            onSelectBooking={setSelectedBooking}
+            selectedStatus={bookingStatusFilter}
+            onStatusFilterChange={setBookingStatusFilter}
+          />
+        )}
+
+        {/* Availability Tab */}
+        {activeTab === 'availability' && (
+          <AvailabilityTab
+            blockedDates={blockedDates}
+            loading={availabilityLoading}
+            onRefresh={fetchAvailability}
+            onAddBlockedDate={handleAddBlockedDate}
+            onRemoveBlockedDate={handleRemoveBlockedDate}
+          />
+        )}
+
         {/* Services Tab */}
         {activeTab === 'services' && (
           <div className="space-y-6">
@@ -627,6 +841,16 @@ export default function AdminDashboard() {
             setEditingService(null);
             setIsAddingService(false);
           }}
+          saving={saving}
+        />
+      )}
+
+      {/* Booking Detail Modal */}
+      {selectedBooking && (
+        <BookingDetailModal
+          booking={selectedBooking}
+          onClose={() => setSelectedBooking(null)}
+          onUpdate={handleUpdateBooking}
           saving={saving}
         />
       )}
