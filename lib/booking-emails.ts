@@ -3,13 +3,32 @@ import type { Booking } from './bookings';
 import { formatETDate, formatETDateShort } from './timezone';
 import { TIME_SLOT_LABELS, LOCATION_TYPE_LABELS } from './schemas/booking';
 import { businessConfig } from '@/config/business';
+import { getSendGridApiKey, getFromEmail, getAdminEmail, getSettings } from './settings';
 
-// Initialize SendGrid
-sgMail.setApiKey(process.env.RESEND_API_KEY || '');
+/**
+ * Initialize SendGrid with API key from settings
+ */
+async function initSendGrid(): Promise<boolean> {
+  const apiKey = await getSendGridApiKey();
+  if (!apiKey) {
+    console.warn('SendGrid API key not configured');
+    return false;
+  }
+  sgMail.setApiKey(apiKey);
+  return true;
+}
 
-const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'noreply@aureaessencemassage.com';
-const ADMIN_EMAIL = process.env.RESEND_TO_EMAIL || 'admin@aureaessencemassage.com';
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aureaessencemassage.com';
+/**
+ * Get email configuration from settings
+ */
+async function getEmailConfig() {
+  const settings = await getSettings();
+  return {
+    fromEmail: await getFromEmail(),
+    adminEmail: await getAdminEmail(),
+    siteUrl: settings.siteUrl || process.env.NEXT_PUBLIC_SITE_URL || 'https://aureaessencemassage.com',
+  };
+}
 
 /**
  * Email template styles (inline CSS for email compatibility)
@@ -62,7 +81,11 @@ function getLocationLabel(locationType: string): string {
  * Sent immediately when a booking request is submitted
  */
 export async function sendBookingReceivedEmail(booking: Booking): Promise<void> {
-  const statusUrl = `${SITE_URL}/booking/status?ref=${booking.lookupToken}`;
+  const initialized = await initSendGrid();
+  if (!initialized) return;
+
+  const config = await getEmailConfig();
+  const statusUrl = `${config.siteUrl}/booking/status?ref=${booking.lookupToken}`;
 
   const html = `
     <!DOCTYPE html>
@@ -157,7 +180,7 @@ Luxury Wellness, Delivered to Your Door
   `;
 
   await sgMail.send({
-    from: FROM_EMAIL,
+    from: config.fromEmail,
     to: booking.customerEmail,
     subject: `Booking Request Received - ${booking.lookupToken}`,
     html,
@@ -170,7 +193,11 @@ Luxury Wellness, Delivered to Your Door
  * Sent when admin confirms the booking with date/time
  */
 export async function sendBookingConfirmedEmail(booking: Booking): Promise<void> {
-  const statusUrl = `${SITE_URL}/booking/status?ref=${booking.lookupToken}`;
+  const initialized = await initSendGrid();
+  if (!initialized) return;
+
+  const config = await getEmailConfig();
+  const statusUrl = `${config.siteUrl}/booking/status?ref=${booking.lookupToken}`;
 
   const html = `
     <!DOCTYPE html>
@@ -271,7 +298,7 @@ Luxury Wellness, Delivered to Your Door
   `;
 
   await sgMail.send({
-    from: FROM_EMAIL,
+    from: config.fromEmail,
     to: booking.customerEmail,
     subject: `Appointment Confirmed - ${formatETDateShort(booking.confirmedDate + 'T12:00:00Z')}`,
     html,
@@ -284,6 +311,11 @@ Luxury Wellness, Delivered to Your Door
  * Sent when booking is cancelled (by customer or admin)
  */
 export async function sendBookingCancelledEmail(booking: Booking, cancelledByCustomer: boolean): Promise<void> {
+  const initialized = await initSendGrid();
+  if (!initialized) return;
+
+  const config = await getEmailConfig();
+
   const html = `
     <!DOCTYPE html>
     <html>
@@ -334,7 +366,7 @@ export async function sendBookingCancelledEmail(booking: Booking, cancelledByCus
           </p>
 
           <div style="text-align: center; margin: 24px 0;">
-            <a href="${SITE_URL}/#contact" style="${styles.button}">Book Another Appointment</a>
+            <a href="${config.siteUrl}/#contact" style="${styles.button}">Book Another Appointment</a>
           </div>
 
           <p style="margin: 20px 0 0 0; font-size: 14px; color: #666; line-height: 1.6;">
@@ -377,7 +409,7 @@ Luxury Wellness, Delivered to Your Door
   `;
 
   await sgMail.send({
-    from: FROM_EMAIL,
+    from: config.fromEmail,
     to: booking.customerEmail,
     subject: `Booking Cancelled - ${booking.lookupToken}`,
     html,
@@ -390,7 +422,11 @@ Luxury Wellness, Delivered to Your Door
  * Sent 24 hours before confirmed appointment
  */
 export async function sendAppointmentReminderEmail(booking: Booking): Promise<void> {
-  const statusUrl = `${SITE_URL}/booking/status?ref=${booking.lookupToken}`;
+  const initialized = await initSendGrid();
+  if (!initialized) return;
+
+  const config = await getEmailConfig();
+  const statusUrl = `${config.siteUrl}/booking/status?ref=${booking.lookupToken}`;
 
   const html = `
     <!DOCTYPE html>
@@ -490,7 +526,7 @@ Luxury Wellness, Delivered to Your Door
   `;
 
   await sgMail.send({
-    from: FROM_EMAIL,
+    from: config.fromEmail,
     to: booking.customerEmail,
     subject: `Reminder: Your Appointment Tomorrow - ${getTimeLabel(booking.confirmedTime)}`,
     html,
@@ -503,7 +539,11 @@ Luxury Wellness, Delivered to Your Door
  * Sent immediately when a new booking is submitted
  */
 export async function sendNewBookingAdminAlert(booking: Booking): Promise<void> {
-  const adminUrl = `${SITE_URL}/admin`;
+  const initialized = await initSendGrid();
+  if (!initialized) return;
+
+  const config = await getEmailConfig();
+  const adminUrl = `${config.siteUrl}/admin`;
 
   const html = `
     <!DOCTYPE html>
@@ -615,8 +655,8 @@ Submitted: ${new Date(booking.createdAt).toLocaleString('en-US', { timeZone: 'Am
   `;
 
   await sgMail.send({
-    from: FROM_EMAIL,
-    to: ADMIN_EMAIL,
+    from: config.fromEmail,
+    to: config.adminEmail,
     subject: `New Booking: ${booking.service} - ${booking.customerName}`,
     html,
     text,

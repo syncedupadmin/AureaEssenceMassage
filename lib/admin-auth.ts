@@ -1,5 +1,6 @@
 import { SignJWT, jwtVerify } from 'jose';
 import { cookies } from 'next/headers';
+import { verifyAdminPassword } from './settings';
 
 const COOKIE_NAME = 'admin_session';
 const SESSION_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
@@ -16,14 +17,10 @@ function getJwtSecret(): Uint8Array {
 }
 
 /**
- * Verify password against environment variable
+ * Verify password - checks KV first, then env var
  */
-export function verifyPassword(password: string): boolean {
-  const adminPassword = process.env.ADMIN_PASSWORD;
-  if (!adminPassword) {
-    throw new Error('ADMIN_PASSWORD environment variable is not set');
-  }
-  return password === adminPassword;
+export async function verifyPassword(password: string): Promise<boolean> {
+  return await verifyAdminPassword(password);
 }
 
 /**

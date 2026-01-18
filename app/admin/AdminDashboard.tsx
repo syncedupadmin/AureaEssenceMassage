@@ -8,6 +8,7 @@ import type { BookingStatus } from '@/lib/schemas/booking';
 import BookingsTab from '@/components/admin/BookingsTab';
 import AvailabilityTab from '@/components/admin/AvailabilityTab';
 import BookingDetailModal from '@/components/admin/BookingDetailModal';
+import SettingsTab from '@/components/admin/SettingsTab';
 
 interface BusinessData {
   services: Service[];
@@ -73,7 +74,7 @@ export default function AdminDashboard() {
   const [data, setData] = useState<BusinessData | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [activeTab, setActiveTab] = useState<'services' | 'pricing' | 'addons' | 'bookings' | 'availability'>('bookings');
+  const [activeTab, setActiveTab] = useState<'services' | 'pricing' | 'addons' | 'bookings' | 'availability' | 'settings'>('bookings');
   const [editingService, setEditingService] = useState<Service | null>(null);
   const [isAddingService, setIsAddingService] = useState(false);
   const [notification, setNotification] = useState<{ type: 'success' | 'error' | 'info'; title: string; message: string } | null>(null);
@@ -537,6 +538,7 @@ export default function AdminDashboard() {
               { id: 'services', label: 'Services' },
               { id: 'pricing', label: 'Pricing' },
               { id: 'addons', label: 'Add-ons' },
+              { id: 'settings', label: 'Settings' },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -827,6 +829,15 @@ export default function AdminDashboard() {
               </div>
             </div>
           </div>
+        )}
+
+        {/* Settings Tab */}
+        {activeTab === 'settings' && (
+          <SettingsTab
+            onMessage={(message, type) => {
+              showNotification(type, type === 'success' ? 'Success' : 'Error', message);
+            }}
+          />
         )}
       </main>
 
