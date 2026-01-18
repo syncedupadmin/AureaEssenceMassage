@@ -25,7 +25,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://aureaessencemassage.vercel.app'),
+  metadataBase: new URL('https://aureaessencemassage.com'),
   title: "Áurea Essence Massage | Premium Mobile Massage Therapy",
   description: "Premium mobile massage therapy delivered to your location. Experience the luxury of spa-quality treatments in the comfort of your home, hotel, or office.",
   keywords: "mobile massage, luxury massage, in-home massage, massage therapy, spa at home, wellness, relaxation, Áurea Essence",
@@ -33,20 +33,14 @@ export const metadata: Metadata = {
     title: "Áurea Essence Massage | Premium Mobile Massage",
     description: "Premium mobile massage therapy. We bring the spa experience to your location.",
     type: "website",
-    images: [
-      {
-        url: "/images/aurea-essence-logo.png",
-        width: 1200,
-        height: 630,
-        alt: "Áurea Essence Massage",
-      },
-    ],
+    siteName: "Áurea Essence Massage",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "Áurea Essence Massage | Premium Mobile Massage",
     description: "Premium mobile massage therapy delivered to you.",
-    images: ["/images/aurea-essence-logo.png"],
+    creator: "@aureaessence",
   },
   icons: {
     icon: "/images/aurea-essence-logo.png",
@@ -58,9 +52,9 @@ const schemaData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Áurea Essence Massage",
-  "image": "https://aureaessencemassage.vercel.app/images/aurea-essence-logo.png",
-  "@id": "https://aureaessencemassage.vercel.app/#organization",
-  "url": "https://aureaessencemassage.vercel.app",
+  "image": "https://aureaessencemassage.com/images/og-image.png",
+  "@id": "https://aureaessencemassage.com/#organization",
+  "url": "https://aureaessencemassage.com",
   "priceRange": "$$-$$$",
   "address": {
     "@type": "PostalAddress",
