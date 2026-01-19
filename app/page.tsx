@@ -345,7 +345,7 @@ export default async function Home() {
             Book Your Session
           </Link>
           <p className="mt-6 text-champagne/50 text-sm">
-            Same-week availability • Easy rescheduling • No commitment
+            Same-day availability • Easy rescheduling • No commitment
           </p>
         </div>
       </section>
