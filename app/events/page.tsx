@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import CTAButton from '@/components/CTAButton';
 
 export const metadata: Metadata = {
@@ -76,9 +77,27 @@ export default function EventsPage() {
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-medium text-charcoal mb-6 tracking-wide">
             Elevate Your Event
           </h1>
-          <p className="text-base sm:text-lg text-charcoal/70 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-charcoal/70 leading-relaxed max-w-2xl mx-auto mb-10">
             Bespoke wellness experiences for groups and special occasions
           </p>
+        </div>
+
+        {/* Hero Image */}
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-sm shadow-elegant">
+            <Image
+              src="/images/massage-beachfront-patio.jpg"
+              alt="Beachfront event massage setup with multiple tables"
+              fill
+              priority
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent" />
+            <div className="absolute bottom-6 left-6 text-white">
+              <span className="text-xs font-medium tracking-wide uppercase text-gold-400 drop-shadow">Group Events</span>
+              <h3 className="text-xl sm:text-2xl font-serif drop-shadow">Unforgettable Experiences</h3>
+            </div>
+          </div>
         </div>
       </section>
 

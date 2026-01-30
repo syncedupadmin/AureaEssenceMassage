@@ -32,8 +32,8 @@ export default async function Home() {
         <div className="absolute inset-0">
           {/* Base Image */}
           <Image
-            src="/images/generated/hero-main.png"
-            alt="Luxury spa experience"
+            src="/images/massage-oceanview-room.jpg"
+            alt="Luxury massage room with oceanfront view"
             fill
             priority
             className="object-cover"
@@ -175,8 +175,85 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Signature Treatments Section */}
+      {/* Settings Gallery Section */}
       <section className="py-16 sm:py-20 md:py-24 bg-champagne-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 md:mb-16">
+            <div className="w-12 h-0.5 bg-gold-500 mx-auto mb-6"></div>
+            <h2 className="text-3xl sm:text-4xl font-serif font-medium text-charcoal mb-4 tracking-wide">
+              Where Relaxation Happens
+            </h2>
+            <p className="text-base text-charcoal/60 max-w-xl mx-auto">
+              From beachside retreats to luxury condos—we bring five-star wellness anywhere
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Large featured image */}
+            <div className="md:col-span-2 lg:col-span-2 relative h-64 sm:h-80 lg:h-96 overflow-hidden rounded-sm shadow-elegant group">
+              <Image
+                src="/images/massage-beachside-tropical.jpg"
+                alt="Beachside massage under palm trees"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent" />
+              <div className="absolute bottom-4 left-4 text-white">
+                <span className="text-xs font-medium tracking-wide uppercase text-gold-400">Beachfront</span>
+                <h3 className="text-lg font-serif">Paradise Awaits</h3>
+              </div>
+            </div>
+
+            {/* Modern interior */}
+            <div className="relative h-64 sm:h-80 lg:h-96 overflow-hidden rounded-sm shadow-elegant group">
+              <Image
+                src="/images/massage-modern-interior.jpg"
+                alt="Modern in-home massage setup"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent" />
+              <div className="absolute bottom-4 left-4 text-white">
+                <span className="text-xs font-medium tracking-wide uppercase text-gold-400">Private Residence</span>
+                <h3 className="text-lg font-serif">Your Space, Elevated</h3>
+              </div>
+            </div>
+
+            {/* Beachfront patio */}
+            <div className="relative h-64 sm:h-80 overflow-hidden rounded-sm shadow-elegant group">
+              <Image
+                src="/images/massage-beachfront-patio.jpg"
+                alt="Beachfront patio massage setup"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent" />
+              <div className="absolute bottom-4 left-4 text-white">
+                <span className="text-xs font-medium tracking-wide uppercase text-gold-400">Events & Groups</span>
+                <h3 className="text-lg font-serif">Celebrate Together</h3>
+              </div>
+            </div>
+
+            {/* Luxury condo */}
+            <div className="md:col-span-1 lg:col-span-2 relative h-64 sm:h-80 overflow-hidden rounded-sm shadow-elegant group">
+              <Image
+                src="/images/massage-luxury-condo.jpg"
+                alt="Luxury condo massage experience"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent" />
+              <div className="absolute bottom-4 left-4 text-white">
+                <span className="text-xs font-medium tracking-wide uppercase text-gold-400">Luxury Living</span>
+                <h3 className="text-lg font-serif">Five-Star Comfort</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Signature Treatments Section */}
+      <section className="py-16 sm:py-20 md:py-24 bg-champagne-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             {/* Gold decorative element */}
