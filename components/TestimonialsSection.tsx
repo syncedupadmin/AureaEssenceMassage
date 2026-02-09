@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 const testimonials = [
@@ -65,16 +64,6 @@ const itemVariants = {
 export default function TestimonialsSection() {
   return (
     <section className="py-16 sm:py-20 md:py-24 bg-champagne-100 relative overflow-hidden">
-      {/* Background texture */}
-      <div className="absolute inset-0 opacity-10">
-        <Image
-          src="/images/generated/bg-testimonials.png"
-          alt=""
-          fill
-          className="object-cover"
-        />
-      </div>
-
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
