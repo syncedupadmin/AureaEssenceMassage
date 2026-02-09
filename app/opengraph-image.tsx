@@ -20,19 +20,24 @@ export default async function Image() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'linear-gradient(135deg, #faf9f7 0%, #f5f0eb 100%)',
+          background: 'radial-gradient(ellipse at center, #2D2D2D 0%, #1C1C1C 100%)',
           fontFamily: 'Georgia, serif',
+          position: 'relative',
         }}
       >
-        {/* Decorative top border */}
+        {/* Subtle sparkle effect overlay */}
         <div
           style={{
             position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: '8px',
-            background: 'linear-gradient(90deg, #be8a6e 0%, #d4a88a 50%, #be8a6e 100%)',
+            inset: 0,
+            background: 'radial-gradient(circle at 30% 40%, rgba(201, 169, 110, 0.1) 0%, transparent 50%)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'radial-gradient(circle at 70% 60%, rgba(201, 169, 110, 0.08) 0%, transparent 50%)',
           }}
         />
 
@@ -43,100 +48,109 @@ export default async function Image() {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '40px',
+            padding: '60px',
+            position: 'relative',
+            zIndex: 10,
           }}
         >
-          {/* Logo/Brand mark */}
-          <div
-            style={{
-              width: '120px',
-              height: '120px',
-              borderRadius: '60px',
-              background: 'linear-gradient(135deg, #be8a6e 0%, #d4a88a 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginBottom: '32px',
-              boxShadow: '0 8px 32px rgba(190, 138, 110, 0.3)',
-            }}
-          >
-            <span style={{ fontSize: '48px', color: 'white', fontWeight: 'bold' }}>Á</span>
-          </div>
-
-          {/* Business name */}
+          {/* Business name with gold gradient */}
           <h1
             style={{
-              fontSize: '72px',
+              fontSize: '88px',
               fontWeight: '400',
-              color: '#1a1a1a',
-              margin: '0 0 16px 0',
-              letterSpacing: '-1px',
+              background: 'linear-gradient(135deg, #D4B896 0%, #C9A96E 50%, #D4B896 100%)',
+              backgroundClip: 'text',
+              color: 'transparent',
+              margin: '0 0 8px 0',
+              letterSpacing: '2px',
             }}
           >
             Áurea Essence
           </h1>
 
           {/* Tagline */}
-          <p
-            style={{
-              fontSize: '32px',
-              color: '#be8a6e',
-              margin: '0 0 40px 0',
-              fontWeight: '500',
-              letterSpacing: '4px',
-              textTransform: 'uppercase',
-            }}
-          >
-            Massage
-          </p>
-
-          {/* Divider */}
           <div
             style={{
-              width: '80px',
-              height: '2px',
-              background: '#be8a6e',
-              marginBottom: '32px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '20px',
+              marginBottom: '48px',
             }}
-          />
+          >
+            <div
+              style={{
+                width: '60px',
+                height: '1px',
+                background: 'linear-gradient(90deg, transparent, #C9A96E)',
+              }}
+            />
+            <p
+              style={{
+                fontSize: '24px',
+                color: '#C9A96E',
+                margin: 0,
+                fontWeight: '400',
+                letterSpacing: '6px',
+                textTransform: 'uppercase',
+              }}
+            >
+              Mobile Massage
+            </p>
+            <div
+              style={{
+                width: '60px',
+                height: '1px',
+                background: 'linear-gradient(90deg, #C9A96E, transparent)',
+              }}
+            />
+          </div>
 
           {/* Description */}
           <p
             style={{
-              fontSize: '28px',
-              color: '#666',
+              fontSize: '32px',
+              color: '#FAF6F0',
               margin: 0,
               textAlign: 'center',
-              maxWidth: '800px',
-              lineHeight: 1.4,
+              maxWidth: '900px',
+              lineHeight: 1.3,
+              fontWeight: '500',
             }}
           >
-            Premium Mobile Massage Therapy
+            Luxury Wellness, Delivered to Your Door
           </p>
 
           <p
             style={{
               fontSize: '22px',
-              color: '#888',
-              margin: '12px 0 0 0',
+              color: 'rgba(250, 246, 240, 0.6)',
+              margin: '20px 0 0 0',
               textAlign: 'center',
             }}
           >
-            Luxury Wellness, Delivered to Your Door
+            Five-Star Spa Experience • Your Private Setting
           </p>
         </div>
 
-        {/* Decorative bottom border */}
+        {/* Bottom accent */}
         <div
           style={{
             position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: '8px',
-            background: 'linear-gradient(90deg, #be8a6e 0%, #d4a88a 50%, #be8a6e 100%)',
+            bottom: '40px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '24px',
+            fontSize: '16px',
+            color: 'rgba(201, 169, 110, 0.6)',
+            letterSpacing: '2px',
           }}
-        />
+        >
+          <span>LICENSED & INSURED</span>
+          <span style={{ color: '#C9A96E' }}>•</span>
+          <span>SOUTH FLORIDA</span>
+          <span style={{ color: '#C9A96E' }}>•</span>
+          <span>5-STAR RATED</span>
+        </div>
       </div>
     ),
     {

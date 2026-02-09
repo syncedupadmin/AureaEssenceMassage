@@ -27,7 +27,7 @@ export default async function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-charcoal">
         {/* Background Layers */}
         <div className="absolute inset-0">
           {/* Base Image */}
@@ -36,35 +36,34 @@ export default async function Home() {
             alt="Luxury massage room with oceanfront view"
             fill
             priority
-            className="object-cover"
+            className="object-cover opacity-30"
           />
-          {/* Gradient Overlay - shows image on edges */}
+          {/* Dark gradient overlay for logo visibility */}
           <div
             className="absolute inset-0"
             style={{
-              background: 'radial-gradient(ellipse at center, rgba(245,240,232,0.92) 0%, rgba(245,240,232,0.75) 60%, rgba(245,240,232,0.5) 100%)'
+              background: 'radial-gradient(ellipse at center, rgba(28,28,28,0.85) 0%, rgba(28,28,28,0.70) 50%, rgba(28,28,28,0.85) 100%)'
             }}
           />
         </div>
 
         {/* Content */}
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-          {/* Gold Decorative Line */}
-          <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mb-6" />
-
-          {/* Logo */}
-          <Image
-            src="/images/aurea-essence-logo.png"
-            alt="Áurea Essence Massage"
-            width={400}
-            height={100}
-            priority
-            className="mx-auto mb-8 w-auto h-16 sm:h-20 md:h-24"
-          />
+          {/* Logo - Full Dark Version with Glow */}
+          <div className="mb-8 sm:mb-10">
+            <Image
+              src="/images/logo-full-dark.png"
+              alt="Áurea Essence Massage"
+              width={400}
+              height={400}
+              priority
+              className="mx-auto w-64 sm:w-80 md:w-96 h-auto drop-shadow-2xl"
+            />
+          </div>
 
           {/* Headline */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium tracking-wide mb-4">
-            <span className="text-charcoal">Luxury Wellness,</span>
+            <span className="text-champagne">Luxury Wellness,</span>
             <br />
             <span className="bg-gradient-to-r from-rose-400 via-gold-500 to-rose-400 bg-clip-text text-transparent">
               Delivered to Your Door
@@ -74,7 +73,7 @@ export default async function Home() {
           {/* Subheadline with Gold Lines */}
           <div className="flex items-center justify-center gap-3 sm:gap-4 mb-10">
             <div className="hidden sm:block w-8 md:w-12 h-px bg-gradient-to-r from-transparent to-gold-400" />
-            <p className="text-charcoal/60 text-base sm:text-lg md:text-xl tracking-wide">
+            <p className="text-champagne/80 text-base sm:text-lg md:text-xl tracking-wide">
               Five-star spa. Your private setting.
             </p>
             <div className="hidden sm:block w-8 md:w-12 h-px bg-gradient-to-l from-transparent to-gold-400" />
@@ -84,25 +83,25 @@ export default async function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-3.5 bg-rose-500 text-white text-base font-medium tracking-wide rounded-sm hover:bg-rose-600 transition-all shadow-elegant hover:shadow-dark ring-1 ring-gold-400/30 hover:ring-gold-400/60"
+              className="inline-flex items-center justify-center px-8 py-3.5 bg-gold-500 text-charcoal text-base font-medium tracking-wide rounded-sm hover:bg-gold-400 transition-all shadow-elegant hover:shadow-gold"
             >
               Book Your Session
             </Link>
             <Link
               href="/services"
-              className="inline-flex items-center justify-center px-8 py-3.5 bg-transparent text-charcoal text-base font-medium tracking-wide rounded-sm border border-gold-400/50 hover:border-gold-500 hover:bg-gold-50/30 transition-all"
+              className="inline-flex items-center justify-center px-8 py-3.5 bg-transparent text-champagne text-base font-medium tracking-wide rounded-sm border border-gold-400/50 hover:border-gold-500 hover:bg-gold-400/10 transition-all"
             >
               Explore Services
             </Link>
           </div>
 
           {/* Trust Badges */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-sm text-charcoal/50">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-sm text-champagne/60">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
               <span>Limited availability this week</span>
             </div>
-            <div className="hidden sm:block w-px h-4 bg-charcoal/20" />
+            <div className="hidden sm:block w-px h-4 bg-champagne/20" />
             <div className="flex items-center gap-4 text-xs tracking-wide">
               <span>Licensed & Insured</span>
               <span className="text-gold-500">•</span>
@@ -115,7 +114,7 @@ export default async function Home() {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
-          <svg className="w-6 h-6 text-gold-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-6 h-6 text-gold-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
             <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
           </svg>
         </div>

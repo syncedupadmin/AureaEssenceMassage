@@ -43,8 +43,8 @@ export const metadata: Metadata = {
     creator: "@aureaessence",
   },
   icons: {
-    icon: "/images/aurea-essence-logo.png",
-    apple: "/images/aurea-essence-logo.png",
+    icon: "/images/logo-icon-light.png",
+    apple: "/images/logo-icon-light.png",
   },
 };
 

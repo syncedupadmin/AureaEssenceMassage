@@ -70,7 +70,7 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <Image
-                src="/images/aurea-essence-logo.png"
+                src="/images/logo-horizontal-light.png"
                 alt="Áurea Essence Massage"
                 width={400}
                 height={100}
