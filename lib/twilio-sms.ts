@@ -2,12 +2,16 @@
  * Twilio SMS Utility Library
  *
  * Handles SMS notifications for booking confirmations, reminders, and alerts
+ * Configuration managed through admin settings panel (with env var fallback)
  */
 
-const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
-const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN;
-const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER;
-const TWILIO_ADMIN_PHONE = process.env.TWILIO_ADMIN_PHONE;
+import {
+  getTwilioAccountSid,
+  getTwilioAuthToken,
+  getTwilioPhoneNumber,
+  getTwilioAdminPhone,
+  isSMSConfigured as checkSMSConfigured,
+} from './settings';
 
 interface SendSMSOptions {
   to: string;
@@ -22,9 +26,10 @@ interface SMSResult {
 
 /**
  * Check if Twilio is properly configured
+ * Now uses admin settings (with env var fallback)
  */
-export function isTwilioConfigured(): boolean {
-  return !!(TWILIO_ACCOUNT_SID && TWILIO_AUTH_TOKEN && TWILIO_PHONE_NUMBER);
+export async function isTwilioConfigured(): Promise<boolean> {
+  return await checkSMSConfigured();
 }
 
 /**
@@ -52,7 +57,8 @@ export function formatPhoneNumber(phone: string): string {
  */
 export async function sendSMS({ to, message }: SendSMSOptions): Promise<SMSResult> {
   // Check configuration
-  if (!isTwilioConfigured()) {
+  const isConfigured = await isTwilioConfigured();
+  if (!isConfigured) {
     console.warn('Twilio not configured - SMS not sent');
     return {
       success: false,
@@ -61,20 +67,32 @@ export async function sendSMS({ to, message }: SendSMSOptions): Promise<SMSResul
   }
 
   try {
+    // Get credentials from settings
+    const accountSid = await getTwilioAccountSid();
+    const authToken = await getTwilioAuthToken();
+    const phoneNumber = await getTwilioPhoneNumber();
+
+    if (!accountSid || !authToken || !phoneNumber) {
+      return {
+        success: false,
+        error: 'Twilio credentials missing',
+      };
+    }
+
     const formattedTo = formatPhoneNumber(to);
 
     // Make request to Twilio API
     const response = await fetch(
-      `https://api.twilio.com/2010-04-01/Accounts/${TWILIO_ACCOUNT_SID}/Messages.json`,
+      `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`,
       {
         method: 'POST',
         headers: {
-          'Authorization': 'Basic ' + Buffer.from(`${TWILIO_ACCOUNT_SID}:${TWILIO_AUTH_TOKEN}`).toString('base64'),
+          'Authorization': 'Basic ' + Buffer.from(`${accountSid}:${authToken}`).toString('base64'),
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: new URLSearchParams({
           To: formattedTo,
-          From: TWILIO_PHONE_NUMBER!,
+          From: phoneNumber,
           Body: message,
         }),
       }
@@ -146,7 +164,9 @@ export async function sendNewBookingAlertSMS(
   preferredTime: string,
   phone: string
 ): Promise<SMSResult> {
-  if (!TWILIO_ADMIN_PHONE) {
+  const adminPhone = await getTwilioAdminPhone();
+
+  if (!adminPhone) {
     console.warn('TWILIO_ADMIN_PHONE not configured - admin SMS not sent');
     return {
       success: false,
@@ -165,7 +185,7 @@ Phone: ${phone}
 Check admin panel for details.`;
 
   return sendSMS({
-    to: TWILIO_ADMIN_PHONE,
+    to: adminPhone,
     message,
   });
 }

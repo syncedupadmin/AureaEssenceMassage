@@ -12,7 +12,13 @@ interface SiteSettings {
   businessPhone: string;
   reminderEmailsEnabled: boolean;
   cancellationHours: number;
+  twilioAccountSid?: string;
+  twilioAuthToken?: string;
+  twilioPhoneNumber?: string;
+  twilioAdminPhone?: string;
+  smsNotificationsEnabled: boolean;
   hasApiKey?: boolean;
+  hasTwilioCredentials?: boolean;
 }
 
 interface SettingsTabProps {
@@ -25,6 +31,7 @@ export default function SettingsTab({ onMessage }: SettingsTabProps) {
   const [saving, setSaving] = useState(false);
   const [hasCustomPassword, setHasCustomPassword] = useState(false);
   const [emailConfigured, setEmailConfigured] = useState(false);
+  const [smsConfigured, setSmsConfigured] = useState(false);
 
   // Form state for settings
   const [formData, setFormData] = useState({
@@ -36,6 +43,11 @@ export default function SettingsTab({ onMessage }: SettingsTabProps) {
     businessPhone: '',
     reminderEmailsEnabled: true,
     cancellationHours: 24,
+    twilioAccountSid: '',
+    twilioAuthToken: '',
+    twilioPhoneNumber: '',
+    twilioAdminPhone: '',
+    smsNotificationsEnabled: false,
   });
 
   // Password change form
@@ -58,6 +70,7 @@ export default function SettingsTab({ onMessage }: SettingsTabProps) {
       setSettings(data.settings);
       setHasCustomPassword(data.hasCustomPassword);
       setEmailConfigured(data.emailConfigured);
+      setSmsConfigured(data.smsConfigured || false);
 
       // Populate form with current settings
       setFormData({
@@ -69,6 +82,11 @@ export default function SettingsTab({ onMessage }: SettingsTabProps) {
         businessPhone: data.settings.businessPhone || '',
         reminderEmailsEnabled: data.settings.reminderEmailsEnabled ?? true,
         cancellationHours: data.settings.cancellationHours || 24,
+        twilioAccountSid: '', // Don't populate credentials for security
+        twilioAuthToken: '',
+        twilioPhoneNumber: data.settings.twilioPhoneNumber || '',
+        twilioAdminPhone: data.settings.twilioAdminPhone || '',
+        smsNotificationsEnabled: data.settings.smsNotificationsEnabled ?? false,
       });
     } catch (error) {
       console.error('Error fetching settings:', error);
@@ -92,10 +110,21 @@ export default function SettingsTab({ onMessage }: SettingsTabProps) {
         businessPhone: formData.businessPhone,
         reminderEmailsEnabled: formData.reminderEmailsEnabled,
         cancellationHours: formData.cancellationHours,
+        twilioPhoneNumber: formData.twilioPhoneNumber,
+        twilioAdminPhone: formData.twilioAdminPhone,
+        smsNotificationsEnabled: formData.smsNotificationsEnabled,
       };
 
       if (formData.resendApiKey) {
         updates.resendApiKey = formData.resendApiKey;
+      }
+
+      // Only include Twilio credentials if they were changed
+      if (formData.twilioAccountSid) {
+        updates.twilioAccountSid = formData.twilioAccountSid;
+      }
+      if (formData.twilioAuthToken) {
+        updates.twilioAuthToken = formData.twilioAuthToken;
       }
 
       const res = await fetch('/api/admin/settings', {
@@ -110,7 +139,13 @@ export default function SettingsTab({ onMessage }: SettingsTabProps) {
       }
 
       onMessage('Settings saved successfully', 'success');
-      setFormData(prev => ({ ...prev, resendApiKey: '' })); // Clear API key input
+      // Clear sensitive inputs
+      setFormData(prev => ({
+        ...prev,
+        resendApiKey: '',
+        twilioAccountSid: '',
+        twilioAuthToken: '',
+      }));
       fetchSettings(); // Refresh to get updated state
     } catch (error) {
       console.error('Error saving settings:', error);
@@ -169,7 +204,7 @@ export default function SettingsTab({ onMessage }: SettingsTabProps) {
   return (
     <div className="space-y-8">
       {/* Status Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className={`rounded-sm border p-4 ${emailConfigured ? 'bg-emerald-50 border-emerald-200' : 'bg-amber-50 border-amber-200'}`}>
           <div className="flex items-center gap-3">
             <div className={`w-3 h-3 rounded-full ${emailConfigured ? 'bg-emerald-500' : 'bg-amber-500'}`} />
@@ -177,6 +212,17 @@ export default function SettingsTab({ onMessage }: SettingsTabProps) {
               <p className="font-medium text-stone-800">Email Configuration</p>
               <p className="text-sm text-stone-600">
                 {emailConfigured ? 'Email is configured and ready' : 'Email not configured'}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className={`rounded-sm border p-4 ${smsConfigured ? 'bg-emerald-50 border-emerald-200' : 'bg-amber-50 border-amber-200'}`}>
+          <div className="flex items-center gap-3">
+            <div className={`w-3 h-3 rounded-full ${smsConfigured ? 'bg-emerald-500' : 'bg-amber-500'}`} />
+            <div>
+              <p className="font-medium text-stone-800">SMS Configuration</p>
+              <p className="text-sm text-stone-600">
+                {smsConfigured ? 'SMS is configured and enabled' : 'SMS not configured'}
               </p>
             </div>
           </div>
@@ -333,6 +379,105 @@ export default function SettingsTab({ onMessage }: SettingsTabProps) {
             className="px-6 py-2.5 bg-primary text-white rounded-sm hover:bg-primary/90 disabled:opacity-50 transition-colors"
           >
             {saving ? 'Saving...' : 'Save Settings'}
+          </button>
+        </div>
+      </form>
+
+      {/* SMS/Twilio Settings Section */}
+      <form onSubmit={handleSaveSettings} className="bg-white rounded-sm border border-stone-200 overflow-hidden">
+        <div className="px-6 py-4 border-b border-stone-200 bg-stone-50">
+          <h3 className="font-semibold text-stone-800">SMS Notifications (Twilio)</h3>
+          <p className="text-sm text-stone-500 mt-1">Configure SMS alerts for booking notifications and reminders</p>
+        </div>
+
+        <div className="p-6 space-y-6">
+          {/* Twilio Account SID */}
+          <div>
+            <label className="block text-sm font-medium text-stone-700 mb-2">
+              Twilio Account SID
+            </label>
+            <input
+              type="password"
+              value={formData.twilioAccountSid}
+              onChange={(e) => setFormData(prev => ({ ...prev, twilioAccountSid: e.target.value }))}
+              className="w-full px-4 py-2.5 border border-stone-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+              placeholder={settings?.hasTwilioCredentials ? '••••••••••••••••' : 'Enter Account SID (starts with AC)'}
+            />
+            <p className="text-xs text-stone-500 mt-1">
+              {settings?.hasTwilioCredentials ? 'Credentials are set. Enter new values to update.' : 'Get your credentials from twilio.com/console'}
+            </p>
+          </div>
+
+          {/* Twilio Auth Token */}
+          <div>
+            <label className="block text-sm font-medium text-stone-700 mb-2">
+              Twilio Auth Token
+            </label>
+            <input
+              type="password"
+              value={formData.twilioAuthToken}
+              onChange={(e) => setFormData(prev => ({ ...prev, twilioAuthToken: e.target.value }))}
+              className="w-full px-4 py-2.5 border border-stone-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+              placeholder={settings?.hasTwilioCredentials ? '••••••••••••••••' : 'Enter Auth Token'}
+            />
+            <p className="text-xs text-stone-500 mt-1">Twilio authentication token from your account</p>
+          </div>
+
+          {/* Phone Numbers */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-stone-700 mb-2">
+                Twilio Phone Number (From)
+              </label>
+              <input
+                type="tel"
+                value={formData.twilioPhoneNumber}
+                onChange={(e) => setFormData(prev => ({ ...prev, twilioPhoneNumber: e.target.value }))}
+                className="w-full px-4 py-2.5 border border-stone-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                placeholder="+1 (555) 123-4567"
+              />
+              <p className="text-xs text-stone-500 mt-1">Your Twilio number that sends SMS</p>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-stone-700 mb-2">
+                Admin Phone Number (Alerts)
+              </label>
+              <input
+                type="tel"
+                value={formData.twilioAdminPhone}
+                onChange={(e) => setFormData(prev => ({ ...prev, twilioAdminPhone: e.target.value }))}
+                className="w-full px-4 py-2.5 border border-stone-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                placeholder="+1 (555) 987-6543"
+              />
+              <p className="text-xs text-stone-500 mt-1">Receives new booking SMS alerts</p>
+            </div>
+          </div>
+
+          {/* SMS Notifications Toggle */}
+          <div className="flex items-center justify-between p-4 bg-stone-50 rounded-sm">
+            <div>
+              <p className="font-medium text-stone-800">Enable SMS Notifications</p>
+              <p className="text-sm text-stone-500">Send SMS for bookings and reminders (Twilio must be configured)</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setFormData(prev => ({ ...prev, smsNotificationsEnabled: !prev.smsNotificationsEnabled }))}
+              className={`relative w-12 h-6 rounded-full transition-colors ${formData.smsNotificationsEnabled ? 'bg-primary' : 'bg-stone-300'}`}
+            >
+              <span
+                className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${formData.smsNotificationsEnabled ? 'translate-x-6' : ''}`}
+              />
+            </button>
+          </div>
+        </div>
+
+        <div className="px-6 py-4 border-t border-stone-200 bg-stone-50">
+          <button
+            type="submit"
+            disabled={saving}
+            className="px-6 py-2.5 bg-primary text-white rounded-sm hover:bg-primary/90 disabled:opacity-50 transition-colors"
+          >
+            {saving ? 'Saving...' : 'Save SMS Settings'}
           </button>
         </div>
       </form>

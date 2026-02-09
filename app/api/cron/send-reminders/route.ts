@@ -35,13 +35,14 @@ export async function GET(request: NextRequest) {
 
     // Send reminder emails and SMS
     const notifications: Promise<any>[] = [];
+    const smsConfigured = await isTwilioConfigured();
 
     bookings.forEach((booking) => {
       // Always send email
       notifications.push(sendAppointmentReminderEmail(booking));
 
       // Send SMS if Twilio is configured and customer has phone
-      if (isTwilioConfigured() && booking.customerPhone) {
+      if (smsConfigured && booking.customerPhone) {
         notifications.push(
           sendAppointmentReminderSMS(
             booking.customerPhone,

@@ -38,7 +38,8 @@ export async function POST(request: NextRequest) {
       ];
 
       // Add SMS notifications if Twilio is configured
-      if (isTwilioConfigured()) {
+      const smsConfigured = await isTwilioConfigured();
+      if (smsConfigured) {
         if (booking.customerPhone) {
           notifications.push(
             sendBookingConfirmationSMS(

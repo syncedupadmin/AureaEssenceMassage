@@ -18,6 +18,13 @@ export interface SiteSettings {
   reminderEmailsEnabled: boolean;
   cancellationHours: number;
 
+  // SMS Configuration (Twilio)
+  twilioAccountSid?: string;
+  twilioAuthToken?: string;
+  twilioPhoneNumber?: string;
+  twilioAdminPhone?: string;
+  smsNotificationsEnabled: boolean;
+
   // Last updated
   updatedAt: string;
 }
@@ -42,6 +49,7 @@ const DEFAULT_SETTINGS: SiteSettings = {
   businessPhone: '(305) 519-4034',
   reminderEmailsEnabled: true,
   cancellationHours: 24,
+  smsNotificationsEnabled: false, // Disabled until configured
   updatedAt: new Date().toISOString(),
 };
 
@@ -209,4 +217,84 @@ export async function getAdminEmail(): Promise<string> {
 export async function isEmailConfigured(): Promise<boolean> {
   const apiKey = await getResendApiKey();
   return !!apiKey && apiKey.startsWith('re_');
+}
+
+// ==================== SMS/TWILIO SETTINGS HELPERS ====================
+
+/**
+ * Get Twilio Account SID (from KV settings or env var)
+ */
+export async function getTwilioAccountSid(): Promise<string | null> {
+  const settings = await getSettings();
+
+  // Check KV settings first
+  if (settings.twilioAccountSid) {
+    return settings.twilioAccountSid;
+  }
+
+  // Fall back to environment variable
+  return process.env.TWILIO_ACCOUNT_SID || null;
+}
+
+/**
+ * Get Twilio Auth Token (from KV settings or env var)
+ */
+export async function getTwilioAuthToken(): Promise<string | null> {
+  const settings = await getSettings();
+
+  // Check KV settings first
+  if (settings.twilioAuthToken) {
+    return settings.twilioAuthToken;
+  }
+
+  // Fall back to environment variable
+  return process.env.TWILIO_AUTH_TOKEN || null;
+}
+
+/**
+ * Get Twilio Phone Number (from KV settings or env var)
+ */
+export async function getTwilioPhoneNumber(): Promise<string | null> {
+  const settings = await getSettings();
+
+  // Check KV settings first
+  if (settings.twilioPhoneNumber) {
+    return settings.twilioPhoneNumber;
+  }
+
+  // Fall back to environment variable
+  return process.env.TWILIO_PHONE_NUMBER || null;
+}
+
+/**
+ * Get Twilio Admin Phone (from KV settings or env var)
+ */
+export async function getTwilioAdminPhone(): Promise<string | null> {
+  const settings = await getSettings();
+
+  // Check KV settings first
+  if (settings.twilioAdminPhone) {
+    return settings.twilioAdminPhone;
+  }
+
+  // Fall back to environment variable
+  return process.env.TWILIO_ADMIN_PHONE || null;
+}
+
+/**
+ * Check if Twilio/SMS is configured and enabled
+ */
+export async function isSMSConfigured(): Promise<boolean> {
+  const settings = await getSettings();
+
+  // Check if SMS is enabled in settings
+  if (!settings.smsNotificationsEnabled) {
+    return false;
+  }
+
+  const accountSid = await getTwilioAccountSid();
+  const authToken = await getTwilioAuthToken();
+  const phoneNumber = await getTwilioPhoneNumber();
+
+  return !!(accountSid && authToken && phoneNumber);
 }
