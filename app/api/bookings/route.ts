@@ -3,6 +3,7 @@ import { createBookingSchema } from '@/lib/schemas/booking';
 import { createBooking } from '@/lib/bookings';
 import { rateLimitBookingCreate } from '@/lib/rate-limit';
 import { sendBookingReceivedEmail, sendNewBookingAdminAlert } from '@/lib/booking-emails';
+import { sendBookingConfirmationSMS, sendNewBookingAlertSMS, isTwilioConfigured } from '@/lib/twilio-sms';
 
 export async function POST(request: NextRequest) {
   try {
@@ -29,14 +30,40 @@ export async function POST(request: NextRequest) {
     // 3. Create booking in KV
     const booking = await createBooking(validation.data);
 
-    // 4. Send emails (non-critical - don't fail the request)
+    // 4. Send emails and SMS (non-critical - don't fail the request)
     try {
-      await Promise.all([
+      const notifications: Promise<any>[] = [
         sendBookingReceivedEmail(booking),
         sendNewBookingAdminAlert(booking),
-      ]);
-    } catch (emailError) {
-      console.error('Email send failed (non-critical):', emailError);
+      ];
+
+      // Add SMS notifications if Twilio is configured
+      if (isTwilioConfigured()) {
+        if (booking.customerPhone) {
+          notifications.push(
+            sendBookingConfirmationSMS(
+              booking.customerPhone,
+              booking.customerName,
+              booking.service,
+              booking.preferredDate || 'To be confirmed'
+            )
+          );
+        }
+
+        notifications.push(
+          sendNewBookingAlertSMS(
+            booking.customerName,
+            booking.service,
+            booking.preferredDate || 'To be confirmed',
+            booking.preferredTime || 'Not specified',
+            booking.customerPhone || 'Not provided'
+          )
+        );
+      }
+
+      await Promise.all(notifications);
+    } catch (notificationError) {
+      console.error('Notification send failed (non-critical):', notificationError);
       // Continue - booking was created successfully
     }
 

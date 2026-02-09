@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getBookingsForTomorrow } from '@/lib/bookings';
 import { sendAppointmentReminderEmail } from '@/lib/booking-emails';
+import { sendAppointmentReminderSMS, isTwilioConfigured } from '@/lib/twilio-sms';
 
 /**
  * Cron job to send appointment reminders 24 hours before
@@ -32,10 +33,28 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    // Send reminder emails
-    const results = await Promise.allSettled(
-      bookings.map((booking) => sendAppointmentReminderEmail(booking))
-    );
+    // Send reminder emails and SMS
+    const notifications: Promise<any>[] = [];
+
+    bookings.forEach((booking) => {
+      // Always send email
+      notifications.push(sendAppointmentReminderEmail(booking));
+
+      // Send SMS if Twilio is configured and customer has phone
+      if (isTwilioConfigured() && booking.customerPhone) {
+        notifications.push(
+          sendAppointmentReminderSMS(
+            booking.customerPhone,
+            booking.customerName,
+            booking.service,
+            booking.preferredDate || 'Tomorrow',
+            booking.preferredTime || 'As requested'
+          )
+        );
+      }
+    });
+
+    const results = await Promise.allSettled(notifications);
 
     const sent = results.filter((r) => r.status === 'fulfilled').length;
     const failed = results.filter((r) => r.status === 'rejected').length;
@@ -43,7 +62,7 @@ export async function GET(request: NextRequest) {
     // Log failures for debugging
     results.forEach((result, index) => {
       if (result.status === 'rejected') {
-        console.error(`Failed to send reminder for booking ${bookings[index].id}:`, result.reason);
+        console.error(`Failed to send reminder notification ${index}:`, result.reason);
       }
     });
 
