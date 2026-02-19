@@ -52,7 +52,7 @@ export default async function Home() {
           {/* Logo - Full Dark Version with Glow */}
           <div className="mb-8 sm:mb-10">
             <Image
-              src="/images/logo-full-dark.png"
+              src="/images/aurea-essence-logo.png"
               alt="Áurea Essence Massage"
               width={400}
               height={400}

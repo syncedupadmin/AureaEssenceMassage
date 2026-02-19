@@ -19,7 +19,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-2">
             <Image
-              src="/images/logo-full-dark.png"
+              src="/images/aurea-essence-logo.png"
               alt={businessConfig.name}
               width={250}
               height={250}
