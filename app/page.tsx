@@ -54,10 +54,10 @@ export default async function Home() {
             <Image
               src="/images/aurea-essence-logo.png"
               alt="Áurea Essence Massage"
-              width={400}
-              height={400}
+              width={2000}
+              height={500}
               priority
-              className="mx-auto w-64 sm:w-80 md:w-96 h-auto drop-shadow-2xl"
+              className="mx-auto w-72 sm:w-[420px] md:w-[520px] lg:w-[600px] h-auto drop-shadow-2xl"
             />
           </div>
 
