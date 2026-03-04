@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createBookingSchema } from '@/lib/schemas/booking';
 import { createBooking } from '@/lib/bookings';
 import { rateLimitBookingCreate } from '@/lib/rate-limit';
-import { sendBookingReceivedEmail, sendNewBookingAdminAlert } from '@/lib/booking-emails';
+import { sendBookingReceivedEmail, sendNewBookingAdminAlert, sendOwnerSMSAlert } from '@/lib/booking-emails';
 import { sendBookingConfirmationSMS, sendNewBookingAlertSMS, isTwilioConfigured } from '@/lib/twilio-sms';
 
 export async function POST(request: NextRequest) {
@@ -32,9 +32,11 @@ export async function POST(request: NextRequest) {
 
     // 4. Send emails and SMS (non-critical - don't fail the request)
     try {
+      const smsMsg = `New booking: ${booking.customerName} - ${booking.service}\nDate: ${booking.preferredDate || 'TBD'} ${booking.preferredTime || ''}\nPhone: ${booking.customerPhone || 'N/A'}`;
       const notifications: Promise<any>[] = [
         sendBookingReceivedEmail(booking),
         sendNewBookingAdminAlert(booking),
+        sendOwnerSMSAlert(smsMsg),
       ];
 
       // Add SMS notifications if Twilio is configured

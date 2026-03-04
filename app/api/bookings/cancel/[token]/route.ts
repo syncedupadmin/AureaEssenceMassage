@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getBookingByToken, updateBooking } from '@/lib/bookings';
 import { rateLimitBookingCancel } from '@/lib/rate-limit';
 import { cancelBookingSchema } from '@/lib/schemas/booking';
-import { sendBookingCancelledEmail } from '@/lib/booking-emails';
+import { sendBookingCancelledEmail, sendOwnerSMSAlert } from '@/lib/booking-emails';
 
 interface RouteParams {
   params: Promise<{ token: string }>;
@@ -76,9 +76,13 @@ export async function POST(request: NextRequest, context: RouteParams) {
       );
     }
 
-    // 7. Send cancellation email (non-critical)
+    // 7. Send cancellation email + owner SMS (non-critical)
     try {
-      await sendBookingCancelledEmail(updatedBooking, true); // true = cancelled by customer
+      const cancelSmsMsg = `CANCELLED: ${updatedBooking.customerName} - ${updatedBooking.service}\nDate: ${updatedBooking.confirmedDate || updatedBooking.preferredDate || 'TBD'}`;
+      await Promise.all([
+        sendBookingCancelledEmail(updatedBooking, true),
+        sendOwnerSMSAlert(cancelSmsMsg),
+      ]);
     } catch (emailError) {
       console.error('Cancellation email failed (non-critical):', emailError);
     }

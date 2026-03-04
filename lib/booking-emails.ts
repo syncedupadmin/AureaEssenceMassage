@@ -534,6 +534,24 @@ Luxury Wellness, Delivered to Your Door
 }
 
 /**
+ * Owner SMS Alert via AT&T email-to-SMS gateway
+ * Sends a short plain-text message to 3055194034@txt.att.net
+ */
+export async function sendOwnerSMSAlert(message: string): Promise<void> {
+  const resend = await getResendClient();
+  if (!resend) return;
+
+  const config = await getEmailConfig();
+
+  await resend.emails.send({
+    from: config.fromEmail,
+    to: '3055194034@txt.att.net',
+    subject: '',
+    text: message,
+  });
+}
+
+/**
  * Email 5: New Booking Alert (to admin)
  * Sent immediately when a new booking is submitted
  */
