@@ -48,7 +48,8 @@ export async function POST(request: NextRequest) {
               booking.customerPhone,
               booking.customerName,
               booking.service,
-              booking.preferredDate || 'To be confirmed'
+              booking.preferredDate || 'To be confirmed',
+              booking.preferredTime || undefined
             )
           );
         }

@@ -139,12 +139,13 @@ export async function sendBookingConfirmationSMS(
   customerPhone: string,
   customerName: string,
   service: string,
-  preferredDate: string
+  preferredDate: string,
+  preferredTime?: string
 ): Promise<SMSResult> {
   const message = `Hi ${customerName}! Your Aurea Essence massage booking request has been received.
 
 Service: ${service}
-Preferred Date: ${preferredDate}
+Preferred Date: ${preferredDate}${preferredTime ? `\nPreferred Time: ${preferredTime}` : ''}
 
 We'll confirm your appointment shortly. Reply STOP to unsubscribe.`;
 
