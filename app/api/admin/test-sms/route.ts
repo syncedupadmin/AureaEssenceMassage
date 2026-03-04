@@ -1,10 +1,9 @@
-import { NextResponse } from 'next/server';
-import { isAuthenticated } from '@/lib/admin-auth';
+import { NextRequest, NextResponse } from 'next/server';
 import { sendOwnerSMSAlert } from '@/lib/booking-emails';
 
-export async function POST() {
-  const authenticated = await isAuthenticated();
-  if (!authenticated) {
+export async function POST(request: NextRequest) {
+  const secret = request.headers.get('authorization')?.replace('Bearer ', '');
+  if (!secret || secret !== process.env.CRON_SECRET) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
