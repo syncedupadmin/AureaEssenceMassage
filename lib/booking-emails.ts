@@ -534,21 +534,30 @@ Luxury Wellness, Delivered to Your Door
 }
 
 /**
- * Owner SMS Alert via AT&T email-to-SMS gateway
- * Sends a short plain-text message to 3055194034@txt.att.net
+ * Owner SMS Alert via Twilio (bypasses the settings toggle — always fires if env vars are set)
  */
 export async function sendOwnerSMSAlert(message: string): Promise<void> {
-  const resend = await getResendClient();
-  if (!resend) return;
+  const accountSid = process.env.TWILIO_ACCOUNT_SID;
+  const authToken = process.env.TWILIO_AUTH_TOKEN;
+  const fromNumber = process.env.TWILIO_PHONE_NUMBER;
+  const adminPhone = process.env.TWILIO_ADMIN_PHONE;
 
-  const config = await getEmailConfig();
+  if (!accountSid || !authToken || !fromNumber || !adminPhone) {
+    console.warn('Owner SMS not sent: Twilio env vars missing');
+    return;
+  }
 
-  await resend.emails.send({
-    from: config.fromEmail,
-    to: '3055194034@txt.att.net',
-    subject: '',
-    text: message,
-  });
+  await fetch(
+    `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`,
+    {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Basic ' + Buffer.from(`${accountSid}:${authToken}`).toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({ To: adminPhone, From: fromNumber, Body: message }),
+    }
+  );
 }
 
 /**
