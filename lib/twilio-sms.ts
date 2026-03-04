@@ -163,7 +163,8 @@ export async function sendNewBookingAlertSMS(
   service: string,
   preferredDate: string,
   preferredTime: string,
-  phone: string
+  phone: string,
+  address?: string
 ): Promise<SMSResult> {
   const adminPhone = await getTwilioAdminPhone();
 
@@ -182,6 +183,7 @@ Service: ${service}
 Date: ${preferredDate}
 Time: ${preferredTime}
 Phone: ${phone}
+Address: ${address || 'Not provided'}
 
 Check admin panel for details.`;
 

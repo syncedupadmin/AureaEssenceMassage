@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
 
     // 4. Send emails and SMS (non-critical - don't fail the request)
     try {
-      const smsMsg = `New booking: ${booking.customerName} - ${booking.service}\nDate: ${booking.preferredDate || 'TBD'} ${booking.preferredTime || ''}\nPhone: ${booking.customerPhone || 'N/A'}`;
+      const smsMsg = `New booking: ${booking.customerName} - ${booking.service}\nDate: ${booking.preferredDate || 'TBD'} ${booking.preferredTime || ''}\nAddress: ${booking.address || 'Not provided'}\nPhone: ${booking.customerPhone || 'N/A'}`;
       const notifications: Promise<any>[] = [
         sendBookingReceivedEmail(booking),
         sendNewBookingAdminAlert(booking),
@@ -60,7 +60,8 @@ export async function POST(request: NextRequest) {
             booking.service,
             booking.preferredDate || 'To be confirmed',
             booking.preferredTime || 'Not specified',
-            booking.customerPhone || 'Not provided'
+            booking.customerPhone || 'Not provided',
+            booking.address || 'Not provided'
           )
         );
       }
