@@ -91,6 +91,22 @@ export default function ContactForm() {
     { value: 'event', label: 'Event Venue' },
   ];
 
+  const timeSlots = [
+    '8:00 AM', '8:30 AM',
+    '9:00 AM', '9:30 AM',
+    '10:00 AM', '10:30 AM',
+    '11:00 AM', '11:30 AM',
+    '12:00 PM', '12:30 PM',
+    '1:00 PM', '1:30 PM',
+    '2:00 PM', '2:30 PM',
+    '3:00 PM', '3:30 PM',
+    '4:00 PM', '4:30 PM',
+    '5:00 PM', '5:30 PM',
+    '6:00 PM', '6:30 PM',
+    '7:00 PM', '7:30 PM',
+    '8:00 PM',
+  ];
+
   const pressureOptions = [
     { value: 'light', label: 'Light — Gentle & deeply relaxing' },
     { value: 'medium', label: 'Medium — Balanced, moderate pressure' },
@@ -282,36 +298,34 @@ export default function ContactForm() {
                 {errors.service && <p className="mt-1.5 text-xs text-red-500">{errors.service.message}</p>}
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="locationType" className="block text-xs font-medium text-charcoal/70 uppercase tracking-wide mb-2">
-                    Location Type <span className="text-rose-500 normal-case">*</span>
-                  </label>
-                  <select
-                    id="locationType"
-                    {...register('locationType', { required: 'Please select a location type' })}
-                    className={`${inputBase} ${errors.locationType ? inputError : inputNormal}`}
-                  >
-                    <option value="">Select location...</option>
-                    {locationTypes.map((type) => (
-                      <option key={type.value} value={type.value}>{type.label}</option>
-                    ))}
-                  </select>
-                  {errors.locationType && <p className="mt-1.5 text-xs text-red-500">{errors.locationType.message}</p>}
-                </div>
+              <div>
+                <label htmlFor="locationType" className="block text-xs font-medium text-charcoal/70 uppercase tracking-wide mb-2">
+                  Location Type <span className="text-rose-500 normal-case">*</span>
+                </label>
+                <select
+                  id="locationType"
+                  {...register('locationType', { required: 'Please select a location type' })}
+                  className={`${inputBase} ${errors.locationType ? inputError : inputNormal}`}
+                >
+                  <option value="">Select location...</option>
+                  {locationTypes.map((type) => (
+                    <option key={type.value} value={type.value}>{type.label}</option>
+                  ))}
+                </select>
+                {errors.locationType && <p className="mt-1.5 text-xs text-red-500">{errors.locationType.message}</p>}
+              </div>
 
-                <div>
-                  <label htmlFor="address" className="block text-xs font-medium text-charcoal/70 uppercase tracking-wide mb-2">
-                    City / Zip Code
-                  </label>
-                  <input
-                    type="text"
-                    id="address"
-                    {...register('address')}
-                    className={`${inputBase} ${inputNormal}`}
-                    placeholder="Miami, FL 33101"
-                  />
-                </div>
+              <div>
+                <label htmlFor="address" className="block text-xs font-medium text-charcoal/70 uppercase tracking-wide mb-2">
+                  Full Address
+                </label>
+                <input
+                  type="text"
+                  id="address"
+                  {...register('address')}
+                  className={`${inputBase} ${inputNormal}`}
+                  placeholder="123 Ocean Dr, Miami Beach, FL 33139"
+                />
               </div>
             </div>
           </div>
@@ -340,10 +354,10 @@ export default function ContactForm() {
                   {...register('preferredTime')}
                   className={`${inputBase} ${inputNormal}`}
                 >
-                  <option value="">Select time of day...</option>
-                  <option value="morning">Morning (8am – 12pm)</option>
-                  <option value="afternoon">Afternoon (12pm – 5pm)</option>
-                  <option value="evening">Evening (5pm – 9pm)</option>
+                  <option value="">Select a time...</option>
+                  {timeSlots.map((slot) => (
+                    <option key={slot} value={slot}>{slot}</option>
+                  ))}
                 </select>
               </div>
             </div>
