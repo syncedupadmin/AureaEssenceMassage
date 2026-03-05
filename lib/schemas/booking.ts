@@ -54,7 +54,7 @@ export const createBookingSchema = z.object({
     .string()
     .optional(),
   preferredTime: z
-    .enum(TIME_SLOTS)
+    .string()
     .optional(),
   preferredPressure: z
     .enum(PRESSURE_OPTIONS)
