@@ -79,6 +79,7 @@ export default function AdsLandingPage() {
   const [name, setName] = useState('');
   const [phone2, setPhone2] = useState('');
   const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
   const [address, setAddress] = useState('');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
@@ -109,6 +110,7 @@ export default function AdsLandingPage() {
           locationType: 'home',
           address,
           preferredDate: date,
+          preferredTime: time,
           message,
         }),
       });
@@ -434,15 +436,36 @@ export default function AdsLandingPage() {
                 <p className="text-white/25 text-xs mt-1.5">We come to you — home, hotel, or office</p>
               </div>
 
-              <div>
-                <label className="block text-champagne-300 text-xs font-medium uppercase tracking-wide mb-2">Preferred Date</label>
-                <input
-                  type="date"
-                  value={date}
-                  onChange={e => setDate(e.target.value)}
-                  min={new Date().toISOString().split('T')[0]}
-                  className="w-full bg-white/10 border border-white/20 text-white rounded-sm px-4 py-3.5 text-sm focus:outline-none focus:border-gold-400 focus:bg-white/15 transition-colors [color-scheme:dark]"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-champagne-300 text-xs font-medium uppercase tracking-wide mb-2">Preferred Date</label>
+                  <input
+                    type="date"
+                    value={date}
+                    onChange={e => setDate(e.target.value)}
+                    min={new Date().toISOString().split('T')[0]}
+                    className="w-full bg-white/10 border border-white/20 text-white rounded-sm px-4 py-3.5 text-sm focus:outline-none focus:border-gold-400 focus:bg-white/15 transition-colors [color-scheme:dark]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-champagne-300 text-xs font-medium uppercase tracking-wide mb-2">Preferred Time</label>
+                  <select
+                    value={time}
+                    onChange={e => setTime(e.target.value)}
+                    className="w-full bg-white/10 border border-white/20 text-white rounded-sm px-4 py-3.5 text-sm focus:outline-none focus:border-gold-400 focus:bg-white/15 transition-colors"
+                  >
+                    <option value="" className="text-charcoal bg-white">Any time</option>
+                    {[
+                      '8:00 AM','8:30 AM','9:00 AM','9:30 AM','10:00 AM','10:30 AM',
+                      '11:00 AM','11:30 AM','12:00 PM','12:30 PM','1:00 PM','1:30 PM',
+                      '2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM','4:30 PM',
+                      '5:00 PM','5:30 PM','6:00 PM','6:30 PM','7:00 PM','7:30 PM',
+                      '8:00 PM','8:30 PM','9:00 PM','9:30 PM','10:00 PM','10:30 PM','11:00 PM',
+                    ].map(t => (
+                      <option key={t} value={t} className="text-charcoal bg-white">{t}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               <div>
