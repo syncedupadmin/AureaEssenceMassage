@@ -79,6 +79,7 @@ export default function AdsLandingPage() {
   const [name, setName] = useState('');
   const [phone2, setPhone2] = useState('');
   const [date, setDate] = useState('');
+  const [address, setAddress] = useState('');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -106,6 +107,7 @@ export default function AdsLandingPage() {
           email: 'noreply@ads.com',
           service: selectedService || 'Not specified',
           locationType: 'home',
+          address,
           preferredDate: date,
           message,
         }),
@@ -420,6 +422,19 @@ export default function AdsLandingPage() {
               </div>
 
               <div>
+                <label className="block text-champagne-300 text-xs font-medium uppercase tracking-wide mb-2">Your Address *</label>
+                <input
+                  required
+                  type="text"
+                  placeholder="123 Ocean Dr, Miami Beach, FL 33139"
+                  value={address}
+                  onChange={e => setAddress(e.target.value)}
+                  className="w-full bg-white/10 border border-white/20 text-white placeholder-white/30 rounded-sm px-4 py-3.5 text-sm focus:outline-none focus:border-gold-400 focus:bg-white/15 transition-colors"
+                />
+                <p className="text-white/25 text-xs mt-1.5">We come to you — home, hotel, or office</p>
+              </div>
+
+              <div>
                 <label className="block text-champagne-300 text-xs font-medium uppercase tracking-wide mb-2">Preferred Date</label>
                 <input
                   type="date"
@@ -433,8 +448,8 @@ export default function AdsLandingPage() {
               <div>
                 <label className="block text-champagne-300 text-xs font-medium uppercase tracking-wide mb-2">Anything Else?</label>
                 <textarea
-                  rows={3}
-                  placeholder="Location, special requests, questions…"
+                  rows={2}
+                  placeholder="Special requests, questions…"
                   value={message}
                   onChange={e => setMessage(e.target.value)}
                   className="w-full bg-white/10 border border-white/20 text-white placeholder-white/30 rounded-sm px-4 py-3.5 text-sm focus:outline-none focus:border-gold-400 focus:bg-white/15 transition-colors resize-none"
