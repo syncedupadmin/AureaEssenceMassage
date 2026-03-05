@@ -31,7 +31,7 @@ export const businessConfig = {
 
   // Business Hours
   hours: {
-    display: '8am - 9pm',
+    display: '8am - 11pm',
     days: 'Daily',
     note: 'By appointment only',
   },
