@@ -94,7 +94,7 @@ export const businessConfig = {
 
   // Social Media - set to null to hide
   social: {
-    instagram: null as string | null,
+    instagram: 'https://www.instagram.com/aureaessencemassage' as string | null,
     facebook: null as string | null,
   },
 
