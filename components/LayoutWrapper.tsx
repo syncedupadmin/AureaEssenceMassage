@@ -13,9 +13,10 @@ export default function LayoutWrapper({
 }) {
   const pathname = usePathname();
   const isAdmin = pathname?.startsWith('/admin');
+  const isLandingPage = pathname?.startsWith('/ads');
 
-  if (isAdmin) {
-    // Admin pages get no header/footer
+  if (isAdmin || isLandingPage) {
+    // Admin and landing pages get no header/footer
     return <>{children}</>;
   }
 
