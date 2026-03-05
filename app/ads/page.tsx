@@ -443,7 +443,7 @@ export default function AdsLandingPage() {
                     type="date"
                     value={date}
                     onChange={e => setDate(e.target.value)}
-                    min={new Date().toISOString().split('T')[0]}
+                    min={new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' })}
                     className="w-full bg-white/10 border border-white/20 text-white rounded-sm px-4 py-3.5 text-sm focus:outline-none focus:border-gold-400 focus:bg-white/15 transition-colors [color-scheme:dark]"
                   />
                 </div>
