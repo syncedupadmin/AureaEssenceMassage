@@ -46,6 +46,9 @@ export const metadata: Metadata = {
     icon: "/images/logo-icon-light.png",
     apple: "/images/logo-icon-light.png",
   },
+  verification: {
+    google: 'qq36KSnnF9XjcZlTPe0l0Bbrj2T9z3HcNl2pT2eCn-g',
+  },
 };
 
 const schemaData = {
