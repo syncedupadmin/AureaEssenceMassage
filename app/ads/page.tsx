@@ -480,7 +480,7 @@ export default function AdsLandingPage() {
               </div>
 
               {error && (
-                <p className="text-rose-400 text-sm text-center">{error}</p>
+                <p className="text-emerald-400 text-sm text-center">{error}</p>
               )}
 
               <button
@@ -500,7 +500,7 @@ export default function AdsLandingPage() {
       </section>
 
       {/* ── Final Call CTA ── */}
-      <section className="bg-rose-500 py-12 px-4 text-center">
+      <section className="bg-emerald-500 py-12 px-4 text-center">
         <p className="text-white/80 text-sm uppercase tracking-widest mb-2 font-medium">Prefer to Talk?</p>
         <a
           href={phoneHref}

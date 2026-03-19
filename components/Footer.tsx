@@ -35,7 +35,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-base font-serif font-medium mb-4 text-rose-400 tracking-wide">
+            <h4 className="text-base font-serif font-medium mb-4 text-emerald-400 tracking-wide">
               Navigate
             </h4>
             <ul className="space-y-3">
@@ -52,7 +52,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-champagne/70 hover:text-rose-400 transition-colors focus:outline-none focus-visible:text-rose-400"
+                    className="text-sm text-champagne/70 hover:text-emerald-400 transition-colors focus:outline-none focus-visible:text-emerald-400"
                   >
                     {link.label}
                   </Link>
@@ -64,7 +64,7 @@ export default function Footer() {
           {/* Contact Info - Only show if we have real contact info */}
           {showConnect && (
             <div>
-              <h4 className="text-base font-serif font-medium mb-4 text-rose-400 tracking-wide">
+              <h4 className="text-base font-serif font-medium mb-4 text-emerald-400 tracking-wide">
                 Connect
               </h4>
               <ul className="space-y-3 text-sm">
@@ -73,7 +73,7 @@ export default function Footer() {
                     <span className="text-champagne/50 text-xs block mb-1">Phone</span>
                     <a
                       href={getPhoneHref(contact.phone)}
-                      className="text-champagne/70 hover:text-rose-400 transition-colors"
+                      className="text-champagne/70 hover:text-emerald-400 transition-colors"
                     >
                       {contact.phone}
                     </a>
@@ -84,7 +84,7 @@ export default function Footer() {
                     <span className="text-champagne/50 text-xs block mb-1">Email</span>
                     <a
                       href={getEmailHref(contact.email)}
-                      className="text-champagne/70 hover:text-rose-400 transition-colors break-all"
+                      className="text-champagne/70 hover:text-emerald-400 transition-colors break-all"
                     >
                       {contact.email}
                     </a>
@@ -96,7 +96,7 @@ export default function Footer() {
                       {social.facebook && (
                         <a
                           href={social.facebook}
-                          className="text-champagne/70 hover:text-rose-400 transition-colors"
+                          className="text-champagne/70 hover:text-emerald-400 transition-colors"
                           aria-label="Facebook"
                           target="_blank"
                           rel="noopener noreferrer"
@@ -109,7 +109,7 @@ export default function Footer() {
                       {social.instagram && (
                         <a
                           href={social.instagram}
-                          className="text-champagne/70 hover:text-rose-400 transition-colors"
+                          className="text-champagne/70 hover:text-emerald-400 transition-colors"
                           aria-label="Instagram"
                           target="_blank"
                           rel="noopener noreferrer"
@@ -136,13 +136,13 @@ export default function Footer() {
           </p>
           <p>&copy; {currentYear} {businessConfig.name}. All rights reserved.</p>
           <div className="mt-3 space-x-4">
-            <Link href="/privacy" className="hover:text-rose-400 transition-colors focus:outline-none focus-visible:text-rose-400">
+            <Link href="/privacy" className="hover:text-emerald-400 transition-colors focus:outline-none focus-visible:text-emerald-400">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-rose-400 transition-colors focus:outline-none focus-visible:text-rose-400">
+            <Link href="/terms" className="hover:text-emerald-400 transition-colors focus:outline-none focus-visible:text-emerald-400">
               Terms of Service
             </Link>
-            <Link href="/admin" className="hover:text-rose-400 transition-colors focus:outline-none focus-visible:text-rose-400">
+            <Link href="/admin" className="hover:text-emerald-400 transition-colors focus:outline-none focus-visible:text-emerald-400">
               Admin
             </Link>
           </div>

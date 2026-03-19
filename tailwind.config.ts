@@ -9,18 +9,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Primary - Rose Gold
-        rose: {
-          50: '#FDF5F6',
-          100: '#FAE8EA',
-          200: '#F4D0D5',
-          300: '#E9ACB4',
-          400: '#D4A5AA',
-          500: '#B76E79',  // Primary rose gold
-          600: '#9A5A63',  // Darker rose gold
-          700: '#7D4850',
-          800: '#5E363C',
-          900: '#3F2428',
+        // Primary - Deep Emerald
+        emerald: {
+          50: '#F0F7F3',
+          100: '#D1EDE2',
+          200: '#A8D9C1',
+          300: '#7EC0A0',
+          400: '#4EA584',  // Light emerald — hover states, soft accents
+          500: '#1E6B4A',  // PRIMARY — deep jewel emerald
+          600: '#175438',  // Darker emerald — hover darken
+          700: '#103D2A',
+          800: '#0D2E1F',
+          900: '#071A11',
         },
         // Soft Gold - Accent color for premium highlights
         gold: {
@@ -77,8 +77,8 @@ const config: Config = {
         'elegant': '0.03em',
       },
       boxShadow: {
-        'soft': '0 4px 20px rgba(183, 110, 121, 0.08)',
-        'elegant': '0 8px 40px rgba(183, 110, 121, 0.12)',
+        'soft': '0 4px 20px rgba(30, 107, 74, 0.08)',
+        'elegant': '0 8px 40px rgba(30, 107, 74, 0.12)',
         'dark': '0 8px 40px rgba(0, 0, 0, 0.25)',
         'gold': '0 4px 20px rgba(212, 175, 55, 0.15)',
       },

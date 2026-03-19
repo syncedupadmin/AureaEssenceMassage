@@ -14,11 +14,11 @@ interface ButtonProps {
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: 'bg-rose-500 text-white hover:bg-rose-600 shadow-soft hover:shadow-elegant',
+  primary: 'bg-emerald-500 text-white hover:bg-emerald-600 shadow-soft hover:shadow-elegant',
   secondary: 'bg-charcoal text-champagne hover:bg-charcoal-400',
-  outline: 'border-2 border-rose-500 text-rose-500 hover:bg-rose-500 hover:text-white bg-transparent',
-  white: 'bg-white text-rose-500 hover:bg-champagne shadow-soft hover:shadow-elegant',
-  ghost: 'text-rose-500 hover:bg-rose-50',
+  outline: 'border-2 border-emerald-500 text-emerald-500 hover:bg-emerald-500 hover:text-white bg-transparent',
+  white: 'bg-white text-emerald-500 hover:bg-champagne shadow-soft hover:shadow-elegant',
+  ghost: 'text-emerald-500 hover:bg-emerald-50',
 };
 
 export default function Button({
@@ -37,7 +37,7 @@ export default function Button({
     font-medium tracking-wide text-sm
     rounded-sm
     transition-all duration-300
-    focus-visible:outline-2 focus-visible:outline-rose-500 focus-visible:outline-offset-2
+    focus-visible:outline-2 focus-visible:outline-emerald-500 focus-visible:outline-offset-2
     disabled:opacity-50 disabled:cursor-not-allowed
     ${fullWidth ? 'w-full' : ''}
     ${variantStyles[variant]}

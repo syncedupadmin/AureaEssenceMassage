@@ -220,7 +220,7 @@ export default function ContactForm() {
             <div className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-xs font-medium text-charcoal/70 uppercase tracking-wide mb-2">
-                  Full Name <span className="text-rose-500 normal-case">*</span>
+                  Full Name <span className="text-emerald-500 normal-case">*</span>
                 </label>
                 <input
                   type="text"
@@ -238,7 +238,7 @@ export default function ContactForm() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="email" className="block text-xs font-medium text-charcoal/70 uppercase tracking-wide mb-2">
-                    Email <span className="text-rose-500 normal-case">*</span>
+                    Email <span className="text-emerald-500 normal-case">*</span>
                   </label>
                   <input
                     type="email"
@@ -258,7 +258,7 @@ export default function ContactForm() {
 
                 <div>
                   <label htmlFor="phone" className="block text-xs font-medium text-charcoal/70 uppercase tracking-wide mb-2">
-                    Phone <span className="text-rose-500 normal-case">*</span>
+                    Phone <span className="text-emerald-500 normal-case">*</span>
                   </label>
                   <input
                     type="tel"
@@ -286,7 +286,7 @@ export default function ContactForm() {
             <div className="space-y-4">
               <div>
                 <label htmlFor="service" className="block text-xs font-medium text-charcoal/70 uppercase tracking-wide mb-2">
-                  Service <span className="text-rose-500 normal-case">*</span>
+                  Service <span className="text-emerald-500 normal-case">*</span>
                 </label>
                 <select
                   id="service"
@@ -303,7 +303,7 @@ export default function ContactForm() {
 
               <div>
                 <label htmlFor="locationType" className="block text-xs font-medium text-charcoal/70 uppercase tracking-wide mb-2">
-                  Location Type <span className="text-rose-500 normal-case">*</span>
+                  Location Type <span className="text-emerald-500 normal-case">*</span>
                 </label>
                 <select
                   id="locationType"
@@ -426,7 +426,7 @@ export default function ContactForm() {
             </button>
 
             <p className="text-center text-xs text-charcoal/40 mt-3">
-              <span className="text-rose-400">*</span> Required fields &nbsp;&middot;&nbsp; We confirm within 24 hours
+              <span className="text-emerald-400">*</span> Required fields &nbsp;&middot;&nbsp; We confirm within 24 hours
             </p>
           </div>
         </form>

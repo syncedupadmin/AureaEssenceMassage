@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 // Service badges for highlighting
 const serviceBadges: Record<string, { text: string; color: string }> = {
   'swedish': { text: 'Most Popular', color: 'bg-gold-500 text-charcoal' },
-  'couples': { text: 'Perfect for Two', color: 'bg-rose-500 text-white' },
+  'couples': { text: 'Perfect for Two', color: 'bg-emerald-500 text-white' },
   'post-surgical': { text: 'Recovery Support', color: 'bg-charcoal text-champagne' },
 };
 
@@ -125,7 +125,7 @@ export default async function ServicesPage() {
                     <p className="text-sm sm:text-base text-charcoal/70 mb-4 leading-relaxed">
                       {service.description}
                     </p>
-                    <p className="text-xs text-rose-500 font-medium mb-6 sm:mb-8">
+                    <p className="text-xs text-emerald-500 font-medium mb-6 sm:mb-8">
                       Ideal for: {service.idealFor}
                     </p>
 
@@ -157,7 +157,7 @@ export default async function ServicesPage() {
                     )}
 
                     <div className="mb-6 sm:mb-8">
-                      <h3 className="text-sm font-medium text-rose-500 mb-3 sm:mb-4 tracking-wide uppercase">
+                      <h3 className="text-sm font-medium text-emerald-500 mb-3 sm:mb-4 tracking-wide uppercase">
                         Benefits
                       </h3>
                       <ul className="space-y-2 sm:space-y-3">
@@ -233,7 +233,7 @@ export default async function ServicesPage() {
       )}
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-20 md:py-24 bg-rose-500">
+      <section className="py-16 sm:py-20 md:py-24 bg-emerald-500">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-white mb-6 tracking-wide">
             Ready to Book?

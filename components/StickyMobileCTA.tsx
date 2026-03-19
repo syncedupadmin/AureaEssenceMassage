@@ -68,7 +68,7 @@ export default function StickyMobileCTA() {
         {/* Book Online Button - Primary rose */}
         <Link
           href="/contact"
-          className={`${showContactButtons ? 'flex-1' : 'flex-1 max-w-xs'} flex items-center justify-center gap-2 bg-rose-500 text-white px-3 py-2.5 rounded-sm font-medium text-sm tracking-wide active:scale-[0.98] transition-all shadow-soft`}
+          className={`${showContactButtons ? 'flex-1' : 'flex-1 max-w-xs'} flex items-center justify-center gap-2 bg-emerald-500 text-white px-3 py-2.5 rounded-sm font-medium text-sm tracking-wide active:scale-[0.98] transition-all shadow-soft`}
           aria-label="Book an appointment online"
         >
           <svg className="w-4 h-4" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">

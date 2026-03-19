@@ -75,7 +75,7 @@ export default function ContactPage() {
           className="absolute inset-0"
           style={{
             background:
-              'radial-gradient(ellipse at 25% 60%, rgba(183, 110, 121, 0.12) 0%, transparent 55%), radial-gradient(ellipse at 75% 30%, rgba(201, 169, 110, 0.10) 0%, transparent 50%)',
+              'radial-gradient(ellipse at 25% 60%, rgba(30, 107, 74, 0.12) 0%, transparent 55%), radial-gradient(ellipse at 75% 30%, rgba(201, 169, 110, 0.10) 0%, transparent 50%)',
           }}
         />
         {/* Decorative corner lines */}
@@ -89,7 +89,7 @@ export default function ContactPage() {
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-medium text-champagne mt-4 mb-6 tracking-wide">
             Reserve Your
             <br />
-            <span className="bg-gradient-to-r from-rose-400 via-gold-500 to-rose-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-emerald-400 via-gold-500 to-emerald-400 bg-clip-text text-transparent">
               Experience
             </span>
           </h1>
@@ -182,7 +182,7 @@ export default function ContactPage() {
 
               {/* Phone CTA */}
               {showPhone && (
-                <div className="bg-rose-500 rounded-sm p-6 text-center">
+                <div className="bg-emerald-500 rounded-sm p-6 text-center">
                   <p className="text-white/70 text-xs tracking-wide uppercase mb-2">Prefer to Call?</p>
                   <a
                     href={getPhoneHref(contact.phone!)}
@@ -209,7 +209,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-xs text-charcoal/40 uppercase tracking-wide">Follow Us</p>
-                    <p className="text-sm font-medium text-charcoal group-hover:text-rose-500 transition-colors">@aureaessencemassage</p>
+                    <p className="text-sm font-medium text-charcoal group-hover:text-emerald-500 transition-colors">@aureaessencemassage</p>
                   </div>
                 </a>
               )}
@@ -248,7 +248,7 @@ export default function ContactPage() {
               },
             ].map(({ step, title, body }) => (
               <div key={step} className="text-center">
-                <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif ring-2 ring-gold-400 ring-offset-4 ring-offset-champagne-200">
+                <div className="w-16 h-16 mx-auto mb-5 bg-emerald-500 text-white rounded-full flex items-center justify-center text-2xl font-serif ring-2 ring-gold-400 ring-offset-4 ring-offset-champagne-200">
                   {step}
                 </div>
                 <h3 className="text-xl font-serif font-medium text-charcoal mb-3 tracking-wide">{title}</h3>

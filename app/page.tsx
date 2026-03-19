@@ -65,7 +65,7 @@ export default async function Home() {
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium tracking-wide mb-4">
             <span className="text-champagne">Luxury Wellness,</span>
             <br />
-            <span className="bg-gradient-to-r from-rose-400 via-gold-500 to-rose-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-emerald-400 via-gold-500 to-emerald-400 bg-clip-text text-transparent">
               Delivered to Your Door
             </span>
           </h1>
@@ -136,7 +136,7 @@ export default async function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif ring-2 ring-gold-400 ring-offset-4 ring-offset-champagne-200">
+              <div className="w-16 h-16 mx-auto mb-5 bg-emerald-500 text-white rounded-full flex items-center justify-center text-2xl font-serif ring-2 ring-gold-400 ring-offset-4 ring-offset-champagne-200">
                 1
               </div>
               <h3 className="text-xl font-serif font-medium text-charcoal mb-3">
@@ -148,7 +148,7 @@ export default async function Home() {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif ring-2 ring-gold-400 ring-offset-4 ring-offset-champagne-200">
+              <div className="w-16 h-16 mx-auto mb-5 bg-emerald-500 text-white rounded-full flex items-center justify-center text-2xl font-serif ring-2 ring-gold-400 ring-offset-4 ring-offset-champagne-200">
                 2
               </div>
               <h3 className="text-xl font-serif font-medium text-charcoal mb-3">
@@ -160,7 +160,7 @@ export default async function Home() {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-2xl font-serif ring-2 ring-gold-400 ring-offset-4 ring-offset-champagne-200">
+              <div className="w-16 h-16 mx-auto mb-5 bg-emerald-500 text-white rounded-full flex items-center justify-center text-2xl font-serif ring-2 ring-gold-400 ring-offset-4 ring-offset-champagne-200">
                 3
               </div>
               <h3 className="text-xl font-serif font-medium text-charcoal mb-3">

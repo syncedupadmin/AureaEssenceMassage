@@ -111,7 +111,7 @@ export default function Header() {
                   </a>
                   <a
                     href={getSmsHref(phoneRaw, bookingMessage)}
-                    className="inline-flex items-center justify-center w-9 h-9 bg-rose-500 text-white rounded-full hover:bg-rose-600 transition-colors shadow-soft hover:shadow-elegant"
+                    className="inline-flex items-center justify-center w-9 h-9 bg-emerald-500 text-white rounded-full hover:bg-emerald-600 transition-colors shadow-soft hover:shadow-elegant"
                     aria-label="Send a text message"
                     title="Text Us"
                   >
@@ -169,7 +169,7 @@ export default function Header() {
         <div className="flex justify-end p-4">
           <button
             onClick={() => setIsMobileMenuOpen(false)}
-            className="text-charcoal p-2 focus-visible:outline-2 focus-visible:outline-rose-500 rounded-sm"
+            className="text-charcoal p-2 focus-visible:outline-2 focus-visible:outline-emerald-500 rounded-sm"
             aria-label="Close menu"
           >
             <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -184,8 +184,8 @@ export default function Header() {
               key={link.href}
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`text-2xl font-serif font-medium tracking-wide transition-colors hover:text-rose-500 ${
-                pathname === link.href ? 'text-rose-500' : 'text-charcoal'
+              className={`text-2xl font-serif font-medium tracking-wide transition-colors hover:text-emerald-500 ${
+                pathname === link.href ? 'text-emerald-500' : 'text-charcoal'
               }`}
             >
               {link.label}
@@ -211,7 +211,7 @@ export default function Header() {
               <a
                 href={getSmsHref(phoneRaw, bookingMessage)}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-rose-400 text-white font-medium tracking-wide rounded-sm hover:bg-rose-500 transition-all"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-emerald-400 text-white font-medium tracking-wide rounded-sm hover:bg-emerald-500 transition-all"
                 aria-label="Send a text message"
               >
                 <svg className="w-5 h-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -225,7 +225,7 @@ export default function Header() {
           <Link
             href="/contact"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="mt-4 inline-flex items-center justify-center px-10 py-4 bg-rose-500 text-white text-lg font-medium tracking-wide rounded-sm hover:bg-rose-600 transition-all"
+            className="mt-4 inline-flex items-center justify-center px-10 py-4 bg-emerald-500 text-white text-lg font-medium tracking-wide rounded-sm hover:bg-emerald-600 transition-all"
           >
             Book Now
           </Link>

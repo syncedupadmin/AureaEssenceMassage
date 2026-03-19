@@ -145,7 +145,7 @@ export default function GiftCardsPage() {
               },
             ].map((item) => (
               <div key={item.step} className="text-center">
-                <div className="w-12 h-12 mx-auto mb-4 bg-rose-500 text-white rounded-full flex items-center justify-center text-xl font-serif ring-2 ring-gold-400 ring-offset-4 ring-offset-champagne-200">
+                <div className="w-12 h-12 mx-auto mb-4 bg-emerald-500 text-white rounded-full flex items-center justify-center text-xl font-serif ring-2 ring-gold-400 ring-offset-4 ring-offset-champagne-200">
                   {item.step}
                 </div>
                 <h3 className="text-lg font-serif font-medium text-charcoal mb-2">
@@ -161,7 +161,7 @@ export default function GiftCardsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-20 md:py-24 bg-rose-500">
+      <section className="py-16 sm:py-20 md:py-24 bg-emerald-500">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-serif font-medium text-white mb-6 tracking-wide">
             Give the Gift of Wellness

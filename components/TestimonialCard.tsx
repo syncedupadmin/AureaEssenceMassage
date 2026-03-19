@@ -6,12 +6,12 @@ interface TestimonialCardProps {
 
 export default function TestimonialCard({ name, text, rating }: TestimonialCardProps) {
   return (
-    <div className="bg-white rounded-sm border-l-4 border-rose-500 p-6 sm:p-8 shadow-soft hover:shadow-elegant transition-all duration-300">
+    <div className="bg-white rounded-sm border-l-4 border-emerald-500 p-6 sm:p-8 shadow-soft hover:shadow-elegant transition-all duration-300">
       <div className="flex gap-1 mb-4">
         {[...Array(5)].map((_, i) => (
           <svg
             key={i}
-            className={`w-4 h-4 ${i < rating ? 'text-rose-500' : 'text-beige-400'}`}
+            className={`w-4 h-4 ${i < rating ? 'text-emerald-500' : 'text-beige-400'}`}
             fill="currentColor"
             viewBox="0 0 20 20"
             aria-hidden="true"
@@ -24,7 +24,7 @@ export default function TestimonialCard({ name, text, rating }: TestimonialCardP
       <p className="text-charcoal/80 italic mb-5 leading-relaxed text-sm sm:text-base">
         &ldquo;{text}&rdquo;
       </p>
-      <p className="text-rose-600 font-medium text-sm tracking-wide">— {name}</p>
+      <p className="text-emerald-600 font-medium text-sm tracking-wide">— {name}</p>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 interface SectionProps {
   children: React.ReactNode;
   className?: string;
-  variant?: 'default' | 'champagne' | 'ivory' | 'dark' | 'rose';
+  variant?: 'default' | 'champagne' | 'ivory' | 'dark' | 'emerald';
   spacing?: 'default' | 'small' | 'large' | 'hero';
   id?: string;
 }
@@ -11,7 +11,7 @@ const bgVariants = {
   champagne: 'bg-champagne-200',
   ivory: 'bg-champagne-50',
   dark: 'bg-charcoal text-champagne',
-  rose: 'bg-rose-500 text-white',
+  emerald: 'bg-emerald-500 text-white',
 };
 
 const spacingVariants = {

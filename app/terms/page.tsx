@@ -120,7 +120,7 @@ export default function TermsPage() {
           <div className="mt-12 pt-8 border-t border-champagne-200">
             <Link
               href="/"
-              className="inline-block text-rose-500 hover:text-rose-600 font-medium transition-colors text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2"
+              className="inline-block text-emerald-500 hover:text-emerald-600 font-medium transition-colors text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
             >
               &larr; Back to Home
             </Link>

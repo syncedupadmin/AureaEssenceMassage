@@ -83,7 +83,7 @@ export default function AboutPage() {
                 <p>
                   Today, we serve busy professionals, couples celebrating special moments, and anyone who values exceptional wellness without the need to travel.
                 </p>
-                <p className="text-rose-500 font-medium">
+                <p className="text-emerald-500 font-medium">
                   We bring the golden essence of wellness to you.
                 </p>
               </div>
@@ -151,7 +151,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-20 md:py-24 bg-rose-500">
+      <section className="py-16 sm:py-20 md:py-24 bg-emerald-500">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-white mb-6 tracking-wide">
             Experience the Difference

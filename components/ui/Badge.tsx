@@ -5,9 +5,9 @@ interface BadgeProps {
 }
 
 const variantStyles = {
-  default: 'bg-rose-100 text-rose-600 border-l-2 border-rose-500',
+  default: 'bg-emerald-100 text-emerald-600 border-l-2 border-emerald-500',
   dark: 'bg-charcoal text-champagne',
-  outline: 'border border-rose-500 text-rose-500',
+  outline: 'border border-emerald-500 text-emerald-500',
 };
 
 export default function Badge({

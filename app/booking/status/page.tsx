@@ -159,7 +159,7 @@ function BookingStatusContent() {
         {/* Header */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-block mb-6">
-            <h1 className="text-2xl font-serif text-rose-500 tracking-wide">
+            <h1 className="text-2xl font-serif text-emerald-500 tracking-wide">
               {businessConfig.name}
             </h1>
           </Link>
@@ -179,12 +179,12 @@ function BookingStatusContent() {
               value={referenceNumber}
               onChange={(e) => setReferenceNumber(e.target.value.toUpperCase())}
               placeholder="e.g., AUR-ABC123"
-              className="flex-1 px-4 py-3 bg-white border border-champagne-200 text-charcoal rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 text-center font-mono tracking-wider"
+              className="flex-1 px-4 py-3 bg-white border border-champagne-200 text-charcoal rounded-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 text-center font-mono tracking-wider"
             />
             <button
               type="submit"
               disabled={loading}
-              className="px-6 py-3 bg-rose-500 text-white rounded-sm font-medium hover:bg-rose-600 transition-colors disabled:opacity-50"
+              className="px-6 py-3 bg-emerald-500 text-white rounded-sm font-medium hover:bg-emerald-600 transition-colors disabled:opacity-50"
             >
               {loading ? 'Looking up...' : 'Look Up'}
             </button>
@@ -284,7 +284,7 @@ function BookingStatusContent() {
               <div className="p-6 border-t border-champagne-100 bg-stone-50">
                 <p className="text-sm text-charcoal/60 text-center">
                   Need to make changes? Contact us at{' '}
-                  <a href={`tel:${businessConfig.contact.phoneRaw}`} className="text-rose-500 font-medium">
+                  <a href={`tel:${businessConfig.contact.phoneRaw}`} className="text-emerald-500 font-medium">
                     {businessConfig.contact.phone}
                   </a>
                 </p>
@@ -295,7 +295,7 @@ function BookingStatusContent() {
 
         {/* Back to Home Link */}
         <div className="mt-8 text-center">
-          <Link href="/" className="text-rose-500 hover:text-rose-600 text-sm font-medium">
+          <Link href="/" className="text-emerald-500 hover:text-emerald-600 text-sm font-medium">
             Back to Home
           </Link>
         </div>
@@ -320,7 +320,7 @@ function BookingStatusContent() {
                   onChange={(e) => setCancelReason(e.target.value)}
                   placeholder="Let us know why you're cancelling..."
                   rows={3}
-                  className="w-full px-4 py-3 bg-stone-50 border border-stone-200 text-charcoal rounded-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 text-sm"
+                  className="w-full px-4 py-3 bg-stone-50 border border-stone-200 text-charcoal rounded-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 text-sm"
                 />
               </div>
 
@@ -355,7 +355,7 @@ export default function BookingStatusPage() {
     <Suspense fallback={
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="w-8 h-8 border-2 border-rose-200 border-t-rose-500 rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-8 h-8 border-2 border-emerald-200 border-t-emerald-500 rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-charcoal/60">Loading...</p>
         </div>
       </div>
