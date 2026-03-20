@@ -25,7 +25,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
         <div
           key={index}
           className={`bg-white rounded-sm shadow-soft overflow-hidden transition-all duration-300 ${
-            openIndex === index ? 'ring-1 ring-gold-400' : ''
+            openIndex === index ? 'ring-1 ring-emerald-500' : ''
           }`}
         >
           <button
@@ -41,7 +41,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
               transition={{ duration: 0.2 }}
               className={`flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full ${
                 openIndex === index
-                  ? 'bg-gold-500 text-white'
+                  ? 'bg-emerald-500 text-white'
                   : 'bg-champagne-200 text-charcoal'
               }`}
             >
@@ -67,7 +67,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
               >
-                <div className="px-6 pb-5 border-l-2 border-gold-400 ml-6">
+                <div className="px-6 pb-5 border-l-2 border-emerald-500 ml-6">
                   <p className="text-charcoal/70 text-sm leading-relaxed">
                     {item.answer}
                   </p>

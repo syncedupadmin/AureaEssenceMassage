@@ -98,7 +98,7 @@ export default async function Home() {
           {/* Trust Badges */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-sm text-champagne/60">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
               <span>Limited availability this week</span>
             </div>
             <div className="hidden sm:block w-px h-4 bg-champagne/20" />
@@ -360,7 +360,7 @@ export default async function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             <div className="text-center p-6">
-              <div className="w-14 h-14 mx-auto mb-5 text-gold-600 bg-gold-100 rounded-full flex items-center justify-center ring-1 ring-gold-300">
+              <div className="w-14 h-14 mx-auto mb-5 text-emerald-600 bg-emerald-50 rounded-full flex items-center justify-center ring-1 ring-emerald-200">
                 <svg className="w-7 h-7" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                 </svg>
@@ -374,7 +374,7 @@ export default async function Home() {
             </div>
 
             <div className="text-center p-6">
-              <div className="w-14 h-14 mx-auto mb-5 text-gold-600 bg-gold-100 rounded-full flex items-center justify-center ring-1 ring-gold-300">
+              <div className="w-14 h-14 mx-auto mb-5 text-emerald-600 bg-emerald-50 rounded-full flex items-center justify-center ring-1 ring-emerald-200">
                 <svg className="w-7 h-7" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
@@ -388,7 +388,7 @@ export default async function Home() {
             </div>
 
             <div className="text-center p-6">
-              <div className="w-14 h-14 mx-auto mb-5 text-gold-600 bg-gold-100 rounded-full flex items-center justify-center ring-1 ring-gold-300">
+              <div className="w-14 h-14 mx-auto mb-5 text-emerald-600 bg-emerald-50 rounded-full flex items-center justify-center ring-1 ring-emerald-200">
                 <svg className="w-7 h-7" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                 </svg>

@@ -108,7 +108,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {values.map((value, index) => (
               <div key={index} className="text-center p-6">
-                <div className="w-14 h-14 mx-auto mb-5 text-gold-600 bg-gold-100 rounded-full flex items-center justify-center ring-1 ring-gold-300">
+                <div className="w-14 h-14 mx-auto mb-5 text-emerald-600 bg-emerald-50 rounded-full flex items-center justify-center ring-1 ring-emerald-200">
                   {value.icon}
                 </div>
                 <h3 className="text-xl font-serif font-medium text-charcoal mb-3 tracking-wide">
@@ -133,8 +133,8 @@ export default function AboutPage() {
           <p className="text-base sm:text-lg text-charcoal/70 mb-8">
             We bring luxury massage experiences to homes, hotels, and offices throughout the region.
           </p>
-          <div className="bg-gold-50 border border-gold-200 rounded-sm p-6 sm:p-8 mb-8">
-            <p className="text-sm font-medium text-gold-700 mb-4 tracking-wide uppercase">
+          <div className="bg-emerald-50 border border-emerald-200 rounded-sm p-6 sm:p-8 mb-8">
+            <p className="text-sm font-medium text-emerald-700 mb-4 tracking-wide uppercase">
               Currently Serving
             </p>
             <p className="text-charcoal/70">

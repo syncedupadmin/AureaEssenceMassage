@@ -63,7 +63,7 @@ const itemVariants = {
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-champagne-100 relative overflow-hidden">
+    <section className="py-16 sm:py-20 md:py-24 bg-emerald-50 relative overflow-hidden">
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

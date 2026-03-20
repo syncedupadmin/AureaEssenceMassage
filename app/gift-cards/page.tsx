@@ -57,8 +57,8 @@ export default function GiftCardsPage() {
                     <p className="text-champagne/50 text-xs">
                       Redeemable for any service
                     </p>
-                    <div className="w-12 h-12 rounded-full border border-gold-500/50 flex items-center justify-center">
-                      <div className="w-8 h-8 rounded-full bg-gold-500/20" />
+                    <div className="w-12 h-12 rounded-full border border-emerald-500/50 flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-full bg-emerald-500/20" />
                     </div>
                   </div>
                 </div>

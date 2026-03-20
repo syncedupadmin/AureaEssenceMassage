@@ -23,14 +23,14 @@ interface BookingResult {
 }
 
 const inputBase =
-  'w-full px-4 py-3.5 bg-white border text-charcoal placeholder-charcoal/30 rounded-sm focus:outline-none focus:ring-2 focus:ring-gold-400/50 focus:border-gold-400 transition-all duration-200 text-sm';
+  'w-full px-4 py-3.5 bg-white border text-charcoal placeholder-charcoal/30 rounded-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500 transition-all duration-200 text-sm';
 const inputError = 'border-red-400 bg-red-50/30';
 const inputNormal = 'border-champagne-300 hover:border-champagne-400';
 
 function SectionHeader({ number, label }: { number: number; label: string }) {
   return (
     <div className="flex items-center gap-3 mb-5">
-      <div className="w-6 h-6 rounded-full bg-gold-500 flex items-center justify-center text-charcoal text-xs font-semibold flex-shrink-0">
+      <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-white text-xs font-semibold flex-shrink-0">
         {number}
       </div>
       <span className="text-xs font-semibold text-charcoal/60 uppercase tracking-luxury">{label}</span>

@@ -68,7 +68,7 @@ export default function FAQPage() {
       </section>
 
       {/* Still Have Questions CTA */}
-      <section className="py-16 sm:py-20 bg-champagne-200">
+      <section className="py-16 sm:py-20 bg-emerald-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl font-serif font-medium text-charcoal mb-4 tracking-wide">
             Still Have Questions?
