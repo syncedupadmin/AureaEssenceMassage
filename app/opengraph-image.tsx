@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
 
-export const alt = 'Áurea Essence Massage - Premium Mobile Massage Therapy';
+export const alt = 'Áurea Essence Massage | Luxury Mobile Massage — Miami, Fort Lauderdale & Palm Beach';
 export const size = {
   width: 1200,
   height: 630,
@@ -145,11 +145,11 @@ export default async function Image() {
             letterSpacing: '2px',
           }}
         >
-          <span>LICENSED & INSURED</span>
+          <span>MIAMI</span>
           <span style={{ color: '#C9A96E' }}>•</span>
-          <span>SOUTH FLORIDA</span>
+          <span>FORT LAUDERDALE</span>
           <span style={{ color: '#C9A96E' }}>•</span>
-          <span>5-STAR RATED</span>
+          <span>PALM BEACH</span>
         </div>
       </div>
     ),

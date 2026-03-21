@@ -9,9 +9,16 @@ import {
 } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: 'Services | Áurea Essence Massage',
-  description: 'Swedish, deep tissue, reflexology, lymphatic drainage, post-surgical, couples & prenatal massage delivered to your location. Premium mobile massage therapy.',
-  keywords: 'Swedish massage, deep tissue massage, reflexology, lymphatic drainage, post-surgical massage, couples massage, prenatal massage, mobile massage',
+  title: 'Massage Services — Swedish, Deep Tissue, Couples & More',
+  description: 'Mobile massage services delivered to your home, hotel, or office in South Florida. Swedish, deep tissue, couples, prenatal, lymphatic drainage, reflexology & post-surgical massage.',
+  alternates: {
+    canonical: 'https://aureaessencemassage.com/services',
+  },
+  openGraph: {
+    title: 'Massage Services | Áurea Essence Massage — South Florida',
+    description: 'Premium mobile massage therapy services: Swedish, deep tissue, couples, prenatal, lymphatic drainage, reflexology & post-surgical. Delivered to your location.',
+    url: 'https://aureaessencemassage.com/services',
+  },
 };
 
 // Service badges for highlighting

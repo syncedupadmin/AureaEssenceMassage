@@ -2,11 +2,13 @@ import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: ['/api/', '/_next/'],
-    },
-    sitemap: 'https://www.yourdomain.com/sitemap.xml',
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/api/', '/_next/', '/admin/'],
+      },
+    ],
+    sitemap: 'https://aureaessencemassage.com/sitemap.xml',
   };
 }

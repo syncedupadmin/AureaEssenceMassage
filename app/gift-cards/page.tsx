@@ -3,9 +3,16 @@ import CTAButton from '@/components/CTAButton';
 import { businessConfig } from '@/config/business';
 
 export const metadata: Metadata = {
-  title: 'Gift Cards | Áurea Essence Massage - Give the Gift of Luxury Wellness',
-  description: 'Give an unforgettable wellness experience. Digital gift certificates for mobile massage therapy, perfect for any occasion.',
-  keywords: 'massage gift card, spa gift certificate, wellness gift, luxury gift, South Florida massage gift',
+  title: 'Massage Gift Cards — Give the Gift of Luxury Wellness',
+  description: 'Give the gift of luxury mobile massage therapy in South Florida. Digital gift certificates for any occasion — birthdays, anniversaries, holidays, and more. Perfect for anyone in Miami, Fort Lauderdale, or Palm Beach.',
+  alternates: {
+    canonical: 'https://aureaessencemassage.com/gift-cards',
+  },
+  openGraph: {
+    title: 'Massage Gift Cards | Áurea Essence Massage — South Florida',
+    description: 'Give the gift of luxury mobile massage therapy. Digital gift certificates delivered instantly. Perfect for any occasion.',
+    url: 'https://aureaessencemassage.com/gift-cards',
+  },
 };
 
 export default function GiftCardsPage() {

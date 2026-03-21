@@ -3,9 +3,16 @@ import Image from 'next/image';
 import CTAButton from '@/components/CTAButton';
 
 export const metadata: Metadata = {
-  title: 'About | Áurea Essence Massage',
-  description: 'Premium mobile massage therapy. We bring spa-quality treatments to your location with professionalism and care.',
-  keywords: 'mobile massage, about us, premium massage therapy, Áurea Essence',
+  title: 'About — Luxury Mobile Massage in South Florida',
+  description: 'Áurea Essence Massage is South Florida\'s premier mobile massage service. Licensed, insured, and dedicated to delivering spa-quality wellness to your home, hotel, or office in Miami, Fort Lauderdale, and Palm Beach.',
+  alternates: {
+    canonical: 'https://aureaessencemassage.com/about',
+  },
+  openGraph: {
+    title: 'About Áurea Essence Massage — South Florida\'s Luxury Mobile Massage',
+    description: 'Licensed mobile massage therapist serving Miami-Dade, Broward, and Palm Beach counties. Premium care delivered to your location.',
+    url: 'https://aureaessencemassage.com/about',
+  },
 };
 
 export default function AboutPage() {

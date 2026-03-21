@@ -15,7 +15,7 @@ export default function Footer() {
   return (
     <footer className="bg-charcoal text-champagne py-12 sm:py-16 safe-bottom">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`grid grid-cols-1 sm:grid-cols-2 ${showConnect ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-8 lg:gap-12`}>
+        <div className={`grid grid-cols-1 sm:grid-cols-2 ${showConnect ? 'lg:grid-cols-5' : 'lg:grid-cols-4'} gap-8 lg:gap-12`}>
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-2">
             <Image
@@ -48,6 +48,31 @@ export default function Footer() {
                 { href: '/about', label: 'About' },
                 { href: '/faq', label: 'FAQ' },
                 { href: '/contact', label: 'Book Now' },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-champagne/70 hover:text-emerald-400 transition-colors focus:outline-none focus-visible:text-emerald-400"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Service Areas — internal links to city pages */}
+          <div>
+            <h4 className="text-base font-serif font-medium mb-4 text-emerald-400 tracking-wide">
+              Service Areas
+            </h4>
+            <ul className="space-y-3">
+              {[
+                { href: '/mobile-massage-miami', label: 'Miami' },
+                { href: '/mobile-massage-fort-lauderdale', label: 'Fort Lauderdale' },
+                { href: '/mobile-massage-palm-beach', label: 'Palm Beach' },
+                { href: '/mobile-massage-boca-raton', label: 'Boca Raton' },
+                { href: '/mobile-massage-coral-gables', label: 'Coral Gables' },
               ].map((link) => (
                 <li key={link.href}>
                   <Link

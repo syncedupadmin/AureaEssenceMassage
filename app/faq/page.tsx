@@ -3,9 +3,16 @@ import FAQAccordion from '@/components/FAQAccordion';
 import CTAButton from '@/components/CTAButton';
 
 export const metadata: Metadata = {
-  title: 'FAQ | Áurea Essence Massage - Your Questions Answered',
-  description: 'Find answers to frequently asked questions about mobile massage services, booking, cancellation policy, service areas, and more.',
-  keywords: 'mobile massage FAQ, massage questions, booking information, cancellation policy, South Florida massage',
+  title: 'FAQ — Mobile Massage Questions Answered',
+  description: 'Answers to common questions about mobile massage therapy in South Florida — how it works, what to prepare, service areas (Miami, Fort Lauderdale, Palm Beach), booking and cancellation policies.',
+  alternates: {
+    canonical: 'https://aureaessencemassage.com/faq',
+  },
+  openGraph: {
+    title: 'FAQ — Mobile Massage Questions Answered | Áurea Essence Massage',
+    description: 'Everything you need to know about booking a luxury mobile massage in South Florida.',
+    url: 'https://aureaessencemassage.com/faq',
+  },
 };
 
 const faqItems = [
@@ -43,9 +50,26 @@ const faqItems = [
   },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer,
+    },
+  })),
+};
+
 export default function FAQPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* Hero Section */}
       <section className="pt-32 sm:pt-40 pb-16 sm:pb-20 bg-champagne">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

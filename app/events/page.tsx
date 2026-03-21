@@ -3,9 +3,16 @@ import Image from 'next/image';
 import CTAButton from '@/components/CTAButton';
 
 export const metadata: Metadata = {
-  title: 'Corporate & Events | Áurea Essence Massage - Elevate Your Special Occasion',
-  description: 'Bespoke wellness experiences for corporate events, bridal parties, weddings, and special occasions. On-site massage services in South Florida.',
-  keywords: 'corporate massage, event massage, bridal party spa, wedding massage, team wellness, South Florida events',
+  title: 'Corporate Events & Parties — Group Massage South Florida',
+  description: 'On-site massage for corporate wellness days, bridal parties, bachelorette events, and private celebrations in South Florida. Serving Miami, Fort Lauderdale, and Palm Beach. Book group massage services today.',
+  alternates: {
+    canonical: 'https://aureaessencemassage.com/events',
+  },
+  openGraph: {
+    title: 'Corporate Events & Group Massage | Áurea Essence Massage — South Florida',
+    description: 'Luxury on-site massage for corporate events, bridal parties, and private celebrations throughout Miami, Fort Lauderdale, and Palm Beach.',
+    url: 'https://aureaessencemassage.com/events',
+  },
 };
 
 const eventTypes = [

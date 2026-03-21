@@ -3,7 +3,7 @@ import Link from 'next/link';
 interface CTAButtonProps {
   href: string;
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'outline' | 'white';
+  variant?: 'primary' | 'secondary' | 'outline' | 'white' | 'gold' | 'outline-light';
   className?: string;
 }
 
@@ -27,6 +27,8 @@ export default function CTAButton({
     secondary: 'bg-charcoal text-champagne hover:bg-charcoal-400',
     outline: 'border-2 border-emerald-500 text-emerald-500 hover:bg-emerald-500 hover:text-white bg-transparent',
     white: 'bg-white text-emerald-500 hover:bg-champagne shadow-soft hover:shadow-elegant',
+    gold: 'bg-gold-500 text-charcoal hover:bg-gold-400 shadow-gold hover:shadow-elegant',
+    'outline-light': 'border border-gold-400/50 text-champagne hover:border-gold-500 hover:bg-gold-400/10 bg-transparent',
   };
 
   return (
