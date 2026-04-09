@@ -173,6 +173,17 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      <div className="text-center text-xs text-gray-400 mt-4 pb-2">
+        Powered by{' '}
+        <a
+          href="https://websites.syncedupsolutions.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-white transition-colors"
+        >
+          SyncedUp Solutions
+        </a>
+      </div>
     </footer>
   );
 }
