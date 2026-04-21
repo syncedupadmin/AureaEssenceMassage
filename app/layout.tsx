@@ -25,7 +25,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://aureaessencemassage.com'),
+  metadataBase: new URL('https://www.aureaessencemassage.com'),
   title: {
     default: 'Áurea Essence Massage | Luxury Mobile Massage — Miami, Fort Lauderdale & Palm Beach',
     template: '%s | Áurea Essence Massage',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Áurea Essence Massage',
     locale: 'en_US',
-    url: 'https://aureaessencemassage.com',
+    url: 'https://www.aureaessencemassage.com',
   },
   twitter: {
     card: 'summary_large_image',
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     google: 'qq36KSnnF9XjcZlTPe0l0Bbrj2T9z3HcNl2pT2eCn-g',
   },
   alternates: {
-    canonical: 'https://aureaessencemassage.com',
+    canonical: 'https://www.aureaessencemassage.com',
   },
 };
 
@@ -64,9 +64,9 @@ const schemaData = {
   "@context": "https://schema.org",
   "@type": "HealthAndBeautyBusiness",
   "name": "Áurea Essence Massage",
-  "image": "https://aureaessencemassage.com/images/aurea-essence-logo.png",
-  "@id": "https://aureaessencemassage.com/#business",
-  "url": "https://aureaessencemassage.com",
+  "image": "https://www.aureaessencemassage.com/images/aurea-essence-logo.png",
+  "@id": "https://www.aureaessencemassage.com/#business",
+  "url": "https://www.aureaessencemassage.com",
   "telephone": "+13055194034",
   "priceRange": "$$-$$$",
   "address": {
