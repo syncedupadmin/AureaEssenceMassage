@@ -79,6 +79,23 @@ function getTodayDate(): string {
   return today.toISOString().split('T')[0];
 }
 
+type TimeSlot = 'morning' | 'afternoon' | 'evening';
+
+function toTimeSlot(value: string | undefined): TimeSlot {
+  if (value === 'morning' || value === 'afternoon' || value === 'evening') return value;
+  if (!value) return 'morning';
+  // Parse clock strings like "9:00 AM" or "2:30 PM" into a 24h hour.
+  const match = value.match(/^(\d{1,2}):\d{2}\s*(AM|PM)$/i);
+  if (!match) return 'morning';
+  let hour = parseInt(match[1], 10);
+  const meridiem = match[2].toUpperCase();
+  if (meridiem === 'PM' && hour !== 12) hour += 12;
+  if (meridiem === 'AM' && hour === 12) hour = 0;
+  if (hour < 12) return 'morning';
+  if (hour < 17) return 'afternoon';
+  return 'evening';
+}
+
 export default function BookingDetailModal({
   booking,
   onClose,
@@ -87,7 +104,9 @@ export default function BookingDetailModal({
 }: BookingDetailModalProps) {
   const [mode, setMode] = useState<'view' | 'confirm' | 'cancel'>('view');
   const [confirmedDate, setConfirmedDate] = useState(booking.confirmedDate || booking.preferredDate || '');
-  const [confirmedTime, setConfirmedTime] = useState(booking.confirmedTime || booking.preferredTime || 'morning');
+  const [confirmedTime, setConfirmedTime] = useState<TimeSlot>(
+    toTimeSlot(booking.confirmedTime || booking.preferredTime)
+  );
   const [adminNotes, setAdminNotes] = useState(booking.adminNotes || '');
   const [cancellationReason, setCancellationReason] = useState('');
 
@@ -99,7 +118,7 @@ export default function BookingDetailModal({
     await onUpdate(booking.id, {
       status: 'confirmed',
       confirmedDate,
-      confirmedTime: confirmedTime as 'morning' | 'afternoon' | 'evening',
+      confirmedTime,
       adminNotes: adminNotes || undefined,
     });
   };
@@ -290,7 +309,7 @@ export default function BookingDetailModal({
                     <label className="text-xs text-emerald-700 block mb-1">Time Slot</label>
                     <select
                       value={confirmedTime}
-                      onChange={(e) => setConfirmedTime(e.target.value)}
+                      onChange={(e) => setConfirmedTime(e.target.value as TimeSlot)}
                       className="w-full px-4 py-2 border border-emerald-200 rounded-sm focus:outline-none focus:border-emerald-400"
                     >
                       {TIME_OPTIONS.map((option) => (

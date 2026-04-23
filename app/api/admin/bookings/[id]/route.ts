@@ -61,6 +61,11 @@ export async function PATCH(request: NextRequest, context: RouteParams) {
     const validation = updateBookingSchema.safeParse(body);
 
     if (!validation.success) {
+      console.error('Booking update validation failed', {
+        bookingId: id,
+        body,
+        issues: validation.error.flatten(),
+      });
       return NextResponse.json(
         { error: 'Invalid input', details: validation.error.flatten() },
         { status: 400 }
