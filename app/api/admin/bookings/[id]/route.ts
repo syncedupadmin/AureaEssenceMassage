@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { isAuthenticated } from '@/lib/admin-auth';
 import { getBookingById, updateBooking, isTimeSlotAvailable, isDateBlocked } from '@/lib/bookings';
-import { updateBookingSchema } from '@/lib/schemas/booking';
+import { updateBookingSchema, TIME_SLOT_LABELS } from '@/lib/schemas/booking';
 import { sendBookingConfirmedEmail, sendBookingCancelledEmail } from '@/lib/booking-emails';
+import { sendBookingStatusSMS, isTwilioConfigured } from '@/lib/twilio-sms';
 
 interface RouteParams {
   params: Promise<{ id: string }>;
@@ -117,15 +118,40 @@ export async function PATCH(request: NextRequest, context: RouteParams) {
       );
     }
 
-    // 7. Send emails based on status change
-    try {
-      if (updates.status === 'confirmed' && existingBooking.status !== 'confirmed') {
-        await sendBookingConfirmedEmail(updatedBooking);
-      } else if (updates.status === 'cancelled' && existingBooking.status !== 'cancelled') {
-        await sendBookingCancelledEmail(updatedBooking, false); // false = cancelled by admin
+    // 7. Send emails + SMS based on status change (non-critical — never fail the request)
+    const confirmed = updates.status === 'confirmed' && existingBooking.status !== 'confirmed';
+    const cancelled = updates.status === 'cancelled' && existingBooking.status !== 'cancelled';
+
+    if (confirmed || cancelled) {
+      try {
+        if (confirmed) {
+          await sendBookingConfirmedEmail(updatedBooking);
+        } else {
+          await sendBookingCancelledEmail(updatedBooking, false); // false = cancelled by admin
+        }
+      } catch (emailError) {
+        console.error('Email send failed (non-critical):', emailError);
       }
-    } catch (emailError) {
-      console.error('Email send failed (non-critical):', emailError);
+
+      if (updatedBooking.customerPhone && (await isTwilioConfigured())) {
+        try {
+          const slot = updatedBooking.confirmedTime as 'morning' | 'afternoon' | 'evening' | undefined;
+          const timeLabel = slot ? TIME_SLOT_LABELS[slot] : undefined;
+          const smsResult = await sendBookingStatusSMS(
+            updatedBooking.customerPhone,
+            updatedBooking.customerName,
+            confirmed ? 'confirmed' : 'cancelled',
+            updatedBooking.service,
+            updatedBooking.confirmedDate,
+            timeLabel,
+          );
+          if (!smsResult.success) {
+            console.error('Status SMS failed (non-critical):', smsResult.error);
+          }
+        } catch (smsError) {
+          console.error('Status SMS threw (non-critical):', smsError);
+        }
+      }
     }
 
     return NextResponse.json({ booking: updatedBooking });
